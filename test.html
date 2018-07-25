@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>可拖动的DIV</title>
+	<style type="text/css">
+	div>div{
+			display: inline-block;
+			padding: 10px;
+			background-color: #aaa;
+			margin: 3px;
+		}
+</style>
+</head>
+<body>
+
+
+<!-- <div id="sore"style="width:80px;height:80px;border:1px soild black;background-color:#bbb;"draggable="true">疯狂软件教育</div>
+<script type="text/javascript">
+	var sor=document.getElementById("sore");
+	sor.ondragstart=function(evt){
+		evt.dataTransfer.setData("text","www.fkjava.org");
+	}
+	document.ondragover=function(evt){
+		return false;
+	}
+	document.ondrop=function(evt){
+		sor.style.position="absolute";
+		sor.style.left=evt.pageX+"2px";
+		sor.style.top=evt.pageY+"2px";
+
+		return false;
+	}
+</script> -->
+<!-- <div style="width:600px;border:1px solid black;">
+<h2>可将喜欢的项目拖入收藏夹</h2>
+
+
+	<div draggable="true"ondragstart="dsHandler(event)">疯狂Java</div>
+	<div draggable="true"ondragstart="dsHandler(event)">疯狂教育</div>
+	<div draggable="true" ondragstart="dsHandler(event);">关于我们</div>
+	<div draggable="true"ondragstart="dsHandler(event)">疯狂成员</div>
+</div>
+
+<div id="dest"
+	style="width:400px;height:260px; 
+	border:1px solid black;">
+	<h2 ondragleave="return false;">收藏夹</h2>
+</div>
+<img id="gb" draggable="false" src="garbagebin.png"
+	alt="垃圾桶"/>
+
+
+<script type="text/javascript">
+	var dest = document.getElementById("dest");
+	// 开始拖动事件的事件监听器
+	var dsHandler = function(evt)
+	{
+		// 将被拖动元素的innerHTML属性值设置成被拖动的数据
+		evt.dataTransfer.setData("text/plain"
+			, "<item>" + evt.target.innerHTML);
+	}
+	dest.ondrop = function(evt)
+	{
+		evt.preventDefault();
+		var text = evt.dataTransfer.getData("text/plain");
+		// 如果该text以<item>开头
+		if (text.indexOf("<item>") == 0)
+		{
+			// 创建一个新的div元素
+			var newEle = document.createElement("div");
+			// 以当前时间为该元素生成一个唯一的ID
+			newEle.id = new Date().getUTCMilliseconds();
+			// 该元素内容为“拖”过来的数据
+			newEle.innerHTML = text.substring(6);
+			// 设置该元素允许拖动
+			newEle.draggable="true";
+			// 为该元素的开始拖动事件指定监听器
+			newEle.ondragstart = function(evt)
+			{
+				// 将被拖动元素的id属性值设置成被拖动的数据
+				evt.dataTransfer.setData("text/plain"
+					, "<remove>" + newEle.id);
+			}
+			dest.appendChild(newEle);
+		}
+	}
+
+
+// 当把被拖动元素“放”到垃圾桶上时激发该方法。
+	document.getElementById("gb").ondrop = function(evt)
+	{
+		var id = evt.dataTransfer.getData("text/plain");
+		// 如果id以<remove>开头
+		if (id.indexOf("<remove>") == 0)
+		{
+			// 根据“拖”过来的数据，获取被拖动的元素
+			var target = document.getElementById(id.substring(8));
+			// 删除被拖动的元素
+			dest.removeChild(target);
+		}
+	}
+	document.ondragover = function(evt)
+	{
+		// 取消事件的默认行为
+		return false;
+	}
+	document.ondrop = function(evt)
+	{
+		// 取消事件的默认行为
+		return false;
+	}
+</script>
+
+<div id="sour" draggable="true"style="width:80px;height:60px;border:1px solid black;">拖动我</div>
+<script type="text/javascript">
+	var sour=document.getElementById("sour");
+	var des=document.getElementById("text/plain");
+	var myico=document.createElement("img");
+	myico.src="my.gif";
+	sour.ondragstart=function(evt){
+		var dt=evt.dataTransfer;
+		//dt.effectAllowed='move';
+		dt.setDragImage(myico,0,0);
+		dt.setData("text/plain","www.fkjava.org");
+	}
+	document.ondragover=function(e){
+		return false;
+	}
+	document.ondrop=function(e){
+		return false;
+	}
+</script> -->
+
+<input type="password"name="name">
+<input type="radio">
+<input type="checkbox">
+<input type="image"src="my.gif"style="width:80px;height:60px;border:2px solid black;">
+<input type="file">
+<input type="submit">
+<input type="reset">
+<input type="button">
+<br>
+<form action="http://www.crazyjava.org"method="get">
+<label for="username">单行文本框</label><input id="username" name="username"type="text"><br>
+不能编辑<input id="username2" name="username2"type="text"readonly="readonly"value="wsyou"><br>
+<label>密码框<input id="password" name="password"type="password"></label><br>
+隐藏框<input id="hidden" name="hidden"type="hidden"><br>
+第一组单选框<br>
+红<input id="color1" name="color"type="radio"value="red">
+绿<input id="color2" name="color"type="radio"value="green">
+蓝<input id="color3" name="color"type="radio"value="blue"><br>
+第二组单选框<br>
+男性<input id="gender1" name="gender"type="radio"value="male">
+女性<input id="gender2" name="gender"type="radio"value="female"><br>
+两个复选框
+<br>
+<input id="website1" name="website"type="checkbox"value="leegang.org">
+<input id="website2" name="website"type="checkbox"value="crazyjava.org"><br>
+文件上传域<input type="file" id="file" name="file"><br>
+图像域<input type="image"src="my.gif"alt="疯狂Java资源"width="80";height="60"><br>
+下面是四个按钮
+<br>
+<input type="submit" id="ok" name="ok"value="提交">
+<input type="submit" id="ok" name="ok"value="提交"disabled>
+<input type="reset" id="cancle" name="cancle"value="重填">
+<input type="button" id="no" name="no"value="无动作">
+<br>
+<br>
+<br>
+
+
+<form action="www.crazyjava.org"method="post">
+	<select name="skills" id="skills">
+		<option value="java">java语言</option>
+ 		<option value="c">c语言</option>
+		<option value="ruby">ruby语言</option>
+
+	</select><br>
+	<br>
+	<br>
+<select name="books" id="books"
+	multiple="multiple"size="4">
+	<option value="java">java语言</option>
+ 	<option value="c">c语言</option>
+	<option value="ruby">ruby语言</option>
+	<option value="java">java语言</option>
+ 	<option value="c">c语言</option>
+	<option value="ruby">ruby语言</option>
+
+</select>
+
+<select name="lee" id="lee"
+	multiple size="6">
+	<optgroup label="疯狂图书">
+	<option value="java">java语言</option>
+ 	<option value="c">c语言</option>
+	<option value="ruby">ruby语言</option>
+	<option value="java">java语言</option>
+ 	<option value="c">c语言</option>
+	<option value="ruby">ruby语言</option>
+    </optgroup>
+
+	<optgroup label="其他图书">
+	<option value="java">java语言</option>
+ 	<option value="c">c语言</option>
+	<option value="ruby">ruby语言</option>
+	<option value="java">java语言</option>
+ 	<option value="c">c语言</option>
+	<option value="ruby">ruby语言</option>
+    </optgroup>
+
+</select>
+</form>
+</form>
+
+<form action="http://wwww.crazyjava.com"method="post">
+	
+    <textarea name="desc"cols="6"rows="2"wrap="hard"></textarea>
+    <button type="submit">提交</button>
+
+</form>
+
+
+</body>
+</html>

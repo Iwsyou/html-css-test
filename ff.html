@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>preventDefault example</title>
+</head>
+<body>
+<p>请输入一些字母,只允许小写字母.</p>
+<form>
+<input type="text" id="my-textbox"/>
+</form>
+<script type="text/javascript">
+function checkName(evt) {
+var charCode = evt.charCode;
+  if (charCode != 0) {
+    if (charCode < 97 || charCode > 122) {
+      evt.preventDefault();
+      alert("只能输入小写字母." + "\n"
+            + "charCode: " + charCode + "\n"
+      );
+    }
+  }
+}
+document.getElementById('my-textbox').addEventListener(
+    'keypress', checkName, false
+ );
+</script>
+
+<form action="http://wwww.crazyjava.com"method="get">
+	
+    <textarea name="desc"cols="6"rows="2"wrap="hard"></textarea>
+    <button type="submit">提交</button>
+
+</form>
+<form action="http://www.crazyjava.com"method="get">
+	<fieldset name="basic">
+		<legend>基本信息</legend>
+	用户名<input type="text" id="username" name="username">	<p>
+	密码<input type="password" id="password" name="password">
+	</fieldset>
+	
+	<fieldset name="extra">
+	<legend>附加信息</legend>
+	身高：<input id="height" name="height" type="text" /><p>
+	出生地：<input id="birth" name="birth" type="text" /><p>
+	毕业学校：<input id="school" name="school" type="text" />
+	</fieldset>
+	<input type="submit" id="ok" name="ok"value="提交">
+
+</form>
+
+</body>
+</html>
