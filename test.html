@@ -132,7 +132,7 @@
 	}
 </script> -->
 
-<input type="password"name="name">
+<!-- <input type="password"name="name">
 <input type="radio">
 <input type="checkbox">
 <input type="image"src="my.gif"style="width:80px;height:60px;border:2px solid black;">
@@ -220,6 +220,202 @@
     <button type="submit">提交</button>
 
 </form>
+
+<form action="http://www.crazyit.org" method="post">
+	<fieldset name="basic">
+	<legend>基本信息</legend>
+	用户名：<input id="username" name="username" type="text" /><p>
+	密码：<input id="password" name="password" type="password" />
+	</fieldset>
+	<fieldset name="extra" disabled>
+	<legend>附加信息</legend>
+	身高：<input id="height" name="height" type="text" /><p>
+	出生地：<input id="birth" name="birth" type="text" /><p>
+	毕业学校：<input id="school" name="school" type="text" />
+	</fieldset>
+	<input id="ok" name="ok" type="submit" value="提交" />
+</form>
+
+<form action="add" id="addform">
+	物品名<input type="text" name>
+    <input type="submit" value="添加">
+</form>
+物品描述<textarea name="desc"form="addform"></textarea>
+
+<form action="" method="post">
+	用户名<input type="text" name="name"><br>
+	密码<input type="password" name="name"><br>
+	<input type="submit" value="注册"formaction="regist">
+	<input type="submit" value="登录"formaction="login">
+</form>
+
+<form action="pro" method="post">
+	用户名<input type="text" name="name"><br>
+	密码<input type="password" name="name"><br>
+	<input type="submit" value="GET提交"formmothed="get">
+	<input type="submit" value="POST提交"formmothed="post">
+</form>
+
+<form action="pro" method="post">
+	用户名<input type="text" name="name"><p>
+	密码<input type="password" name="name"><p>
+	头像<input type="file" name="pic"><p>
+	<input type="submit" value="普通注册"formenctype="application/x-www-form-urlencoded">
+	<input type="submit" value="上传图片"formenctype="multipart/form-data">
+</form>
+
+<form action="pro" method="post">
+	用户名<input type="text" name="name"><br>
+	密码<input type="password" name="name"><br>
+	<input type="submit" value="本窗口提交"formtarget="_self">
+	<input type="submit" value="新窗口提交"formtarget="_blank">
+</form>
+
+<form action="pro" method="post">
+	用户名<input type="text" name="name"><br>
+	密码<input type="password" name="name"autofocus><br>
+	<input type="submit" value="提交">
+	<input type="reset" value="重设">
+</form>
+
+<form method="post">
+	用户名<input type="text" name="name"placeholder="请输入用户名"><br>
+	密码<input type="password" name="name"placeholder="请输入密码"><br>
+	<input type="submit" value="提交"formaction="regist">
+	<input type="submit" value="登录"formaction="login">
+</form> -->
+
+<!-- <form action="buy" method="post">
+	请输入图书<input type="text" name="name"list="books">
+	<input type="submit" value="购买">
+</form>
+
+<datalist id="books">
+	<option value="java">疯狂</option>
+	<option value="ee">实战</option>
+	<option value="android">安卓</option>
+</datalist>
+
+<form action="pro.action" method="post" autocomplete="on">
+姓名:<input type="text" name="name" /><p>
+住址: <input type="text" name="addr" /><p>
+电邮: <input type="text" name="email" autocomplete="off" /><p>
+<input type="submit" value="提交"/>
+<form>
+
+<form action="pro.action" method="post" autocomplete="on">
+	<label id="nameLB">
+姓名:<input type="text" name="name" /></label><p>
+<input type="submit" value="提交"/>
+<input type="button" value="重设"onclick="document.getElementById('nameLB').control.value='crazyit';">
+<form>
+<p></p>
+<form action="pro.action" method="post" autocomplete="on">
+	<label>姓名<input type="text" id="name" name="name"></label>
+	<label for="name">
+		<small>请输入姓名</small>
+	</label><p>
+<input type="button" value="第一个"onclick="alert(document.getElementById('name').labels[0])">
+<input type="button" value="第二个"onclick="alert(document.getElementById('name').labels[1])">
+
+<form>
+<p></p>
+
+<form action="pro.action" method="post" autocomplete="on">
+	<label id="namelb">姓名<input type="text" id="name" name="name"></label>
+	<p></p>
+<input type="button" value="获取"onclick="alert(document.getElementById('namelb').control.selectionDirection);">
+<form><p></p>
+
+
+<form action="pro.action" method="post" autocomplete="on">
+	<label id="colorlb">红色<input type="checkbox" name="color"></label><p></p>	
+	<input type="button" value="设置"onclick="document.getElementById('colorlb').control.indeterminate=true;">
+	<input type="button" value="获取"onclick="alert(document.getElementById('colorlb').control.indeterminate);">
+<form>
+
+<form action="do">
+type="color"的文本框:<br/><input name="color" type="color"/><p>
+type="date"的文本框:<br/><input name="date" type="date"/><p>
+type="time"的文本框:<br/><input name="time" type="time"/><p>
+type="datetime-local"的文本框:<br/><input name="datetime-local" type="datetime-local"/><p>
+type="month"的文本框:<br/><input name="month" type="month"/><p>
+type="week"的文本框:<br/><input name="week" type="week"/><p>
+type="email"的文本框:<br/><input name="email" type="email" multiple/><p>
+type="tel"的文本框:<br/><input name="tel" type="tel"/><p>
+type="url"的文本框:<br/><input name="url" type="url"/><p>
+type="number"的文本框:<br/><input name="number" type="number" min="0" max="10" step="1"/><p>
+type="range"的文本框:<br/><input name="range" type="range" min="0" max="100" step="5"/><p>
+type="search"的文本框:<br/><input name="search" type="search"/><p>
+<input value="提交" type="submit"/>
+</form>
+
+<form action="do">
+<input id="color1" name="color1" type="color" onchange="a.value=this.value;"/>
+<output name="a" for="color1"></output><p>
+<input id="range1" name="range1" type="range" min="0" max="100" step="5"
+	onchange="b.value=this.value;"/>
+<output name="b" for="range1"></output><p>
+<input value="提交" type="submit"/>
+</form>
+
+<form action="do"method="get">
+	行车速度是<meter name="speed"value="120"min="0"max="200"low="0"high="160"></meter>千米/小时<p>
+</form><p></p>
+
+<form action="do"method="get">
+	任务完成比<progress value="30" max="100">30/100</progress><p>
+   <input type="submit" value="提交">
+</form>
+ -->
+
+<form action="do"method="get">
+	用户名<input type="text" name="name"><p>
+	加密<keygen name="security"><p>
+	<input type="submit" value="提交">
+
+</form>
+
+<form action="add" method="post">
+	图书名：<input name="name" type="text" required/><p>
+	图书ISBN：<input name="isbn" type="text"
+		required pattern="\d{3}-\d-\d{3}-\d{5}"/><p>
+	图书价格：<input name="price" type="number" 
+		min="20" max="150" step="5"/><p>
+	<input type="submit" value="提交"/>
+</form>
+
+
+<form action="add" method="post">
+	生日：<input id="birth" name="birth" type="date"/><p>
+	邮件地址：<input id="email" name="email" type="email"/><p>
+	<input type="submit" value="提交" onclick="return check();"/>
+</form>
+<script type="text/javascript">
+	var check = function()
+	{
+		return commonCheck("birth" , "生日" , "字段必须是有效的日期！")
+			&& commonCheck("email" , "邮件地址" , "字段必须符合电子邮件的格式！");
+	}
+	var commonCheck = function(field , fieldName , tip)
+	{
+		var targetEle = document.getElementById(field);
+		// 如果该字段的值为空
+		if (targetEle.value.trim() == "")
+		{
+			alert(fieldName + "字段必须填写！");
+			return false;
+		}
+		// 调用checkValidity()方法执行输入校验
+		else if(!targetEle.checkValidity())
+		{
+			alert(fieldName + tip);
+			return false;
+		}
+		return true;
+	}
+</script>
+
 
 
 </body>
