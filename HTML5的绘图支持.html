@@ -339,7 +339,7 @@ draw();
 </script>
  -->
 
-<h2>坐标变换</h2>
+<!-- <h2>坐标变换</h2>
 
 <canvas id="mc" width="420"height="320"style="border:1px solid black"></canvas>
 
@@ -356,9 +356,298 @@ draw();
 		ctx.fillRect(0,0,150,75);
 	}
 
+</script> -->
 
 
+<!-- <h2>雪花飘飘</h2>
+<canvas id="mc" width="420"height="280"style="border:1px solid black"></canvas>
+
+<script type="text/javascript">
+	function createFlower(context , n , dx , dy , size , length){
+		// 开始创建路径  
+		context.beginPath(); 
+		context.moveTo(dx , dy + size);
+		var dig = 2 * Math.PI / n;
+		for(var i = 1; i < n + 1 ; i++) 
+		{
+			// 结算控制点坐标
+			var ctrlX = Math.sin((i - 0.5) * dig) * length + dx;
+			var ctrlY= Math.cos((i - 0.5 ) * dig) * length + dy;
+			// 结算结束点的坐标
+			var x = Math.sin(i * dig) * size + dx;
+			var y = Math.cos(i * dig) * size + dy; 
+			// 绘制二次曲线
+			context.quadraticCurveTo(ctrlX , ctrlY , x , y);
+		}
+		context.closePath();  	
+	}
+    snowPos=[
+    	{x:20,y:4},
+    	{x:40,y:4},
+    	{x:60,y:4},
+    	{x:80,y:4},
+    	{x:100,y:4},
+    	{x:120,y:4},
+    	{x:140,y:4},
+    	{x:160,y:4},
+    	{x:180,y:4},
+    	{x:200,y:4},
+    	{x:220,y:4},
+    	{x:240,y:4},
+    	{x:260,y:4},
+    	{x:280,y:4},
+    	{x:300,y:4},
+    	{x:320,y:4},
+    	{x:340,y:4},
+    	{x:360,y:4},
+    	{x:400,y:4},
+    ]
+
+
+    function fall(context)
+    {
+    	context.fillStyle="#000";
+    	context.fillRect(0,0,420,280);
+    	context.fillStyle="#fff";
+    	for(var i=0,len=snowPos.length;i<len;i++)
+    	{
+    		context.save();
+    		context.translate(snowPos[i].x,snowPos[i].y);
+    		context.rotate((Math.random()*6-3)*Math.PI/10);
+
+    		snowPos[i].y+=Math.random()*8;
+
+    		if(snowPos[i].y>280)
+    		{
+    			snowPos[i].y=4;
+    		}
+
+    		createFlower(context,6,0,0,5,8);
+    		context.fill();
+    		context.restore();
+    	}
+
+    }
+
+    var canvas=document.getElementById('mc');
+    var ctx=canvas.getContext('2d');
+    setInterval("fall(ctx);",50);
+
+</script> -->
+
+<!-- <h2>坐标变换</h2>
+<canvas id="mc" width="600" height="360"
+	style="border:1px solid black"></canvas>
+<script type="text/javascript">
+	function skew(context , angle)
+	{
+		// 借助于transform方法实现倾斜变换
+		context.transform(1 , 0 , -Math.tan(angle) , 1 , 0 , 0);
+	}
+	// 获取canvas元素对应的DOM对象
+	var canvas = document.getElementById('mc');
+	// 获取在canvas上绘图的CanvasRenderingContext2D对象
+	var ctx = canvas.getContext('2d');
+	ctx.fillStyle = "rgba(255, 0 , 0 , 0.3)";  
+	// 坐标系统平移到360、5位置
+	ctx.translate(360 , 5);  
+	for(var i = 0 ; i < 30 ; i++)
+	{
+		// 平移坐标系统
+		ctx.translate(50 , 30);
+		// 缩放坐标系统
+		ctx.scale(0.93 , 0.93);
+		// 倾斜变换
+		skew(ctx , Math.PI / 10);
+		ctx.fillRect(0 , 0 , 150 , 75);  
+	}
 </script>
+
+ -->
+<!-- 
+<h2> 叠加风格 </h2>
+选择叠加风格：<select style="width:160px" onchange="draw(this.value);";>
+	<option value="source-over">source-over</option>
+	<option value="source-in">source-in</option>
+	<option value="source-out">source-out</option>
+	<option value="source-atop">source-atop</option>
+	<option value="destination-over">destination-over</option>
+	<option value="destination-in">destination-in</option>
+	<option value="destination-out">destination-out</option>
+	<option value="destination-atop">destination-atop</option>
+	<option value="lighter">lighter</option>
+	<option value="xor">xor</option>
+	<option value="copy">copy</option>
+</select><br/>
+<canvas id="mc" width="400" height="200"
+	style="border:1px solid black"></canvas>
+<script type="text/javascript">
+	var canvas = document.getElementById('mc');
+	// 获取在canvas上绘图的CanvasRenderingContext2D对象
+	var ctx = canvas.getContext('2d');
+	var draw = function(compositeOper)
+	{
+		// 保存当前的绘图状态
+		ctx.save();
+		// 获取canvas元素对应的DOM对象
+		ctx.clearRect(0 , 0 , 400 , 200);
+		// 设置填充颜色
+		ctx.fillStyle = '#f00';
+		// 填充一个矩形
+		ctx.fillRect(30 , 20 , 160 , 100);
+		// 设置图形叠加风格
+		ctx.globalCompositeOperation = compositeOper;
+		// 设置填充颜色
+		ctx.fillStyle = '#0f0';
+		// 填充一个矩形
+		ctx.fillRect(120 , 60 , 160 , 100);
+		// 恢复之前保存的绘图状态
+		ctx.restore();
+	}
+	draw("source-over");
+</script>
+ -->
+<!-- 
+<h2>线性渐变</h2>
+
+<canvas id="mc" width="400"height="280"style="border:1px solid black"></canvas>
+
+<script type="text/javascript">
+	var canvas=document.getElementById('mc');
+	var ctx=canvas.getContext('2d');
+
+	ctx.save();
+	ctx.translate(30,20);
+
+	lg=ctx.createLinearGradient(0,0,160,80);
+	lg.addColorStop(0.2,"#f00");
+	lg.addColorStop(0.5,"#0f0");
+	lg.addColorStop(0.9,"#00f");
+
+	ctx.fillStyle=lg;
+	ctx.fillRect(0,0,160,80);
+	ctx.restore();
+
+	ctx.translate(280,160);
+	ctx.beginPath();
+	ctx.arc(0,0,80,0,Math.PI*2,true);
+	ctx.closePath();
+	ctx.lineWidth=12;
+
+	lg2=ctx.createLinearGradient(-40,-40,80,50);
+	lg2.addColorStop(0.1,"#ff0");
+	lg2.addColorStop(0.4,"#0ff");
+	lg2.addColorStop(0.8,"#f0f");
+
+	ctx.strokeStyle=lg2;
+	ctx.stroke();
+
+</script> -->
+
+<!-- <h2>径向渐变</h2>
+
+<canvas id="mc" width="400"height="280"style="border:1px solid black"></canvas>
+
+<script type="text/javascript">
+	var canvas=document.getElementById('mc');
+	var ctx=canvas.getContext('2d');
+
+	ctx.save();
+	ctx.translate(30,20);
+
+	lg=ctx.createRadialGradient(80,40,5,80,40,60);
+	lg.addColorStop(0.2,"#f00");
+	lg.addColorStop(0.5,"#0f0");
+	lg.addColorStop(0.9,"#00f");
+
+	ctx.fillStyle=lg;
+	ctx.fillRect(0,0,160,80);
+	ctx.restore();
+
+	ctx.translate(280,160);
+	ctx.beginPath();
+	ctx.arc(0,0,80,0,Math.PI*2,true);
+	ctx.closePath();
+	ctx.lineWidth=12;
+
+	lg2=ctx.createRadialGradient(0,0,5,0,0,80);
+	lg2.addColorStop(0.1,"#ff0");
+	lg2.addColorStop(0.4,"#0ff");
+	lg2.addColorStop(0.8,"#f0f");
+
+	ctx.fillStyle=lg2;
+	ctx.fill();
+
+</script> -->
+
+<!-- <h2> 位图填充 </h2>
+<canvas id="mc" width="400" height="280"
+	style="border:1px solid black"></canvas>
+<script type="text/javascript">
+	// 获取canvas元素对应的DOM对象
+	var canvas = document.getElementById('mc');
+	// 获取在canvas上绘图的CanvasRenderingContext2D对象
+	var ctx = canvas.getContext('2d');
+	ctx.save();
+	ctx.translate(30 , 20);
+	var image = new Image();
+	image.src = "www.gif";
+	image.onload = function()
+	{
+		// 创建位图填充
+		imgPattern = ctx.createPattern(image, "repeat");
+		// 设置使用位图填充作为填充颜色
+		ctx.fillStyle = imgPattern;
+		// 填充一个矩形
+		ctx.fillRect(0 , 0 , 160 , 80);
+		// 恢复坐标系统
+		ctx.restore();
+		// 平移坐标系统
+		ctx.translate(280 , 160)
+		ctx.beginPath();
+		// 添加圆弧
+		ctx.arc(0 , 0  , 80 , 0 , Math.PI * 2 , true);
+		ctx.closePath();
+		ctx.lineWidth = 12;
+		// 设置使用位图填充作为边框颜色
+		ctx.strokeStyle = imgPattern;
+		ctx.stroke();
+	}
+</script> -->
+
+
+<!-- <h2> 位图裁剪 </h2>
+<canvas id="mc" width="400" height="310"
+	style="border:1px solid black"></canvas>
+<script type="text/javascript">
+
+	// 获取canvas元素对应的DOM对象
+	var canvas = document.getElementById('mc');
+	// 获取在canvas上绘图的CanvasRenderingContext2D对象
+	var ctx = canvas.getContext('2d');
+
+	var dig=Math.PI/20;
+	var count=0;
+	var image=new Image();
+	image.src="android.png";
+	image.onload=function(){
+		setInterval("addRadial()",200);
+	}
+
+	var addRadial=function(){
+		ctx.save();
+		ctx.beginPath();
+		ctx.arc(200,130,150,0,dig*++count,false);
+		ctx.lineTo(200,130);
+		ctx.closePath();
+
+		ctx.clip();
+		ctx.drawImage(image,124,20);
+		ctx.restore();
+	}
+
+</script> -->
+
 
 
 </body>
