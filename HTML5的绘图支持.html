@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绘图支持</title>
+</head>
+<body>
+<!-- 	<h2>绘画入门</h2>
+<canvas id="mc" width="300"height="180"style="border:1px solid black">
+</canvas>
+<script type="text/javascript">
+	var canvas=document.getElementById('mc');
+	var ctx=canvas.getContext('2d');
+	ctx.fillStyle='#f00';
+	ctx.fillRect(30,40,80,100);
+</script> -->
+
+<!-- 
+<h2>绘制矩形</h2>
+	<canvas id="mc" width="400"height="280"style="border:1px solid black">
+	</canvas>
+	<script type="text/javascript">
+		var canvas=document.getElementById('mc');
+		var ctx=canvas.getContext('2d');
+
+		ctx.fillStyle='#f00';
+		ctx.fillRect(30,20,120,60);
+
+		ctx.fillStyle='#ff0';
+		ctx.fillRect(80,60,120,60);
+
+		ctx.strokeStyle='#00f';
+		ctx.lineWidth=10;
+		ctx.strokeRect(30,130,120,60);
+
+		
+
+		ctx.strokeStyle='#0ff';
+		ctx.lineJoin="round";
+		ctx.strokeRect(80,160,120,60);
+
+		ctx.strokeStyle='#f0f';
+		ctx.lineJoin="bevel";
+		ctx.strokeRect(130,190,120,60);
+	</script> -->
+<!-- 
+<h2>点线模式</h2>
+
+<canvas id="mc" width="400"height="280"style="border:1px solid black"></canvas><p></p>
+选择点线模式<select id="lineDash" onchange="changeLineDash(this.value);"></select><p></p>
+点线相位<input type="range" id="lineDashOffset" style="width:300px"onchange="changeLineDashOffset(this.value);">
+
+<script type="text/javascript">
+	var lineDashArr=[[2,2],
+	[2.0, 4.0, 2.0],
+	[2.0, 4.0, 6.0],
+	[2.0, 4.0, 2.0, 6.0],
+	[2.0, 2.0, 4.0, 4.0],
+	[2.0, 2.0, 4.0, 6.0, 10.0]];
+	var phaseMax = 20;
+	var phaseMin = -20;
+
+//初始化界面lineDash元素
+var lineDashEle=document.getElementById("lineDash");
+for (var i=0;i<lineDashArr.length;i++){
+	lineDashEle.options[i]=new Option(lineDashArr[i],i);
+}
+lineDashEle.options[0].selected=true;
+
+//初始化界面lineDashOffset元素
+var lineDashOffsetEle=document.getElementById("lineDashOffset");
+lineDashOffsetEle.max=phaseMax;
+lineDashOffsetEle.min=phaseMin;
+lineDashOffsetEle.step=0.1;
+lineDashOffsetEle.value=0;
+
+var lineDash=lineDashArr[0];
+var lineDashOffset=0;
+
+function draw()
+{
+	var canvas=document.getElementById('mc');
+	var ctx=canvas.getContext('2d');
+	ctx.fillStyle="#fff";
+	ctx.fillRect(0,0,400,280);
+	ctx.strokeStyle="#f0f";
+	ctx.lineWidth=2;
+
+	ctx.setLineDash(lineDash);
+	ctx.lineDashOffset=lineDashOffset;
+
+	ctx.strokeRect(40,60,120,120);
+	ctx.beginPath();
+	ctx.arc(300,120,60,60,0,Math.PI*2,true);
+
+	ctx.moveTo(30,30);
+	ctx.lineTo(360,30);
+
+	ctx.moveTo(200,50);
+	ctx.lineTo(200,240);
+	ctx.closePath();
+	ctx.stroke();
+
+}
+function changeLineDash(i){
+	lineDash=lineDashArr[i];
+	draw();
+}
+function changeLineDashOffset(val){
+	lineDashOffset=val;
+	draw();
+}
+draw();
+</script> -->
+
+<!-- <h2>绘制文字</h2>
+<canvas id="mc" width="600"height="280"style="border:1px solid black"></canvas>
+<script type="text/javascript">
+	var canvas = document.getElementById('mc');
+	var ctx=canvas.getContext('2d');
+	ctx.fillStyle='#00f';
+	ctx.font='italic 50px 隶书';
+	ctx.textBaseline='top';
+	ctx.fillText('疯狂Java讲义',0,0);
+
+
+	ctx.strokeStyle="#f0f";
+	ctx.font="bold 45px 宋体";
+	ctx.strokeText("轻量级Javaee企业应用实战",0,80);
+
+</script> -->
+
+<h2>启用阴影</h2>
+<canvas id="mc" width="600"height="280"style="border:1px solid black"></canvas>
+<script type="text/javascript">
+	var canvas=document.getElementById('mc');
+	var ctx=canvas.getContext('2d');
+
+	ctx.shadowBlur=5.6;
+	ctx.shadowColor="#222";
+
+	ctx.shadowOffsetX=10;
+	ctx.shadowOffsetY=-6;
+
+	ctx.fillStyle="#00f";
+	ctx.font='italic 50px 隶书';
+	ctx.textBaseline='top';
+	ctx.fillText("疯狂Java讲义",0,0);
+
+	ctx.strokeStyle="#f0f";
+	ctx.font="bold 45px 宋体";
+	ctx.strokeText("轻量级javaee",0,50);
+
+	ctx.fillRect(20,150,180,80);
+
+	ctx.lineWidth=8;
+	ctx.strokeRect(300,150,180,80);
+
+
+
+</script>
+
+
+</body>
+</html>

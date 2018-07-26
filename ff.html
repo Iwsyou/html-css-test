@@ -38,15 +38,47 @@ document.getElementById('my-textbox').addEventListener(
 	密码<input type="password" id="password" name="password">
 	</fieldset>
 	
-	<fieldset name="extra">
+	<!-- <fieldset name="extra">
 	<legend>附加信息</legend>
 	身高：<input id="height" name="height" type="text" /><p>
 	出生地：<input id="birth" name="birth" type="text" /><p>
 	毕业学校：<input id="school" name="school" type="text" />
-	</fieldset>
+	</fieldset> -->
 	<input type="submit" id="ok" name="ok"value="提交">
 
 </form>
+
+<form action="add" method="post">
+	生日：<input id="birth" name="birth" type="date"/><p>
+	邮件地址：<input id="email" name="email" type="email"/><p>
+	<input type="submit" value="提交" onclick="return check();"/>
+</form>
+<script type="text/javascript">
+	var check = function()
+	{
+		return commonCheck("birth" , "生日" , "字段必须是有效的日期！")
+			&& commonCheck("email" , "邮件地址" , "字段必须符合电子邮件的格式！");
+	}
+	var commonCheck = function(field , fieldName , tip)
+	{
+		var targetEle = document.getElementById(field);
+		// 如果该字段的值为空
+		if (targetEle.value.trim() == "")
+		{
+			alert(fieldName + "字段必须填写！");
+			return false;
+		}
+		// 调用checkValidity()方法执行输入校验
+		else if(!targetEle.checkValidity())
+		{
+			alert(fieldName + tip);
+			return false;
+		}
+		return true;
+	}
+</script>
+
+
 
 </body>
 </html>
