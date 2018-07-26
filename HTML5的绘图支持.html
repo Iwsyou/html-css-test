@@ -130,7 +130,7 @@ draw();
 
 </script> -->
 
-<h2>启用阴影</h2>
+<!-- <h2>启用阴影</h2>
 <canvas id="mc" width="600"height="280"style="border:1px solid black"></canvas>
 <script type="text/javascript">
 	var canvas=document.getElementById('mc');
@@ -155,6 +155,206 @@ draw();
 
 	ctx.lineWidth=8;
 	ctx.strokeRect(300,150,180,80);
+
+</script> -->
+
+<!-- <h2> 绘制圆形 </h2>
+<canvas id="mc" width="400" height="280"
+	style="border:1px solid black"></canvas>
+<script type="text/javascript">
+	// 获取canvas元素对应的DOM对象
+	var canvas = document.getElementById('mc');
+	// 获取在canvas上绘图的CanvasRenderingContext2D对象
+	var ctx = canvas.getContext('2d');
+	for(var i = 0 ; i < 10 ; i++)
+	{
+		// 开始定义路径
+		ctx.beginPath();
+		// 添加一段圆弧
+		ctx.arc(i * 25 , i * 25 , (i + 1) * 8 , 0 , Math.PI * 2 , true);
+		// 关闭路径
+		ctx.closePath();
+		// 设置填充颜色
+		ctx.fillStyle = 'rgba(255 , 0 , 255 , ' + (10 - i) * 0.1 + ')';
+		// 填充当前路径。
+		ctx.fill();
+	}
+</script> -->
+
+<!-- <h2> arcTo示意 </h2>
+<canvas id="mc" width="400" height="280"
+	style="border:1px solid black"></canvas>
+<script type="text/javascript">
+	/*
+		该方法负责绘制圆角矩形
+		x1、y2：是圆角矩形左上角的坐标。
+		width、height：控制圆角举行的宽、高
+		radius：控制圆角矩形的四个圆角的半径
+	*/
+	function createRoundRect(ctx , x1 , y1 , width , height , radius)
+	{
+		ctx.beginPath();
+		// 移动到左上角
+		ctx.moveTo(x1 + radius , y1);
+		// 添加一条连接到右上角的线段
+		ctx.lineTo(x1 + width - radius, y1);
+		// 添加一段圆弧
+		ctx.arcTo(x1 + width , y1, x1 + width, y1 + radius, radius);
+		// 添加一条连接到右下角的线段
+		ctx.lineTo(x1 + width, y1 + height - radius);
+		// 添加一段圆弧
+		ctx.arcTo(x1 + width, y1 + height , x1 + width - radius 
+			, y1 + height , radius);
+		// 添加一条连接到左下角的线段
+		ctx.lineTo(x1 + radius, y1 + height); 
+		// 添加一段圆弧
+		ctx.arcTo(x1, y1 + height , x1 , y1 + height - radius , radius);
+		// 添加一条连接到左上角的线段
+		ctx.lineTo(x1 , y1 + radius);
+		// 添加一段圆弧
+		ctx.arcTo(x1 , y1 , x1 + radius , y1 , radius);
+		ctx.closePath();
+	}
+	// 获取canvas元素对应的DOM对象
+	var canvas = document.getElementById('mc');
+	// 获取在canvas上绘图的CanvasRenderingContext2D对象
+	var ctx = canvas.getContext('2d');
+	ctx.lineWidth = 3;
+	createRoundRect(ctx , 30 , 30 , 200 , 100 , 20);
+	ctx.stroke();
+</script>
+ -->
+
+<!-- <h2> lineTo示意 </h2>
+<canvas id="mc" width="420" height="280"
+	style="border:1px solid black"></canvas>
+<script type="text/javascript">
+	/*
+		该方法负责绘制多角星。
+		n：该参数通常应设为奇数，控制绘制N角星。
+		dx、dy：控制N角星的位置。
+		size：控制N角星的大小
+	*/
+	function createStar(context , n , dx , dy , size)
+	{
+		// 开始创建路径  
+		context.beginPath();   
+		var dig = Math.PI / n * 4;
+		context.moveTo(dx , size + dy);
+		for(var i = 0; i <=n ; i++) 
+		{  
+			var x = Math.sin(i * dig);  
+			var y = Math.cos(i * dig);  
+			context.lineTo(x * size + dx, y * size + dy);
+		}
+		context.closePath();  
+	}
+	// 获取canvas元素对应的DOM对象
+	var canvas = document.getElementById('mc');
+	// 获取在canvas上绘图的CanvasRenderingContext2D对象
+	var ctx = canvas.getContext('2d');
+	// 绘制3角星
+	createStar(ctx , 3 , 60 , 60 , 50);
+	ctx.fillStyle = "#f00";
+	ctx.fill();
+	// 绘制5角星
+	createStar(ctx , 5 , 160 , 60 , 50);
+	ctx.fillStyle = "#0f0";
+	ctx.fill();
+	// 绘制7角星
+	createStar(ctx , 7 , 260 , 60 , 50);
+	ctx.fillStyle = "#00f";
+	ctx.fill();
+	// 绘制9角星
+	createStar(ctx , 9 , 360 , 60 , 50);
+	ctx.fillStyle = "#f0f";
+	ctx.fill();
+</script> -->
+
+<!-- <h2> curveTo示意 </h2>
+<canvas id="mc" width="420" height="280"
+	style="border:1px solid black"></canvas>
+<script type="text/javascript">
+	/*
+		该方法负责绘制花朵。
+		n：该参数控制花朵的花瓣数。
+		dx、dy：控制花朵的位置。
+		size：控制花朵的大小
+		length：控制花瓣的长度
+	*/
+	function createFlower(context , n , dx , dy , size , length)
+	{
+		// 开始创建路径  
+		context.beginPath(); 
+		context.moveTo(dx , dy + size);
+		var dig = 2 * Math.PI / n;
+		for(var i = 1; i < n + 1 ; i++) 
+		{
+			// 计算控制点坐标
+			var ctrlX = Math.sin((i - 0.5) * dig) * length + dx;
+			var ctrlY= Math.cos((i - 0.5 ) * dig) * length + dy;
+			// 计算结束点的坐标
+			var x = Math.sin(i * dig) * size + dx;
+			var y = Math.cos(i * dig) * size + dy; 
+			// 绘制二次曲线
+			context.quadraticCurveTo(ctrlX , ctrlY , x , y);
+		}
+		context.closePath();  
+	}
+	// 获取canvas元素对应的DOM对象
+	var canvas = document.getElementById('mc');
+	// 获取在canvas上绘图的CanvasRenderingContext2D对象
+	var ctx = canvas.getContext('2d');
+	// 绘制5瓣的花朵
+	createFlower(ctx , 5 , 70 , 100 , 30 , 80);
+	ctx.fillStyle = "#f00";
+	ctx.fill();
+	// 绘制6瓣的花朵
+	createFlower(ctx , 6 , 200 , 100 , 30 , 80);
+	ctx.fillStyle = "#ff0";
+	ctx.fill();
+	// 绘制7瓣的花朵
+	createFlower(ctx , 7 , 330 , 100 , 30 , 80);
+	ctx.fillStyle = "#f0f";
+	ctx.fill();
+</script>
+ -->
+
+
+<!-- <h2>绘制位图</h2>
+<canvas id="mc" width="500"height="330"style="border:1px solid black"></canvas>
+
+<script type="text/javascript">
+	var canvas=document.getElementById('mc');
+	var ctx=canvas.getContext('2d');
+
+	var image=new Image();
+	image.src="logo.jpg";
+	image.onload=function(){
+		//ctx.drawImage(image,20,20);
+		ctx.drawImage(image,0,0,350,230);
+		ctx.drawImage(image,500,100,400,400,360,10,140,300);
+
+	}
+</script>
+ -->
+
+<h2>坐标变换</h2>
+
+<canvas id="mc" width="420"height="320"style="border:1px solid black"></canvas>
+
+<script type="text/javascript">
+	var canvas=document.getElementById('mc');
+	var ctx=canvas.getContext('2d');
+	ctx.fillStyle="rgba(255,0,0,0.3)";
+
+	ctx.translate(30,200);
+	for(var i=0;i<50;i++){
+		ctx.translate(50,50);
+		ctx.scale(0.93,0.93);
+		ctx.rotate(-Math.PI/10);
+		ctx.fillRect(0,0,150,75);
+	}
 
 
 
