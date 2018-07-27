@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多媒体支持</title>
+	<h2>音乐播放器</h2>
+<!-- <script type="text/javascript">
+	var musics=[
+	
+	"demo1.ogg",
+	"bomb.ogg",
+	"arrow.ogg",
+	"love.ogg",
+	"song.ogg",
+	];
+	var index=0;
+	var playType;
+
+	window.onload=function(){
+		var typeSel=document.getElementById('typeSel');
+
+		typeSel.onchange=function(){
+			window.playType=typeSel.value;
+		}
+		var player=document.getElementById('player');
+		player.src=musics[index];
+
+		player.onended=function(){
+			if(playType=="random")
+			{
+				index=Math.floor(Math.random()*musics.length);
+				player.src=musics[index];
+			}
+			else
+			{
+				player.src=musics[++index%musics.length];
+			}
+			player.play();
+		}
+
+	}
+</script> -->
+
+</head>
+<body>
+	
+<!-- <audio src="demo.ogg"controls>
+	你的浏览器不支持audio的元素
+</audio>
+
+<video src="movie.webm"controls>
+	你的浏览器不支持video元素
+</video> -->
+
+<!-- <h2>音频播放</h2>
+<audio controls="">
+	<source src="demo.ogg"type="audio/ogg"media="aaa">
+	<source src="demo.mp3"type="audio/mpeg">
+	<source src="demo.wav"type="audio/x-wav">
+</audio> -->
+
+
+<!-- <select id="typeSel" style="width:160px">
+	<option value="sequence">顺序播放</option>
+	<option value="random">随机播放</option>
+</select><br>
+<audio id="player" controls>
+	你的浏览器不支持播放
+</audio><br> -->
+
+
+
+<!-- <h2>视频播放</h2>
+<video src="movie.webm" loop controls id="mv">
+	你的浏览器不支持video
+</video><br>
+
+<input type="button" id="bn" value="播放"><span id="detail"></span>秒
+
+<script type="text/javascript">
+	var bn=document.getElementById('bn');
+	var mv=document.getElementById('mv');
+	var detail=document.getElementById('detail');
+
+	mv.ontimeupdate=function(){
+		detail.innerHTML=mv.currentTime+"/"+mv.duration;
+	}
+
+	bn.onclick=function(){
+		if(mv.paused){
+			mv.play();
+			bn.value="暂停";
+		}
+		else
+		{
+			mv.pause();
+			bn.value="播放";
+		}
+	}
+
+</script>
+ -->
+
+
+
+   <!-- innerHTML用法
+   <script type="text/javascript">
+   function getInnerHTML(){
+       alert(document.getElementById("test").innerHTML);
+   }
+   </script>
+   </head><body>
+   <p id="test"><font color="#fff">嗨豆壳 www.hi-docs.com</font></p>
+   <input type="button" onclick="getInnerHTML()" value="点击" /> -->
+ 
+
+<h2>使用字母元素</h2>
+<video id="video" controls="">
+	<source src="movie.webm">
+		<track id="track" src="content.vtt"kind="subtitles"default></track>
+</video>
+
+
+
+</body>
+</html>
