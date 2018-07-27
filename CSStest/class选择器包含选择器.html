@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>class、包含选择器</title>
+
+	<!-- <style type="text/css">
+	/* 对所有class为myclass的元素都起作用的CSS样式 */
+	.myclass {
+		width:240px;
+		height:40px;
+		background-color:#dddddd;
+	}
+	/* 对class为myclass的div元素起作用的CSS样式 */
+	div.myclass {
+		border:2px dotted black;
+		background-color:#888888;
+	}
+	</style>
+	 -->
+
+
+	<style type="text/css">
+	/* 对所有的div元素起作用的CSS样式 */
+	div {
+		width:350px;
+		height:60px;
+		background-color:#ddd;
+		margin:5px;
+	}
+	/* 对处于div之内、且class属性为a的元素起作用的CSS样式*/
+	div .a {
+		width:200px;
+		height:35px;
+		border:2px dotted black;
+		background-color:#888;
+	}
+	</style>
+
+</head>
+<body>
+	<!-- <div class="myclass">class属性为myclass的div元素</div>
+	<p class="myclass">class属性为myclass的p元素</p> -->
+
+
+	<div>没有任何属性的div元素</div>
+	<div><div class="a">处于div之内且class属性为a的元素</div></div>
+	<p class="a">没有处于div之内、但class属性为a的元素</p>
+
+
+</body>
+</html>
