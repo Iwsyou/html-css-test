@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+:target伪类选择器 要求是命名锚点的目标且是当前访问的
+<html>
+<head>
+	<meta name="author" content="Yeeku.H.Lee(CrazyIt.org)" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> :target </title>
+	<style type="text/css">
+		:target{
+			background-color: #ff0;
+		}
+	</style>
+</head>
+<body>
+<p id="menu">
+<a href="#java">疯狂Java讲义</a> | 
+<a href="#ee">轻量级Java EE企业应用实战</a> | 
+<a href="#android">疯狂Android讲义</a> | 
+<a href="#ejb">经典Java EE企业应用实战</a>
+</p>
+<div id="java">
+<h2>疯狂Java讲义</h2>
+<p>本书详细介绍了Java语言各方面的内容。</p>
+</div>
+<div id="ee">
+<h2>轻量级Java EE企业应用实战</h2>
+<p>本书详细介绍Struts 2、Spring 3、Hibernate三个框架整合开发的知识</p>
+</div>
+<div id="android">
+<h2>疯狂Android讲义</h2>
+<p>本书详细介绍了Android应用开发的知识。</p>
+</div>
+<div id="ejb">
+<h2>经典Java EE企业应用实战</h2>
+<p>本书详细介绍JSF 、EJB 3、JPA等Java EE相关的知识</p>
+</div>
+</body>
+</html>
+
+<!-- 
+<html>
+<head>
+	<meta name="author" content="Yeeku.H.Lee(CrazyIt.org)" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> :not </title>
+	<style type="text/css">
+		li:not(#xml) {
+			color: #999;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+<ul>
+	<li id="java">疯狂Java讲义</li>
+	<li id="javaee">轻量级Java EE企业应用实战</li>
+	<li id="ajax">疯狂Ajax讲义</li>
+	<li id="xml">疯狂XML讲义</li>
+	<li id="android">疯狂Android讲义</li>
+</ul>
+</body>
+</html>
+ -->

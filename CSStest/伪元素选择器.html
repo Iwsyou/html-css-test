@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>伪元素选择器</title>
+
+	
+	<!-- first-letter选择器
+	<style type="text/css">
+		span{
+			display:block;
+		}
+	
+	
+		span:first-letter{
+			color: #f00;
+			font-size: 20pt;
+		}
+		section:first-letter{
+			color: #00f;
+			font-size: 30pt;
+			font-weight: bold;
+		}
+		p:first-letter{
+			color: #00f;
+			font-size: 40pt;
+			font-weight: bold;
+		}
+	
+	</style> -->
+
+<!-- frist-line选择器用法
+<style type="text/css">
+		span {
+			display:block;
+		}
+		/* span元素里第一行文字的字体加大、变红
+		由于span是inline元素，因此需要先把span的display设为block
+		*/
+		span:first-line{
+			color:#f00;
+			font-size:20pt;
+		}
+		/* section元素里第一行文字的字体加大、变蓝 */
+		section:first-line{
+			color:#00f;
+			font-size:30pt;
+		}
+		/* p元素里第一行文字的字体加大、变蓝 */
+		p:first-line{
+			color:#00f;
+			font-size:30pt;
+		}
+	</style> -->
+
+
+<!-- content属性使用
+<style type="text/css">
+		/* 指定对于div元素内部的前端插入content属性对应的内容 */
+		div>div:before{
+			content: 'CrazyIt:';
+			color:blue;
+			font-weight:bold;
+			background-color:gray;
+		}
+	</style> -->
+
+
+<!-- content URL插入图像
+<style type="text/css">
+		/* 指定对于div元素内部的尾端插入content属性对应的内容 */
+		div>div:after{
+			content: url("wjc.gif");
+		}
+	</style>
+ -->
+
+<!-- 只插入部分元素
+<style type="text/css">
+		/* 指定对于class属性为no的div元素内部的尾端插入content属性对应的内容 */
+		div>div.no:after{
+			content: url("buy.gif");
+		}
+	</style>
+ -->
+
+<!-- quote属性的定义
+<style type="text/css">
+		/* 定义open-quote为<<，close-quote为>> */
+		div>div{
+			quotes: "<<" ">>";
+		}
+		/* 指定为div的子div的前端插入open-quote */
+		div>div:before{
+			content: open-quote;
+		}
+		/* 指定为div的子div的尾端插入close-quote */
+		div>div:after{
+			content: close-quote;
+		}
+	</style> -->
+
+
+<!-- 配合counter-increment属性添加编号
+<style type="text/css">
+		/* 为div的子div元素定义了一个计数器：mycounter */
+		div>div{
+			counter-increment: mycounter;
+		}
+		/* 在div的子div元素的前端插入mycounter计数器和一个点  */
+		div>div:before{
+			content: counter(mycounter) '.';
+			font-size: 20pt;
+			font-weight: bold;
+		}
+	</style> -->
+
+
+<!-- 使用自定义编号
+<style type="text/css">
+		/* 为div的子div元素定义了一个计数器：mycounter */
+		div>div{
+			counter-increment: mycounter;
+		}
+		/* 在div的子div元素的前端插入自定义风格的mycounter计数器  */
+		div>div:before{
+			content: '第' counter(mycounter , hiragana) '本.';
+			font-size: 20pt;
+			font-weight: bold;
+		}
+	</style> -->
+
+<!-- 添加多级编号 -->
+<style type="text/css">
+		/* 为div的子h2元素定义了一个计数器：categorycounter
+		   并使用counter-reset重置subcounter计数器 */
+		div>h2{
+			counter-increment: categorycounter;
+		}
+		/* 为div的子div元素定义了一个计数器：subcounter */
+		div>div{
+			counter-increment: subcounter;
+		}
+		/* 在div的子h2元素的前端插入categorycounter计数器和一个点  */
+		div>h2:before{
+			content: counter(categorycounter , georgian) '.';
+			font-size: 20pt;
+			font-weight: bold;
+		}
+		/* 在div的子div元素的前端插入自定义的subcounter计数器 */
+		div>div:before{
+			content: '第' counter(subcounter , cjk-ideographic) '本.';
+			font-size: 14pt;
+			font-weight: bold;
+			margin-left:24px;
+		}
+	</style>
+
+
+
+</head>
+<body>
+<!-- <span>abc</span>
+<section>其实我是一个程序员</section>
+<p>疯狂Java讲义</p> -->
+
+
+<!-- <span>abc<br>xyz</span>
+<section>去年今日此门中，<br>
+人面桃花相印红。</section>
+<p style="width:160px">疯狂Java讲义</p>
+ -->
+
+<!-- <div>
+		<div>疯狂Java讲义</div>
+		<div>疯狂Android讲义</div>
+		<div>轻量级Java EE企业应用实战</div>
+	</div> -->
+
+
+<!-- <div>
+		<div>疯狂Java讲义</div>
+		<div>疯狂Android讲义</div>
+		<div>轻量级Java EE企业应用实战</div>
+	</div>
+ -->
+
+
+<!-- <div>
+		<div class="no">疯狂Java讲义</div>
+		<div class="no">疯狂Android讲义</div>
+		<div>轻量级Java EE企业应用实战</div>
+	</div> -->
+
+
+<!-- <div>
+	<div>疯狂Java讲义</div>
+	<div>疯狂Android讲义</div>
+	<div>轻量级Java EE企业应用实战</div>
+	</div> -->
+
+
+
+<!-- <div>
+	<div>疯狂Java讲义</div>
+	<div>疯狂Android讲义</div>
+	<div>轻量级Java EE企业应用实战</div>
+	</div> -->
+
+
+<!-- <div>
+		<div>疯狂Java讲义</div>
+		<div>疯狂Android讲义</div>
+		<div>轻量级Java EE企业应用实战</div>
+	</div> -->
+
+
+	<div>
+		<h2>疯狂Java体系图书</h2>
+		<div>疯狂Java讲义</div>
+		<div>疯狂Android讲义</div>
+		<div>轻量级Java EE企业应用实战</div>
+		<h2>其他图书</h2>
+		<div>Struts 2.1权威指南</div>
+		<div>JavaScript权威指南</div>
+	</div>
+
+
+
+
+
+</body>
+</html>
