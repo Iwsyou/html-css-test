@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>在脚本中修改显示样式</title>
+	
+	<script type="text/javascript">
+		function chg(){
+			document.getElementById('up').className="solid";
+		}
+	</script>
+
+
+	<style type="text/css">
+		.solid{
+			width: 160px;
+			padding: 6px;
+			text-align: center;
+			border-right: #224 4px solid;
+			border-top: #ddd 4px solid;
+			border-left: #ddd 4px solid;
+			border-bottom: #224 4px solid;
+		}
+
+	</style>
+</head>
+<body>
+
+	<!-- 随机点击生成背景颜色
+	<script type="text/javascript">
+		function changebg(){
+		var bg="";
+		for (var i = 0 ; i < 6 ; i++)
+		{
+			bg +=Math.round(Math.random() * 9);
+		}
+	
+		document.body.style.backgroundColor="#"+bg;
+		}
+		document.onclick=changebg;
+	</script> -->
+
+
+	<input type="button" onclick="chg();"value="立体效果">
+    <div id="up">有立体效果的层</div>
+
+</body>
+</html>

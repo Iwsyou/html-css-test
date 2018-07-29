@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>UI元素状态伪类选择器</title>
+
+<!-- <style type="text/css">
+	td {	
+		border: 1px solid black;
+			padding: 4px;
+	}
+
+	tr:hover{
+		background-color: #aaa;
+	}
+
+	input:active {
+		background-color: blue;
+	}
+
+	:focus{
+		text-decoration: underline;
+	}
+
+	:enabled{
+		font-family: "黑体";
+		font-weight: bold;
+		font-size: 14pt;
+	}
+
+	:disabled{
+		font-family: "隶书";
+		font-size: 14pt;
+	}
+
+	:checked{
+		outline: red solid 5px;
+	}
+	:default{
+		outline: #bbb solid 5px;
+	}
+
+	
+	:read-only{
+		background-color: #eee;
+	}
+	:read-write{
+		background-color: #8e8;
+	}
+
+	:-moz-read-only{
+		background-color: #eee;
+	}
+	:-moz-read-write{
+		background-color: #8e8;
+	}
+
+	</style>
+ -->
+
+<!-- <style type="text/css">
+	:required{
+		outline: 6px solid #bff;
+	}
+	:optional{
+		background-color: #dedede;
+	}
+</style> -->
+
+
+<!-- <style type="text/css">
+	:valid{
+		background-color: white;
+	}
+	:invalid{
+		background-color: red;
+	}
+</style> -->
+
+<!-- <style type="text/css">
+	:in-range{
+		background:white;
+	}
+	:out-of-range{
+		background:red;
+	}
+</style> -->
+
+
+<style type="text/css">
+	td{
+		border: 1px solid black;
+		padding: 4px;
+	}
+	::selection{
+		background-color: red;
+		color:white;
+	}
+</style>
+
+
+</head>
+<body>
+	
+<!-- <table style="width:400px;border-collapse:collapse">
+	<tr>
+		<td>疯狂Java讲义</td>
+		<td>109</td>
+	</tr>
+	<tr>
+		<td>轻量级实战</td>
+		<td>108</td>
+	</tr>
+	<tr contenteditable="true">
+		<td>疯狂Android讲义</td>
+		<td>108</td>
+	</tr>
+</table>
+
+<button disabled="">不可用的按钮</button>
+<input type="text" disabled="" value="不可用文本框">
+<button>可用按钮</button>
+<input type="text" value="可用文本框">
+男<input type="radio" value="male" name="gender">
+女<input type="radio" value="female"name="gender">
+未知<input type="radio" value="unknow"name="gender"checked"><br>
+
+<input type="text" value="只读文本框"readonly>
+<input type="text" value="可读写文本框">
+ -->
+
+
+<!-- <input type="text"  required="" placeholder="输入用户名">
+<input type="text"  placeholder="输入密码"> -->
+
+
+<!-- <input type="text" placeholder="输入用户名"pattern="\w{4,10}">
+<input type="text"  placeholder="输入密码"required> -->
+
+
+<!-- <input type="number" placeholder="请输入用户年龄"min="10"max="100"> -->
+
+
+<table style="width:400px;border-collapse:collapse">
+	<tr>
+		<td>疯狂Java讲义</td>
+		<td>109</td>
+	</tr>
+	<tr>
+		<td>轻量级实战</td>
+		<td>108</td>
+	</tr>
+	<tr contenteditable="true">
+		<td>疯狂Android讲义</td>
+		<td>108</td>
+	</tr>
+</table>
+
+<input type="text" value="只读文本框"readonly>
+<input type="text" value="可读写文本框">
+
+
+</body>
+</html>
