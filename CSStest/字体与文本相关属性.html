@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>字体与文本相关属性</title>
+
+	<!-- 调整同字号不同字体的长度
+	<style type="text/css">
+		#div1 {
+			font-size: 16pt;
+			font-family: "Courier New";
+			font-size-adjust: 0.43;
+		}
+		#div2 {
+			font-size: 16pt;
+			font-family: "Roma";
+			font-size-adjust: 0.66;
+		}
+		#div3 {
+			font-size: 16pt;
+			font-family: "Impact";
+			font-size-adjust: 0.93;
+		}
+	</style> -->
+
+
+<!-- <style type="text/css">
+	div>div{
+		width: 400px;
+		height: 40px;
+	} -->
+
+
+	<!-- <style type="text/css">
+	/* 为div元素增加边框 */
+	div{
+		border:1px solid #000000;
+		height: 30px;
+		width: 200px;
+	}
+	</style> -->
+
+<!-- <style type="text/css">
+	/* 为div元素增加边框 */
+	div{
+		border:1px solid #000000;
+		height: 80px;
+		width: 240px;
+	}
+</style> -->
+
+
+<!-- <style type="text/css">
+	/* 为div元素增加边框 */
+	div{
+		border:1px solid #000000;
+		height: 50px;
+		width: 240px;
+	}
+</style> -->
+
+
+<!-- <style type="text/css">
+	为div元素增加边框
+	div{
+		border:1px solid #000000;
+		height: 50px;
+		width: 140px;
+	}
+</style> -->
+
+
+<!-- <style type="text/css">
+	/* 定义服务器字体字体名为CrazyIt
+	服务器对应字体文件为Blazed.ttf */
+	@font-face{
+		font-family: CrazyIt;
+		src:url("Blazed.ttf") format("TrueType");
+	}
+
+</style> -->
+
+
+<!-- <style type="text/css">
+		/* 定义普通的服务器字体 */
+		@font-face {
+			font-family: CrazyIt;
+			src: url("Delicious-Roman.otf") format("OpenType");
+		}
+		/* 定义粗体的服务器字体 */
+		@font-face {
+			font-family: CrazyIt;
+			src: url("Delicious-Bold.otf") format("OpenType");
+			font-weight: bold;
+		}
+		/* 定义斜体的服务器字体 */
+		@font-face {
+			font-family: CrazyIt;
+			src: url("Delicious-Italic.otf") format("OpenType");
+			font-style: italic;
+		}
+		/* 定义粗斜体的服务器字体 */
+		@font-face {
+			font-family: CrazyIt;
+			src: url("Delicious-BoldItalic.otf") format("OpenType");
+			font-style: italic;
+			font-weight: bold;
+		}
+	</style> -->
+
+
+	<style type="text/css">
+		/* 定义服务器字体：CrazyIt
+		该字体优先使用客户端字体：Goudy Stout
+		当客户端字体不存在时，使用Blazed.ttf作为替代字体。
+		*/
+		@font-face {
+			font-family: CrazyIt;
+			src: local("Goudy Stout"), url("Blazed.ttf") format("TrueType");
+		}
+	</style>
+
+
+
+</head>
+<body>
+	
+<!-- 部分属性值
+color:#888888：
+<span style="color:#888888">测试文字</span><br />
+color:red：
+<span style="color:red">测试文字</span><br />
+font-family:隶书：
+<span style="font-family: '隶书'">测试文字</span><br />
+font-size:20pt：
+<span style="font-size:20pt">测试文字</span><br />
+font-size:xx-large：
+<span style="font-size:xx-large">测试文字</span><br />
+font-stretch:narrower：
+<span style="font-stretch:narrower">测试文字</span><br />
+font-stretch:wider：
+<span style="font-stretch:wider">测试文字</span><br />
+font-style:italic：
+<span style="font-style:italic">测试文字</span><br />
+font-weight:bold：
+<span style="font-weight:bold">测试文字</span><br />
+font-weight:900：
+<span style="font-weight:900">测试文字</span><br />
+text-decoration:blink：
+<span style="text-decoration: blink;">测试文字</span><br />
+text-decoration:underline：
+<span style="text-decoration:underline">测试文字</span><br />
+text-decoration:line-through：
+<span style="text-decoration:line-through">测试文字</span><br />
+font-variant:small-caps ：
+<span style="font-variant:small-caps">hello</span><br />
+text-transform:uppercase：
+<span style="text-transform:uppercase">hello</span><br />
+text-transform:capitalize：
+<span style="text-transform:capitalize">hello</span><br />
+line-height:30pt：
+<span style="line-height:100pt">测试文字</span><br />
+letter-spacing:5pt：
+<span style="letter-spacing:5pt">hello world</span><br />
+letter-spacing:15pt：
+<span style="letter-spacing:15pt">hello world</span><br />
+word-spacing:20pt：
+<span style="word-spacing:20pt">hello world</span><br />
+word-spacing:60pt：
+<span style="word-spacing:60pt">hello world</span><br />
+ -->
+
+
+<!-- text-shadow添加阴影
+text-shadow:red 5px 5px 2px：
+<p style="text-shadow:red 5px 5px 2px">测试文字</p>
+text-shadow:5px 5px 2px（省略阴影颜色）：
+<p style="text-shadow:5px 5px 2px;color:blue;">测试文字</p>
+text-shadow:-5px -5px 2px red（向左上角投影）：
+<p style="text-shadow:-5px -5px 2px red">测试文字</p>
+text-shadow:-5px 5px 2px gray（向左下角投影）：
+<p style="text-shadow:-5px 5px 2px gray">测试文字</p>
+text-shadow:5px -5px 2px gray（向右上角投影）：
+<p style="text-shadow:5px -5px 2px gray">测试文字</p>
+text-shadow:5px 5px 2px gray（向右下角投影）：
+<p style="text-shadow:5px 5px 2px gray">测试文字</p>
+text-shadow:15px 15px 2px gray（向右下角投影、更大偏移距）：
+<p style="text-shadow:15px 15px 2px gray">测试文字</p>
+text-shadow:5px 5px 10px gray（模糊半径增加，模糊程度加深）：
+<p style="text-shadow:5px 5px 10px gray">测试文字</p>
+ -->
+
+<!-- 添加多个阴影
+ text-shadow:5px 5px 2px #222,<br/>
+	30px 30px 2px #555 ,<br/>
+	50px 50px 2px #888（多个阴影）：
+<span style="text-shadow:5px 5px 2px #ff0,30px 30px 2px #00f
+	,50px 50px 2px #0f0">测试文字</span>
+ -->
+
+
+<!-- <div id="div1">Our domain is www.crazyit.org</div>
+<div id="div2">Our domain is www.crazyit.org</div>
+<div id="div3">Our domain is www.crazyit.org</div> -->
+
+
+
+<!-- css支持的颜色表示方法
+<script type="text/javascript">
+	for(var i=0;i<200;i++){
+		document.write("测试文字");
+	}
+</script>
+
+<div style="position:absolute;top:0px">
+	<div style="background-color:gray">background-color:</div>
+	<div style="background-color:#aaa">background-color:</div>
+	<div style="background-color:#ffff00">background-color:</div>
+	<div style="background-color:rgb(255,0,255)">background-color:</div>
+	<div style="background-color:hsl(120,80%,50%)">background-color:</div>
+	<div style="background-color:rgba(255,0,255,0.5)">background-color:</div>
+	<div style="background-color:hsla(120,80%,50%,0.5)">background-color:</div>
+</div> -->
+
+
+<!--文本部分属性
+ 缩进20pt
+text-indent:20pt <div style="text-indent:20pt">测试文字</div>
+缩进20pt
+text-indent:40pt <div style="text-indent:40pt">测试文字</div>
+居中对齐
+text-align:center <div style="text-align:center">测试文字</div>
+居右对齐
+text-align:right <div style="text-align:right">测试文字</div>
+文本从右边流入
+direction:rtl <div style="direction:rtl">测试文字</div>
+文本从左边流入
+direction:ltr <div style="direction:ltr">测试文字</div>
+当文字溢出时，只是简单地裁切
+text-overflow:clip <div style="overflow:hidden;white-space:nowrap;
+	text-overflow:clip;">测试文字测试文字测试文字测试文字测试文字测试文字</div>
+当文字溢出时，裁切之后显示裁切标记
+text-overflow:ellipsis <div style="overflow:hidden;white-space:nowrap;
+	text-overflow:ellipsis;">测试文字测试文字测试文字测试文字测试文字测试文字</div>
+
+<p style="text-align:center">测试文字</p> -->
+
+
+<!-- white-space控制空白的处理行为 
+忽略文本中的空白、换行符
+white-space:normal <div style="white-space:normal">
+The root interface   in    
+the     collection     hierarchy. </div>
+保留文本中所有空白、换行符
+white-space:pre <div style="white-space:pre">
+The root interface   in    
+the     collection     hierarchy. </div>
+忽略文本中空白，换行符，强制不换行
+white-space:nowrap <div style="white-space:nowrap">
+The root interface   in    
+the     collection     hierarchy. </div>
+保留文本中空白序列，换行符
+white-space:pre-wrap <div style="white-space:pre-wrap">
+The root interface   in    
+the     collection     hierarchy. </div>
+合并文本中空白序列，保留换行符
+white-space:pre-line <div style="white-space:pre-line">
+The root interface   in    
+the     collection     hierarchy. </div> -->
+
+
+<!-- word-break文本自动换行
+不允许在单词中换行
+word-break:keep-all <div style="word-break:keep-all">
+The root interface in the collection hierarchy. </div>
+指定允许在单词中换行
+word-break:break-all <div style="word-break:break-all">
+The root interface in the collection hierarchy. </div>
+ -->
+
+
+<!-- word-warp控制长单词或URL换行
+不允许在长单词、URL地址中间换行
+word-wrap:normal <div style="word-wrap:normal;">
+Our domain is http://www.crazyit.org</div>
+允许在长单词、URL地址中间换行
+word-wrap:break-word <div style="word-wrap:break-word;">
+Our domain is http://www.crazyit.org</div>
+ -->
+
+
+<!--使用服务器字体 
+<div style="font-family:CrazyIt;font-size:36pt;">
+Our domain is Http://www.crazyit.org
+</div>
+ -->
+
+
+<!-- <div style="font-family:CrazyIt;font-size:30pt">
+Our domain is Http://www.crazyit.org</div>
+<div style="font-family:CrazyIt;font-size:30pt;font-weight:bold">
+Our domain is Http://www.crazyit.org</div>
+<div style="font-family:CrazyIt;font-size:30pt;font-style:italic;">
+Our domain is Http://www.crazyit.org</div>
+<div style="font-family:CrazyIt;font-size:30pt;font-weight:bold
+;font-style:italic;">Our domain is Http://www.crazyit.org</div> -->
+
+
+<div style="font-family:CrazyIt;font-size:24pt">
+Our domain is Http://www.crazyit.org
+
+
+
+</body>
+</html>
