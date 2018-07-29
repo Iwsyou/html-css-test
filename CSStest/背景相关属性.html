@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<!-- 添加背景图片
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>背景相关属性</title>
+
+	<style type="text/css">
+		div{
+			border: 1px solid #000;
+			height: 50px;
+			width: 200px;
+		}
+	</style>
+</head>
+<body>
+	灰色背景
+background-color:#aaa 
+<div style="background-color:#aaa;">测试文字</div>
+以默认样式指定背景图片，将会在横向、纵向上平铺
+background-image:url(wjc.gif)
+<div style="background-image:url(wjc.gif);">测试文字</div>
+不平铺的背景图片
+background-image:url(wjc.gif);background-repeat: no-repeat
+<div style="background-image:url(wjc.gif);
+	background-repeat:no-repeat;">测试文字</div>
+仅横向平铺的背景图片
+background-image:url(logo.gif);background-repeat: repeat-x
+<div style="background-image:url(wjc.gif);
+	background-repeat:repeat-x;">测试文字</div>
+不平铺的背景图片，并指定背景图片的位置
+background-image:url(wjc.gif);background-repeat:no-repeat;
+	background-position: 35% 80%;
+<div style="background-image:url(wjc.gif);background-repeat:
+	no-repeat;background-position:35% 80%;">测试文字</div>
+不平铺的背景图片，并指定背景图片的位置
+background-image:url(wjc.gif);background-repeat:no-repeat;
+	background-position: 30px 12px;
+<div style="background-image:url(wjc.gif);background-repeat:
+	no-repeat;background-position:30px 8px;">测试文字</div>
+不平铺的背景图片，并指定背景图片的位置
+background-image:url(wjc.gif);background-repeat:no-repeat;
+	background-position: center bottom;
+<div style="background-image:url(wjc.gif);background-repeat:
+	no-repeat;background-position:center bottom;">测试文字</div>
+
+
+</body>
+</html> -->
+
+<!-- 背景图片的固定
+<html>
+<head>
+	
+	<meta charset=utf-8" />
+	<title> 背景固定 </title>
+</head>
+指定背景图片固定
+<body style="background-image:url(logo.jpg);background-attachment:fixed">
+<ul style="font-size:30pt;">
+	<script type="text/javascript">
+		for(var i = 0 ; i < 15 ; i++)
+		{
+			document.writeln("<li>疯狂Java讲义</li>");
+		}
+	</script>
+</ul>
+</body>
+</html> -->
+
+
+<!-- background-clip用于设置背景覆盖范围
+<head>
+	<meta charset=utf-8" />
+	<title>背景相关属性</title>
+	<style type="text/css">
+	/* 为div元素增加边框 */
+	div{
+		border:10px dotted #444;
+		padding: 12px;
+		height: 30px;
+		width: 200px;
+	}
+	</style>
+</head>
+<body>
+background-image:url(wjc.gif)
+<div style="background-image:url(wjc.gif);">测试文字</div>
+background-image:url(wjc.gif);background-clip:no-clip;
+<div style="background-image:url(wjc.gif);
+background-clip:no-clip;">测试文字</div>
+background-image:url(wjc.gif);background-clip:padding-box;
+<div style="background-image:url(wjc.gif);
+background-clip:padding-box;">测试文字</div>
+background-image:url(wjc.gif);background-clip:content-box;
+<div style="background-image:url(wjc.gif);
+background-clip:content-box;">测试文字</div>
+<div style="background-image:url(wjc.gif);background-clip:border-box;">测试文字</div>
+</body>
+</html> -->
+
+
+<!-- background-origin用于指定背景从哪开始覆盖
+<html>
+<head>
+	<meta charset=utf-8" />
+	<title>背景相关属性</title>
+	<style type="text/css">
+	/* 为div元素增加边框 */
+	div{
+		border:10px dotted #444;
+		padding: 12px;
+		height: 30px;
+		width: 200px;
+	}
+	</style>
+</head>
+<body>
+背景图片从内容区开始覆盖
+background-image:url(wjc.gif);background-origin:content-box;
+<div style="background-image:url(wjc.gif);background-origin:content-box;
+background-repeat:no-repeat;">测试文字</div>
+背景图片从内填充区开始覆盖
+background-image:url(wjc.gif);background-origin:padding-box;
+<div style="background-image:url(wjc.gif);background-origin:padding-box;
+background-repeat:no-repeat;">测试文字</div>
+背景图片从边框区开始覆盖
+background-image:url(wjc.gif);background-origin:border-box;
+<div style="background-image:url(wjc.gif);background-origin:border-box;
+background-repeat:no-repeat;">测试文字</div>
+</body>
+</html>
+ -->
+
+
+<!-- background-size设置图片的大小（百分比设置相对元素大小或直接设置固定大小）
+<html>
+<head>
+	<meta charset=utf-8" />
+	<title>背景相关属性</title>
+	<style type="text/css">
+	/* 为div元素增加边框 */
+	div{
+		border:1px solid #000;
+		height: 50px;
+		width: 200px;
+	}
+	</style>
+</head>
+<body>
+background-image:url(wjc.gif)
+<div style="background-image:url(wjc.gif);"></div>
+background-image:url(wjc.gif);background-size:100% 80%;
+(背景图片的宽度与元素宽度相同、高度为元素高度的80％)
+<div style="background-image:url(wjc.gif);background-size:100% 80%;"></div>
+background-image:url(wjc.gif);background-size:20% auto;
+(背景图片的宽度为元素宽度20%、高度保持纵横比缩放)
+<div style="background-image:url(wjc.gif);background-size:20% auto;"></div>
+background-image:url(wjc.gif);background-size:auto 50%;
+(背景图片的宽度保持纵横比缩放、高度为元素宽度50%)
+<div style="background-image:url(wjc.gif);background-size:auto 50%;"></div>
+background-image:url(wjc.gif);;background-size:60px 30px;
+(背景图片的宽度为60px、高度为30px)
+<div style="background-image:url(wjc.gif);background-size:60px 30px;"></div>
+background-image:url(wjc.gif);background-size:40px auto;
+(背景图片的宽度为40px，高度保持纵横比缩放)
+<div style="background-image:url(wjc.gif);background-size:40px auto;"></div>
+background-image:url(wjc.gif);background-size:auto 50%;
+(背景图片的宽度保持纵横比缩放、高度为元素宽度20px)
+<div style="background-image:url(wjc.gif);background-size:auto 20px;"></div>
+</body>
+</html>
+ -->
+
+<!-- background-repeeat新增space和round属性
+<html>
+<head>
+	<meta charset=utf-8" />
+	<title>背景相关属性</title>
+	<style type="text/css">
+	/* 为div元素增加边框 */
+	div{
+		height: 120px;
+		width: 210px;
+		background-image:url(wjc.gif);
+	}
+	</style>
+</head>
+<body>
+<p>默认repeat
+<div></div><p>
+background-repeat:round
+<div style="background-repeat:round"></div><p>
+background-repeat:space
+<div style="background-repeat:space"></div>
+</body>
+</html>
+ -->
+
+<!-- 多背景多属性值用逗号隔开
+<html>
+<head>
+	
+	<meta charset=utf-8" />
+	<title>背景相关属性</title>
+	<style type="text/css">
+	/* 为div元素增加边框 */
+	div#div1{
+		border:1px solid #000;
+		height: 560px;
+		width: 500px;
+		/* 依次指定了3个背景图片 */
+		background-image: url(snow.gif), url(face.gif), url(sky.gif);
+		/* 依次指定了3个背景图片的重复方式：纵向重复、横向重复、两个方向重复 */
+		background-repeat: repeat-y, repeat-x , repeat;
+		/* 依次指定了3个背景图片的位置 */
+		background-position: center top, left center, left top;
+	}
+	</style>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>
+ -->
+
+
+<!--使用linear-gradient设置线性渐变 
+<html>
+<head>
+	
+	<meta charset=utf-8" />
+	<title> 线性渐变背景 </title>
+	<style type="text/css">
+	/* 为div元素增加边框 */
+	div{
+		height: 300px;
+		width: 300px;
+	}
+	</style>
+</head>
+<body>
+background:linear-gradient(red, blue)、红蓝线性渐变
+<div id="dv1" style="background:linear-gradient(red, blue);"></div>
+<button onclick="change(this.innerHTML);">to top</button>
+<button onclick="change(this.innerHTML);">to bottom</button>
+<button onclick="change(this.innerHTML);">to left</button>
+<button onclick="change(this.innerHTML);">to right</button>
+<button onclick="change(this.innerHTML);">to left top</button>
+<button onclick="change(this.innerHTML);">to right top</button>
+<button onclick="change(this.innerHTML);">to left bottom</button>
+<button onclick="change(this.innerHTML);">to right bottom</button>
+<script type="text/javascript">
+function change(val){
+	document.getElementById("dv1").style.background = 
+		"linear-gradient(" + val + ", red, blue)";
+}
+</script>
+</body>
+</html>
+ -->
+
+
+<html>
+<head>
+	<meta charset=utf-8" />
+	<title> 线性渐变背景 </title>
+	<style type="text/css">
+	/* 为div元素增加边框 */
+	div{
+		height: 300px;
+		width: 300px;
+	}
+	</style>
+</head>
+<body>
+background:linear-gradient(0deg, red, blue)、红蓝线性渐变
+<div id="dv1" style="background:linear-gradient(0deg, red, blue);"></div>
+<form action="do">
+角度：<input id="arc";style="width:360px" type="range" min="0" max="360" value="0" 
+	onchange="change(this.value);x.value=this.value;">
+	<output name="x" for="arc" ></output>
+</form>	
+<script type="text/javascript">
+function change(val){
+	var s = "linear-gradient(" + val + ", red, blue)";
+	document.getElementById("dv1").style.background = 
+		"linear-gradient(" + val + "deg, red, blue)";
+}
+</script>
+
+</body>
+</html>
+
+
+
