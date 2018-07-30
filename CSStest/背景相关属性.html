@@ -262,6 +262,7 @@ function change(val){
  -->
 
 
+<!--通过角度指定线性渐变的方向 
 <html>
 <head>
 	<meta charset=utf-8" />
@@ -290,6 +291,287 @@ function change(val){
 }
 </script>
 
+</body>
+</html> -->
+
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> 线性渐变背景 </title>
+	<style type="text/css">
+	/* 为div元素增加边框 */
+	div{
+		height: 90px;
+		width: 300px;
+		border: 1px solid black;
+	}
+	</style>
+</head>
+<body>
+background:linear-gradient(30deg, red, green, blue)、红绿蓝线性渐变
+<div style="background:linear-gradient(30deg, red, green, blue);"></div>
+background:linear-gradient(45deg, red, green, blue, yellow)、红绿蓝黄线性渐变
+<div style="background:linear-gradient(45deg, red, green, blue, yellow);"></div>
+background:linear-gradient(90deg, rgba(255, 0, 0, 0), rgba(255, 0, 0, 1))、透明度改变的线性渐变
+<div style="background:linear-gradient(90deg, rgba(255, 0, 0, 0), rgba(255, 0, 0, 1))"></div>
+background:linear-gradient(135deg, red 20%, green 40%, blue 70%)、红绿蓝线性渐变
+<div style="background:linear-gradient(135deg, red 20%, green 40%, blue 70%);"></div>
+background:linear-gradient(150deg, red 30%, green 40%, blue 60%, yellow 70%)、红绿蓝黄线性渐变
+<div style="background:linear-gradient(150deg, red 30%, green 40%, blue 60%, yellow 70%);"></div>
+background:linear-gradient(200deg, red 40px, green 60px, blue 90px)、红绿蓝线性渐变
+<div style="background:linear-gradient(135deg, red 20%, green 40%, blue 70%);"></div>
+</body>
+</html> -->
+
+<!-- 
+<html>
+<head>
+	<meta charset=utf-8" />
+	<title> 循环线性渐变 </title>
+	<style type="text/css">
+	/* 为div元素增加边框 */
+	div{
+		height: 400px;
+		width: 400px;
+	}
+	</style>
+</head>
+<body>
+background:repeating-linear-gradient(red, blue 10%, magenta 20%)<br>
+红、蓝、洋红循环线性渐变
+<div id="dv1" style="background:repeating-linear-gradient(red, blue 10%, magenta 20%);"></div>
+<form action="">
+角度：<input id="arc"style="width:360px" type="range" min="0" max="360" value="0"
+	onchange="change(this.value);x.value=this.value;">
+	<output name="x"for="arc"></output>
+</form>
+<script type="text/javascript">
+function change(val){
+	var s = "linear-gradient(" + val + ", red, blue)";
+	document.getElementById("dv1").style.background = 
+		"repeating-linear-gradient(" + val + "deg, red, blue 10%, magenta 20%)";
+}
+</script>
+</body>
+</html> -->
+
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> 径向渐变背景 </title>
+	<style type="text/css">
+	/* 为div元素增加边框 */
+	div{
+		height: 300px;
+		width: 500px;
+	}
+	</style>
+</head>
+<body>
+background:radial-gradient(red, blue)、红蓝径向渐变
+<div id="dv1" style="background:radial-gradient(red, blue);"></div>
+<button onclick="change(this.innerHTML);">left top</button>
+<button onclick="change(this.innerHTML);">left center</button>
+<button onclick="change(this.innerHTML);">left bottom</button>
+<button onclick="change(this.innerHTML);">center top</button>
+<button onclick="change(this.innerHTML);">center center</button>
+<button onclick="change(this.innerHTML);">center bottom</button>
+<button onclick="change(this.innerHTML);">right top</button>
+<button onclick="change(this.innerHTML);">right center</button>
+<button onclick="change(this.innerHTML);">right bottom</button>
+<script type="text/javascript">
+function change(val){
+	document.getElementById("dv1").style.background = 
+		"radial-gradient(at " + val + ", red, blue)";
+}
+</script>
+</body>
+</html>
+ -->
+
+
+<!--  <html>
+<head>
+	<meta charset=utf-8" />
+	<title> 径向渐变背景 </title>
+	<style type="text/css">
+	/* 为div元素增加边框 */
+	div{
+		height: 300px;
+		width: 500px;
+	}
+	</style>
+</head>
+<body>
+background:radial-gradient(red, blue)、红蓝径向渐变
+<div id="dv1" style="background:radial-gradient(red, blue);"></div>
+<form action="">
+x：<input id="x" style="width:360px" type="range" min="0" max="500" value="250"
+	onchange="change();xx.value=this.value;">
+		<output name="xx"for="x"style="border:1px solid #00f"></output><p>
+y：<input id="y" style="width:360px" type="range" min="0" max="300" value="150"
+	onchange="change();yy.value=this.value;">
+	<output name="yy"for="y"style="border:1px solid #f0f"></output>
+</form>
+<script type="text/javascript">
+function change(){
+	var x = document.getElementById("x").value;
+	var y = document.getElementById("y").value;
+	document.getElementById("dv1").style.background = 
+		"radial-gradient(at " + x + "px " + y + "px" + ", red, blue)";
+}
+</script>
+</body>
+</html> -->
+
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> 径向渐变背景 </title>
+	<style type="text/css">
+	/* 为div元素增加边框 */
+	div{
+		height: 300px;
+		width: 600px;
+	}
+	</style>
+</head>
+<body>
+background:radial-gradient(red, blue)、红蓝径向渐变
+<div id="dv1" style="background:radial-gradient(red, blue);"></div>
+<button onclick="change(this.innerHTML);">closest-side</button>
+<button onclick="change(this.innerHTML);">farthest-side</button>
+<button onclick="change(this.innerHTML);">closest-corner</button>
+<button onclick="change(this.innerHTML);">farthest-corner</button>
+<script type="text/javascript">
+function change(val){
+	document.getElementById("dv1").style.background = 
+		"radial-gradient(circle " + val + ", red, blue)";
+}
+</script>
+</body>
+</html> -->
+
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> 径向渐变背景 </title>
+	<style type="text/css">
+	/* 为div元素增加边框 */
+	div{
+		height: 300px;
+		width: 600px;
+	}
+	</style>
+</head>
+<body>
+background:radial-gradient(red, blue)、红蓝径向渐变
+<div id="dv1" style="background:radial-gradient(red, blue);"></div>
+椭圆渐变：<input type="checkbox" id="shape" onchange="change();"><p>
+横向半径：<input id="x" style="width:360px" type="range" min="0" max="300" value="150"
+	onchange="change();"><p>
+纵向半径：<input id="y" style="width:360px" type="range" min="0" max="150" value="75"
+	onchange="change();">
+<script type="text/javascript">
+function change(){
+	var xSize = document.getElementById("x").value;
+	var ySize = document.getElementById("y").value;
+	var isEllipse = document.getElementById("shape").checked;
+	if (isEllipse)
+	{
+		// 指定使用椭圆渐变
+		document.getElementById("dv1").style.background = 
+			"radial-gradient(ellipse " + xSize + "px " + ySize + "px" + ", red, blue)";
+	}
+	else
+	{
+		// 不指定形状，默认是圆形
+		document.getElementById("dv1").style.background = 
+			"radial-gradient(circle " + xSize + "px" + ", red, blue)";
+	}
+}
+</script>
+</body>
+</html>
+ -->
+
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> 径向渐变背景 </title>
+	<style type="text/css">
+	/* 为div元素增加边框 */
+	div{
+		height: 90px;
+		width: 300px;
+		border: 1px solid black;
+	}
+	</style>
+</head>
+<body style="font-size:14px;">
+background:radial-gradient(at 40px 90px, red, green, blue)<br>
+红绿蓝指定圆心的径向渐变
+<div style="background:radial-gradient(at 40px 100px, red, green, blue);"></div>
+background:radial-gradient(ellipse, red, green, blue)<br>
+红绿蓝指定形状的径向渐变
+<div style="background:radial-gradient(ellipse, red, green, blue);"></div>
+background:radial-gradient(20px, red, green, blue)<br>
+红绿蓝指定大小的径向渐变
+<div style="background:radial-gradient(20px, red, green, blue);"></div>
+background:radial-gradient(at 100px 50px, red, green, blue, yellow)<br>
+红绿蓝黄指定圆心的径向渐变
+<div style="background:radial-gradient(at 100px 50px, red, green, blue, yellow);"></div>
+background:radial-gradient(ellipse at 100px 50px, rgba(255, 0, 0, 0), rgba(255, 0, 0, 1))
+<br>透明度改变指定形状、圆心的径向渐变
+<div style="background:radial-gradient(ellipse at 100px 50px, rgba(255, 0, 0, 0), rgba(255, 0, 0, 1))"></div>
+background:radial-gradient(circle 50px, red 20%, green 40%, blue 70%)
+<br>红绿蓝指定形状、大小的径向渐变
+<div style="background:radial-gradient(circle 50px, red 20%, green 40%, blue 70%);"></div>
+background:radial-gradient(circle 50px at 150px 60px, red 20%, green 40%, blue 70%)
+<br>红绿蓝指定形状、大小、圆心的径向渐变
+<div style="background:radial-gradient(circle 50px at 150px 60px, red 20%, green 40%, blue 70%);"></div>
+background:radial-gradient(ellipse 100px 30px at 150px 60px, red 30%, green 40%, blue 60%, yellow 70%)
+<br>红绿蓝黄指定形状、大小、圆心的径向渐变
+<div style="background:radial-gradient(ellipse 100px 30px at 150px 60px, red 30%, green 40%, blue 60%, yellow 70%);"></div>
+</body>
+</html>
+ -->
+
+
+
+<html>
+<head>
+	<meta charset=utf-8" />
+	<title> 循环径向渐变 </title>
+	<style type="text/css">
+	/* 为div元素增加边框 */
+	div{
+		height: 300px;
+		width: 400px;
+	}
+	</style>
+</head>
+<body>
+background:repeating-radial-gradient(red, blue 30px, magenta 50px)<br>
+红、蓝、洋红循环径向渐变
+<div id="dv1" style="background:repeating-radial-gradient(red, blue 30px, magenta 50px);"></div>
+x：<input id="x" style="width:360px" type="range" min="0" max="400" value="200"
+	onchange="change();"><p>
+y：<input id="y" style="width:360px" type="range" min="0" max="300" value="150"
+	onchange="change();">
+<script type="text/javascript">
+function change(){
+	var x = document.getElementById("x").value;
+	var y = document.getElementById("y").value;
+	document.getElementById("dv1").style.background = 
+		"repeating-radial-gradient(at " + x + "px " + y + "px" + ", red, blue 30px, magenta 50px)";
+}
+</script>
 </body>
 </html>
 
