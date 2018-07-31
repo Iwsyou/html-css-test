@@ -1,0 +1,205 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简介</title>
+	导入js文件
+	 <script type="text/javascript"src="test.js"></script>
+
+	推迟脚本执行
+	<script type="text/javascript"src="defer.js"defer></script>
+
+	<script type="text/javascript"src="async.js" async></script>
+
+</head>
+<body>
+	<a href="javascript:alert('运行javascript');">运行JavaScript</a>
+	<script type="text/javascript">
+		alert('直接运行javascript');
+	</script>
+
+<div id="target"></div>
+
+  	<div>疯狂js讲义</div>
+	
+	永来香不支持js或禁用技术的浏览器显示提示信息
+	<noscript>
+		<h1>必须支持js</h1>
+		<p>必须使用支持js浏览器</p>
+	</noscript>
+</body>
+</html> -->
+
+
+<!-- 数据类型和变量 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简介</title>
+	<!-- <script type="text/javascript">
+		//定义全局变量
+		var x = "全局变量";
+	</script> -->
+</head>
+<body>
+	<script type="text/javascript">
+		/*a="hello world";
+		alert(a);*/
+
+		/*var a;
+		a=true;
+		alert(a);*/
+
+		/*var a="3.145";
+		var b=a-2;
+		var c=a+2;
+		alert(b+"\n"+c);*/
+
+		/*var a="3.145";
+		var b=a+2;
+		var c=parseFloat(a)+2;
+		alert(b+"\n"+c);*/
+
+		/*var a="qqqq";
+		var b=parseFloat(a);
+		alert(b);*/
+
+	
+		/*// 定义全局变量test
+		var test = "全局变量"; 
+		// 定义函数myFun
+		function myFun()
+		{
+	// 函数内不使用var定义的age也是全局变量
+	age = 20;
+	// 函数内使用var定义的age是局部变量
+	var isMale = true;
+		}
+		myFun();
+		alert(test + "\n"
+	+ age);
+		alert(isMale);
+*/
+
+	/*// 定义全局变量test
+	var test = "全局变量"; 
+	// 定义函数checkScope
+	function checkScope()
+	{
+		// 定义局部变量
+		var test = "局部变量";
+		// 输出局部变量
+		alert(test);
+	}
+	checkScope(); 
+	alert(test);*/
+
+/*function test(o)
+	{
+		// 定义变量i，变量i的作用范围是整个函数
+		var i = 0;
+		if (typeof o == "object") 
+		{
+			// 定义变量j，变量j的作用范围是整个函数内，而不仅仅是在if块内。
+			var j = 5;
+			for(var k = 0; k < 10; k++)
+			{
+				// 因为JavaScript没有代码块范围
+				// 所以k的作用范围是整个函数内，而不是循环体内
+				document.write(k);
+			}
+		}
+		// 即使出了循环体，k的值依然存在
+		alert(k + "\n" + j); 
+	}
+	test(document);*/
+	</script>
+
+<!-- 在onclick事件中重新定义了x局部变量变量
+<input type="button" value="局部变量" 
+	onclick="var x = '局部变量'; alert('输出x局部变量的值：' + x);"/>
+直接输出全局变量x的值
+<input type="button" value="全局变量 " 
+	onclick="alert('输出x全局变量的值： ' + x);" /> -->
+
+<!-- <script type="text/javascript">
+	// 定义全局变量
+	var scope = "全局变量";
+	function test()
+	{
+		// 因此全局变量被局部变量覆盖
+		// 而此时scope局部变量尚未赋值，故此处输出undefined
+		document.writeln(scope + "<br />"); 
+		// 定义scope的局部变量，其作用范围为整个函数内
+		var scope = "局部变量";
+		// 再次输出scope的值。
+		document.writeln(scope + "<br />"); 
+	}
+	test();
+</script> -->
+
+<!-- <script type="text/javascript">
+	var x = 100;
+	var y = 200;
+	function foo()
+	{
+		document.writeln(x + "<br>");
+		document.writeln(y);
+		if (false)
+		{
+			var x = 1;
+		}
+		return;
+		var y = 2;
+	}
+//	function foo()
+//	{
+//		var x, y;
+//		if (false)
+//		{
+//			x = 1;
+//		}  
+//		return;
+//		y = 1;
+//	}
+	foo();
+</script> -->
+
+<!-- let变量 -->
+
+<!-- <script type="text/javascript">
+for (let i = 0; i < 10 ; i++)
+{
+	console.log(i);
+}
+// 报错：Uncaught ReferenceError: i is not defined
+console.log("循环之外：" + i);
+</script> -->
+
+<!-- <script type="text/javascript">
+let name = 'yeeku';
+console.log(name); // 输出yeeku
+console.log(window.name); // window.name不存在
+</script> -->
+
+<!-- <script type="text/javascript">
+var name = 'yeeku'
+function func()
+{
+	// 下面name变量不存在，因此程序导致错误
+	console.log(name);
+	let name = 'fkit';
+	console.log(name);
+}
+func();
+</script> -->
+
+使用const定义常量只能指定初始值且以后不允许改变
+const max_age=120;
+max_age=200;//语法错误
+
+
+</body>
+</html>
