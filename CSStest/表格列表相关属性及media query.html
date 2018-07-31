@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+
+<!--表格相关属性 
+<html>
+<head>
+	<meta charset=utf-8" />
+	<title> 表格相关属性 </title>
+	<style type="text/css">
+	table {
+		width: 400px;
+		border: 1px solid black;
+	}
+	td {
+		background-color:#ccc;
+		border: 1px solid black;
+	}
+	</style>
+</head>
+<body>
+<p>表格的单元格边框合并在一起，看起来分割线为单线<br>
+border-collapse:collapse;</p>
+<table style="border-collapse:collapse;">
+	<tr>
+		<td>疯狂Java讲义</td>
+		<td>轻量级Java EE企业应用实战</td>
+	</tr>
+	<tr>
+		<td>疯狂Android讲义</td>
+		<td>经典Java EE企业应用实战</td>
+	</tr>
+</table>
+<p>表格的单元格边框分开，看起来表格分割线为双线，并隐藏空格的边框线<br>
+border-collapse:seperate;empty-cells:hide;</p>
+<table style="border-collapse:seperate;empty-cells:hide;">
+	<tr>
+		<td>疯狂Java讲义</td>
+		<td>轻量级Java EE企业应用实战</td>
+	</tr>
+	<tr>
+		<td>疯狂Android讲义</td>
+		<td></td>
+	</tr>
+</table>
+<p>表格的单元格边框分开，看起来表格分割线为双线，并设置两个单元格的间距<br>
+border-collapse:seperate;border-spacing:20px;</p>
+<table style="border-collapse:seperate;border-spacing:20px">
+	<tr>
+		<td>疯狂Java讲义</td>
+		<td>轻量级Java EE企业应用实战</td>
+	</tr>
+	<tr>
+		<td>疯狂Android讲义</td>
+		<td>经典Java EE企业应用实战</td>
+	</tr>
+</table>
+</body>
+</html>
+ -->
+
+
+<!-- <html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> 表格相关属性 </title>
+	<style type="text/css">
+	table {
+		width: 400px;
+		border: 1px solid black;
+	}
+	td {
+		background-color:#ccc;
+		border: 1px solid black;
+	}
+	</style>
+</head>
+<body>
+<p>caption位于右边 caption-side:right</p>
+<table style="border-collapse:collapse;caption-side:right">
+	<caption>疯狂Java体系图书</caption>
+	<tr>
+		<td>疯狂Java讲义</td>
+		<td>轻量级Java EE企业应用实战</td>
+	</tr>
+	<tr>
+		<td>疯狂Android讲义</td>
+		<td>经典Java EE企业应用实战</td>
+	</tr>
+</table>
+<p>caption位于底部 caption-side:bottom</p>
+<table style="caption-side:bottom">
+	<caption>疯狂Java体系图书</caption>
+	<tr>
+		<td>疯狂Java讲义</td>
+		<td>轻量级Java EE企业应用实战</td>
+	</tr>
+	<tr>
+		<td>疯狂Android讲义</td>
+		<td>经典Java EE企业应用实战</td>
+	</tr>
+</table>
+<p>caption位于左边 caption-side:left</p>
+<table style="caption-side:left">
+	<caption>疯狂Java体系图书</caption>
+	<tr>
+		<td>疯狂Java讲义</td>
+		<td>轻量级Java EE企业应用实战</td>
+	</tr>
+	<tr>
+		<td>疯狂Android讲义</td>
+		<td>经典Java EE企业应用实战</td>
+	</tr>
+</table>
+</body>
+</html> -->
+
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> 表格相关属性 </title>
+	<style type="text/css">
+	table {
+		table-layout: fixed;
+		border-collapse:collapse;
+		border: 1px solid black;
+	}
+	td {
+		background-color:#ccc;
+		border: 1px solid black;
+	}
+	</style>
+</head>
+<body>
+<p>表格的宽度将由两个col元素计算出来</p>
+<table>
+	表格的宽度将由如下两个col元素计算出来
+	<col style="width:240px"/>
+	<col style="width:80px"/>
+	<tr>
+		<td>疯狂Java讲义</td>
+		<td>轻量级Java EE企业应用实战</td>
+	</tr>
+	<tr>
+		<td>疯狂Android讲义</td>
+		<td>经典Java EE企业应用实战</td>
+	</tr>
+</table>
+<p>表格的宽度将由如下第一行的单元格的宽度计算出来</p>
+<table>
+	<tr>
+		表格的宽度将由如下第一行的单元格的宽度计算出来
+		<td style="width:80px">疯狂Java讲义</td>
+		<td style="width:300px">轻量级Java EE企业应用实战</td>
+	</tr>
+	<tr>
+		<td>疯狂Android讲义</td>
+		<td>经典Java EE企业应用实战</td>
+	</tr>
+</table>
+<p>每列将会平均分配该表格的宽度</p>
+每列将会平均分配该表格的宽度
+<table style="width:300px">
+	<tr>
+		<td>疯狂Java讲义</td>
+		<td>轻量级Java EE企业应用实战</td>
+	</tr>
+	<tr>
+		<td>疯狂Android讲义</td>
+		<td>经典Java EE企业应用实战</td>
+	</tr>
+</table>
+</body>
+</html> -->
+
+
+<!-- 列表相关属性
+<html>
+<head>
+	<meta charset=utf-8" />
+	<title> 列表相关属性 </title>
+	<style type="text/css">
+		li {
+			background-color: #aaa;
+		}
+	</style>
+</head>
+<body>
+<p>使用实心方块作为列表项标记<br>
+list-style-type:square;</p>
+<ol style="list-style-type:square;">
+	<li>疯狂Java讲义</li>
+	<li>轻量级Java EE企业应用实战</li>
+	<li>疯狂Android讲义</li>
+	<li>经典Java EE企业应用实战</li>
+</ol>
+<p>使用大写拉丁字母作为列表项标记<br>
+list-style-type:hebrew;</p>
+<ul style="list-style-type:hebrew;">
+	<li>疯狂Java讲义</li>
+	<li>轻量级Java EE企业应用实战</li>
+	<li>疯狂Android讲义</li>
+	<li>经典Java EE企业应用实战</li>
+</ul>
+<p>使用大写罗马字母作为列表项标记<br>
+list-style-type:upper-roman;</p>
+<ol style="list-style-type:upper-roman;">
+	<li>疯狂Java讲义</li>
+	<li>轻量级Java EE企业应用实战</li>
+	<li>疯狂Android讲义</li>
+	<li>经典Java EE企业应用实战</li>
+</ol>
+<p>使用表意数字作为列表项标记，并将列表标记放在列表元素内<br>
+list-style-type:cjk-ideographic;list-style-position:inside;</p>
+<ol style="list-style-type:cjk-ideographic;
+	list-style-position:inside;">
+	<li>疯狂Java讲义</li>
+	<li>轻量级Java EE企业应用实战</li>
+	<li>疯狂Android讲义</li>
+	<li>经典Java EE企业应用实战</li>
+</ol>
+<p>使用图片作为列表项标记<br>
+list-style-image:url(fl.gif);</p>
+<ul style="list-style-image:url(fl.gif);">
+	<li>疯狂Java讲义</li>
+	<li>轻量级Java EE企业应用实战</li>
+	<li>疯狂Android讲义</li>
+	<li>经典Java EE企业应用实战</li>
+</ul>
+</body>
+</html> -->
+
+
+
+<!-- 使用list-style控制普通元素
+<html>
+<head>
+	<meta charset=utf-8" />
+	<title> 列表相关属性 </title>
+	<style type="text/css">
+		div>div{
+			background-color: #aaa;
+			display:list-item;
+			list-style-image:url(fl.gif);
+			list-style-position:inside;
+		}
+	</style>
+</head>
+<body>
+<p>使用图片作为列表项标记</p>
+<div>
+	<div>疯狂Java讲义</div>
+	<div>轻量级Java EE企业应用实战</div>
+	<div>疯狂Android讲义</div>
+	<div>经典Java EE企业应用实战</div>
+</div>
+</body>
+</html>
+ -->
+
+
+
+<!-- 控制光标属性<br>
+<html>
+<head>
+	<meta charset=utf-8" />
+	<title> 光标相关属性 </title>
+	<style type="text/css">
+		div {
+			display: inline-block;
+			border: 1px solid black;
+			width: 160px;
+			height: 70px;
+		}
+	</style>
+</head>
+<body>
+<div style="cursor:all-scroll;">十字箭头光标</div>
+<div style="cursor:col-resize;">水平拖动线光标</div>
+<div style="cursor:crosshair;">十字线光标</div>
+<div style="cursor:move;">代表移动十字箭头光标</div>
+<div style="cursor:help;">带问号的箭头光标</div>
+<div style="cursor:no-drop;">禁止光标</div>
+<div style="cursor:not-allowed">禁止光标</div>
+<div style="cursor:pointer;">手型光标</div>
+<div style="cursor:progress;">带进度环的箭头光标</div>
+<div style="cursor:row-resize;">垂直拖动线光标</div>
+<div style="cursor:text;">文本编辑光标</div>
+<div style="cursor:vertical-text;">垂直文本编辑光标</div>
+<div style="cursor:wait;">进度环光标</div>
+<div style="cursor:n-resize;">可向上拖动的光标</div>
+<div style="cursor:ne-resize;">上、右可拖动的光标</div>
+<div style="cursor:se-resize;">下、右可拖动的光标</div>
+</body>
+</html> -->
+
+
+
+<!-- media query和响应式布局<br>
+<html>
+<head>
+	<meta charset=utf-8" />
+	<title> 针对浏览器宽度响应布局 </title>
+	<style type="text/css">
+		/* 设置默认的CSS样式 */
+		#container{
+			text-align: center;
+			margin: auto;
+			width: 750px;
+		}
+		#container>div {
+			border: 1px solid #aaf;
+			text-align: left;
+			/* 设置HTML元素的大小包括边框 */
+			box-sizing: border-box;
+			border-radius: 12px 12px 0px 0px;
+			padding: 5px;
+		}
+		div#left {
+			width: 300px;
+			height: 260px;
+			float: left;
+		}
+		div#main {
+			width: 450px;
+			height: 260px;
+			float: left;
+			/* 让该元素的右边不能出现float元素，即让后面的元素换行 */
+			clear: right;
+		}
+		div#right {
+			width: 750px;
+			float: left;
+		}
+		/* 设置当浏览器宽度大于1000px时的CSS样式 */
+		@media screen and (min-width:1000px) {
+			#container{
+				text-align: center;
+				margin: auto;
+				width: 960px;
+			}
+			#container>div {
+				border: 1px solid #aaf;
+				/* 设置HTML元素的大小包括边框 */
+				box-sizing: border-box;
+				border-radius: 12px 12px 0px 0px;
+				padding: 5px;
+			}
+			div#left {
+				width: 240px;
+				float: left;
+				height: 260px;
+			}
+			div#main {
+				width: 460px;
+				float: left;
+				height: 260px;
+				/* 让左右两边都可以出现float元素 */
+				clear: none;
+			}
+			div#right {
+				width: 260px;
+				float: left;
+				height: 260px;
+			}
+		}
+		/* 设置当浏览器宽度小于480px时的CSS样式 */
+		@media screen and (max-width:480px) {
+			#container{
+				text-align: center;
+				margin: auto;
+				width: 450px;
+			}
+			#container>div {
+				border: 1px solid #aaf;
+				/* 设置HTML元素的大小包括边框 */
+				box-sizing: border-box;
+				border-radius: 12px 12px 0px 0px;
+				padding: 5px;
+			}
+			div#left {
+				width: 450px;
+				float: left;
+				height: 150px;
+			}
+			div#main {
+				width: 450px;
+				float: left;
+				height: 260px;
+				/* 让左右两边都不能出现float元素 */
+				clear: both;
+			}
+			div#right {
+				width: 450px;
+				float: left;
+				height: 170px;
+			}
+		}
+	</style>
+</head>
+<body>
+<div id="container">
+<div id="left">
+<h2>疯狂软件开班信息</h2>
+<ul>
+	<li>2011年11月10日&nbsp;已满已开班</li>
+	<li>2011年12月02日&nbsp;爆满已开班</li>
+	<li>2012年02月08日&nbsp;已满已开班</li>
+</ul>
+</div>
+<div id="main">
+<h2>疯狂软件介绍</h2>
+&nbsp;&nbsp;&nbsp;&nbsp;疯狂Java品牌专注高级软件编程，以“十年磨一剑”的心态打造全国最强（不是之一）疯狂Java学习体系：包括疯狂Java体系原创图书，疯狂Java学习路线图，这些深厚的知识沉淀已被大量高校、培训机构奉为经典。<br/> 
+&nbsp;&nbsp;&nbsp;&nbsp;疯狂Java怀抱“软件强国”的理想，立志以务实的技术来改变中国的软件教育。经过八年沉淀，疯狂Java强势回归。疯狂Java创始人李刚，携疯狂Java精英讲师团队肖文吉、黄勇等老师将带给广大学习者“非一般”的疯狂。
+</div>
+<div id="right">
+<h2>公司动态</h2>
+<ul>
+	<li>《疯狂Java讲义》(第3版)上市</li>
+	<li>泰豪电网软件公司来校召开现场招聘会</li>
+	<li>疯狂学子赴武汉光谷软件园入职</li>
+	<li>新华南方来校现场招聘</li>
+</ul>
+</div>
+</div>
+</body>
+</html> -->
+
+
+响应手机浏览器
+<html>
+<head>
+	<meta charset=utf-8" />
+
+	<!-- 将浏览器宽度设置为和手机屏幕相同 -->
+
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+	<title> 针对浏览器宽度响应布局 </title>
+	<style type="text/css">
+		/* 设置默认的CSS样式 */
+		#container{
+			text-align: center;
+			margin: auto;
+			width: 750px;
+		}
+		#container>div {
+			border: 1px solid #aaf;
+			text-align: left;
+			/* 设置HTML元素的width属性包括边框 */
+			box-sizing: border-box;
+			border-radius: 12px 12px 0px 0px;
+			padding: 5px;
+		}
+		div#left {
+			width: 300px;
+			height: 260px;
+			float: left;
+		}
+		div#main {
+			width: 450px;
+			height: 260px;
+			float: left;
+			/* 让该元素的右边不能出现float元素，即让后面的元素换行 */
+			clear: right;
+		}
+		div#right {
+			width: 750px;
+			float: left;
+		}
+		/* 设置当浏览器宽度大于1000px时的CSS样式 */
+		@media screen and (min-width:1000px) {
+			#container{
+				text-align: center;
+				margin: auto;
+				width: 960px;
+			}
+			#container>div {
+				border: 1px solid #aaf;
+				/* 设置HTML元素的大小包括边框 */
+				box-sizing: border-box;
+				border-radius: 12px 12px 0px 0px;
+				padding: 5px;
+			}
+			div#left {
+				width: 240px;
+				float: left;
+				height: 260px;
+			}
+			div#main {
+				width: 460px;
+				float: left;
+				height: 260px;
+				/* 让左右两边都可以出现float元素 */
+				clear: none;
+			}
+			div#right {
+				width: 260px;
+				float: left;
+				height: 260px;
+			}
+		}
+		/* 设置当浏览器宽度小于480px时的CSS样式 */
+		@media screen and (max-width:480px) {
+			#container{
+				text-align: center;
+				margin: auto;
+				width: 450px;
+			}
+			#container>div {
+				border: 1px solid #aaf;
+				/* 设置HTML元素的大小包括边框 */
+				box-sizing: border-box;
+				border-radius: 12px 12px 0px 0px;
+				padding: 5px;
+			}
+			div#left {
+				width: 450px;
+				float: left;
+				height: 150px;
+			}
+			div#main {
+				width: 450px;
+				float: left;
+				height: 260px;
+				/* 让左右两边都不能出现float元素 */
+				clear: both;
+			}
+			div#right {
+				width: 450px;
+				float: left;
+				height: 170px;
+			}
+		}
+	</style>
+</head>
+<body>
+<div id="container">
+<div id="left">
+<h2>疯狂软件开班信息</h2>
+<ul>
+	<li>2011年11月10日&nbsp;已满已开班</li>
+	<li>2011年12月02日&nbsp;爆满已开班</li>
+	<li>2012年02月08日&nbsp;已满已开班</li>
+</ul>
+</div>
+<div id="main">
+<h2>疯狂软件介绍11</h2>
+&nbsp;&nbsp;&nbsp;&nbsp;疯狂Java品牌专注高级软件编程，以“十年磨一剑”的心态打造全国最强（不是之一）疯狂Java学习体系：包括疯狂Java体系原创图书，疯狂Java学习路线图，这些深厚的知识沉淀已被大量高校、培训机构奉为经典。<br/> 
+&nbsp;&nbsp;&nbsp;&nbsp;疯狂Java怀抱“软件强国”的理想，立志以务实的技术来改变中国的软件教育。经过八年沉淀，疯狂Java强势回归。疯狂Java创始人李刚，携疯狂Java精英讲师团队肖文吉、黄勇等老师将带给广大学习者“非一般”的疯狂。
+</div>
+<div id="right">
+<h2>公司动态</h2>
+<ul>
+	<li>《疯狂Java讲义》(第3版)上市</li>
+	<li>泰豪电网软件公司来校召开现场招聘会</li>
+	<li>疯狂学子赴武汉光谷软件园入职</li>
+	<li>新华南方来校现场招聘</li>
+</ul>
+</div>
+</div>
+
+<script type="text/javascript">
+	// 查看浏览器内body宽度
+	alert(screen.width);
+</script>
+
+</body>
+</html>

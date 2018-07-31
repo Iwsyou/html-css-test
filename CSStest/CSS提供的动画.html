@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<!-- <html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>transition动画</title>
+
+	<style type="text/css">
+		div{
+			width: 400px;
+			height: 50px;
+			border: 1px solid black;
+			background-color: red;
+			padding: 10px;
+			transition: background-color 4s linear;
+		}
+		div:hover{
+			background-color: yellow;
+		}
+
+	</style>
+</head>
+<body>
+	<div>鼠标一上来会发生颜色渐变</div>
+</body>
+</html> -->
+
+
+<!-- <html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>transition动画</title>
+
+	<style type="text/css">
+		img#target{
+			position:absolute;
+			transition: left 3s linear ,top 3s linear;
+		}
+	</style>
+</head>
+<body>
+ 	<img src="balloon.gif" alt="气球" id="target">
+
+ 	<script type="text/javascript">
+ 		var target=document.getElementById('target');
+ 		target.style.left="0px";
+ 		target.style.top="0px";
+
+ 		document.onmousedown=function(evt){
+ 			target.style.left=evt.pageX+"px";
+ 			target.style.top=evt.pageY+"px";
+ 		}
+ 	</script>
+</body>
+</html> -->
+
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> Transition动画 </title>
+	<style type="text/css">
+		div {
+			width: 200px;
+			height: 160px;
+			background-color: red;
+			/* 指定背景色、宽度、高度会以平滑简便的方式来改变
+			指定动画持续时间为2秒，动画会延迟2秒之后才启动。
+			*/
+			transition: background-color 2s linear 2s,
+				width 2s linear 2s, height 2s linear 2s;
+		}
+	</style>
+	<script type="text/javascript">
+		// 定义目标元素的初始宽度、高度
+		var originWidth = 200;
+		var originHeight = 160;
+		var zoom = function(scale , bgColor)
+		{
+			var target = document.getElementById("target");
+			// 设置缩放之后的宽度、高度
+			target.style.width = originWidth * scale + "px";
+			target.style.height = originHeight * scale + "px";
+			// 设置背景色
+			target.style.backgroundColor = bgColor;
+		}
+	</script>
+</head>
+<body>
+<button onclick="zoom(2 , 'blue');">放大</button>
+<button onclick="zoom(0.5 , 'green');">缩小</button>
+<button onclick="zoom(1 , 'red');">恢复</button>
+<div id="target">
+</div>
+</body>
+</html> -->
+
+
+<!-- Animation动画
+<html>
+<head>
+	<meta charset=utf-8" />
+	<title> Transition动画 </title>
+	<style type="text/css">
+		@keyframes fkjava{
+			0%{
+				left:100px;
+			}
+			40%{
+				left: 150px;
+			}
+			60%{
+				left: 75px;
+			}
+			100%{
+				left: 100px;
+			}
+		}
+			div{
+				background-color: #ddd;
+				border: 1px solid black;
+				position: absolute;
+				left: 100px;
+				width: 60px;
+				height: 60px;
+			}
+			div:hover{
+				animation-name: fkjava;
+				animation-duration: 5s;
+				animation-iteration-count: 1;
+			}
+
+	</style>
+	
+</head>
+<body>
+	<div>鼠标悬停。开始动画</div>
+</body>
+</html>
+ -->
+
+
+<!-- Animation动画同时改变多个属性
+<html>
+<head>
+	<meta charset=utf-8" />
+	<title> Transition动画 </title>
+	<style type="text/css">
+		@keyframes fkjava{
+			0%{
+				transform: rotate(0deg) scale(1);
+				background-color: #f00;
+			}
+			40%{
+				transform: rotate(720deg) scale(0.1);
+				background-color: #ff0;
+			}
+			60%{
+				transform: rotate(1080deg) scale(4);
+				background-color: #f0f;
+			}
+			100%{
+				transform: rotate(0deg) scale(1);
+				background-color: #00f;
+			}
+		}
+			div{
+				background-color: gray;
+				border: 1px solid black;
+				position: absolute;
+				left: 100px;
+				top: 120px;
+				width: 60px;
+				height: 60px;
+			}
+			div:hover{
+				animation-name: fkjava;
+				animation-duration: 8s;
+				animation-iteration-count: 1;
+			}
+
+	</style>
+	
+</head>
+<body>
+	<div>鼠标悬停。开始动画</div>
+</body>
+</html> -->
+
+
+鱼眼效果
+<html>
+<head>
+	<meta charset=utf-8" />
+	<title> fisheye </title>
+	<style type="text/css">
+		a:link {
+			text-decoration: none;
+		}
+		div>a{
+			display: inline-block;
+			text-align: center;
+			width: 120px;
+			padding: 8px;
+			background-color: #eee;
+			border: 2px solid black;
+			border-radius : 20px;
+		}
+		/* 定义一个关键帧 */
+		@keyframes fisheye {
+			/* 定义动画开始处的关键帧 */
+			0% {
+				transform: scale(1);
+				background-color: #eee;
+				border-radius : 10px;
+			}
+			/* 定义动画进行40%时的关键帧 */
+			40% {
+				transform: scale(1.5);
+				background-color: #bbb;
+				border-radius : 10px;
+			}
+			/* 定义动画进行100%时的关键帧 */
+			100% {
+				transform: scale(1);
+				background-color: #eee;
+				border-radius : 10px;
+			}
+		}
+		div>a:hover {
+			/* 指定执行fkjava动画 */
+			animation-name: fisheye;
+			/* 指定动画的执行时间 */
+			animation-duration: 3s;
+			/* 指定动画的循环无限次 */
+			animation-iteration-count: infinite;
+		}
+	</style>
+</head>
+<body>
+<div>
+	<a href="http://www.crazyit.org" alt="crazyit">疯狂Java联盟</a>
+	<a href="http://www.fkjava.org" alt="fkjava">疯狂软件教育</a>
+	<a href="http://www.crazyit.org" alt="fkjava">关于我们</a>
+	<a href="http://www.fkjava.org" alt="fkjava">疯狂成员</a>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
