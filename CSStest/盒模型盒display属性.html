@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> 盒模型的基本类型 </title>
+	<style type="text/css">
+		div,span{
+			width: 300px;
+			height: 40px;
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+<div>div元素一</div>				
+<div>div元素二</div>
+<span>span元素一</span>
+<span>span元素二</span>
+</body>
+</html>
+ -->
+
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> 盒模型的基本类型 </title>
+	<style type="text/css">
+		div,span{
+			width: 300px;
+			height: 40px;
+			border: 1px solid black;
+		}
+		/* 将div元素改为inline盒模型 */
+		body>div{
+			display:inline;
+		}
+		/* 将span元素改为block盒模型 */
+		body>span{
+			display:block;
+		}
+	</style>
+</head>
+<body>
+<div>div元素一</div>
+<div>div元素二</div>
+<span>span元素一</span>
+<span>span元素二</span>
+</body>
+</html> -->
+
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> 隐藏元素 </title>
+	<style type="text/css">
+	/* 设置div元素的宽度、高度、背景色和边框 */
+	div{
+		width:300px;
+		height:40px;
+		background-color:#ddd;
+		border:2px solid black;
+	}
+	</style>
+</head>
+<body>
+<input type="button" value="隐藏" 
+	onclick="document.getElementById('test1').style.display='none';"/>
+<input type="button" value="显示" 
+	onclick="document.getElementById('test1').style.display='';"/>
+<div id = "test1">
+使用display控制对象的显示和隐藏
+</div>
+<input type="button" value="隐藏"
+	onclick="document.getElementById('test2').style.visibility ='hidden'"/>
+<input type="button" value="显示"
+	onclick="document.getElementById('test2').style.visibility ='visible'"/>
+<div id = "test2">
+使用visibility控制对象的显示和隐藏
+</div>
+<hr/>
+</body>
+</html>
+ -->
+
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> 多栏布局 </title>
+	<style type="text/css">
+		div#container {
+			width: 960px;
+			border:1px solid black;
+		}
+		div>div {
+			border: 1px solid #aaf;
+			display: inline-block;
+			/* 设置HTML元素的width属性包括边框 */
+			box-sizing: border-box;
+			vertical-align: top;
+			padding:5px;
+		}
+	</style>
+</head>
+<body>
+<div id="container">
+<div style="width:220px">
+<h2>疯狂软件开班信息</h2>
+<ul>
+	<li>2011年11月10日&nbsp;已满已开班</li>
+	<li>2011年12月02日&nbsp;爆满已开班</li>
+	<li>2012年02月08日&nbsp;已满已开班</li>
+</ul>
+</div><div style="width:500px;">
+<h2>疯狂软件介绍</h2>
+&nbsp;&nbsp;&nbsp;&nbsp;疯狂Java品牌专注高级软件编程，以“十年磨一剑”的心态打造全国最强（不是之一）疯狂Java学习体系：包括疯狂Java体系原创图书，疯狂Java学习路线图，这些深厚的知识沉淀已被大量高校、培训机构奉为经典。<br/> 
+&nbsp;&nbsp;&nbsp;&nbsp;疯狂Java怀抱“软件强国”的理想，立志以务实的技术来改变中国的软件教育。经过八年沉淀，疯狂Java强势回归。疯狂Java创始人李刚，携疯狂Java精英讲师团队肖文吉、黄勇等老师将带给广大学习者“非一般”的疯狂。
+</div><div style="width:240px">
+<h2>公司动态</h2>
+<ul>
+	<li>《疯狂Java讲义》(第3版)上市</li>
+	<li>泰豪电网软件公司来校召开现场招聘会</li>
+	<li>疯狂学子赴武汉光谷软件园入职</li>
+	<li>新华南方来校现场招聘</li>
+</ul>
+</div>
+</div>
+</body>
+</html> -->
+
+
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> 导航菜单 </title>
+	<style type="text/css">
+		body>div{
+			text-align: center;
+		}
+		div>div{
+			/* 设置为inline-block盒模型，保证一行显示 */
+			display: inline-block;
+			border: 1px solid black;
+		}
+		a {
+			text-decoration:none;
+			/* 设置为block盒模型，允许设置高度、宽度 */
+			display: block;
+			width: 120px;
+			padding: 10px;
+			/* 设置默认背景色 */
+			background-color: #eee;
+		}
+		a:hover {
+			/* 设置鼠标悬停时的背景色 */
+			background-color: #aaa;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+<div>
+	<div><a href="http://www.crazyit.org">疯狂Java联盟</a></div><div>
+	<a href="http://www.fkjava.org">疯狂软件教育</a></div><div>
+	<a href="http://www.fkjava.org/companyInfo.html">关于我们</a></div><div>
+	<a href="http://www.crazyit.org">疯狂成员</a></div>
+</div>
+</body>
+</html>
+ -->
+
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> inline-table盒模型 </title>
+	<style type="text/css">
+		td {
+			border: 1px solid black;
+		}
+		table{
+			width: 360px;
+			border-collapse: collapse;
+			/* 设置表格显示为inline-table盒模型 */
+			display: inline-table;
+			/* 设置顶端对齐 */
+			vertical-align: top;
+			background-color: #f0f;
+		}
+	</style>
+</head>
+<body>
+前面内容
+<table style="">
+	<tr><td>疯狂Java讲义</td><td>疯狂Ajax讲义</td></tr>
+	<tr><td>疯狂XML讲义</td><td>疯狂Android讲义</td></tr>
+</table>
+后面内容
+</body>
+</html> -->
+
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> 表格相关的盒模型 </title>
+	<style type="text/css">
+		div>div {
+			display: table-row;
+			padding: 10px;
+		}
+		div>div>div{
+			display: table-cell;
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+<div style="display:table;width:400px;">
+	<div style="display:table-caption;">疯狂Java体系图书</div>
+	<div>
+		<div>疯狂Java讲义</div>
+		<div>疯狂Android讲义</div>
+	</div>
+	<div>
+		<div>疯狂Ajax讲义</div>
+		<div>疯狂XML讲义</div>
+	</div>
+<div>
+</body>
+</html> -->
+
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> list-item </title>
+	<style type="text/css">
+		/* 设置div以list-item的盒模型显示 */
+		div{
+			display: list-item;
+			list-style-type: square;
+			margin-left: 20px;
+		}
+	</style>
+</head>
+<body>
+<div>疯狂Java讲义</div>
+<div>疯狂Android讲义</div>
+<div>轻量级Java EE企业应用实战</div>
+</body>
+</html> -->
+
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> 多级列表 </title>
+	<style type="text/css">
+		body>div{
+			display: list-item;
+			list-style-type: disc ;
+			margin-left: 20px;
+			border: 1px solid #f0f;
+		}
+		div>div{
+			display: list-item;
+			list-style-type: square;
+			margin-left: 40px;
+			border: 2px solid #ff0;
+			list-style-position: inside;
+		}
+	</style>
+</head>
+<body>
+<div id="div1">
+	疯狂Java体系图书
+	<div>疯狂Java讲义</div>
+	<div>疯狂Android讲义</div>
+	<div>轻量级Java EE企业应用实战</div>
+</div>
+<div id="div2">
+	疯狂Java相关
+	<div>疯狂Java联盟</div>
+	<div>疯狂软件教育</div>
+	<div>疯狂Java实训营</div>
+</div>
+</body>
+</html> -->
+
+
+<!-- 对盒添加阴影
+<html>
+<head>
+	<meta name="author" content="Yeeku.H.Lee(CrazyIt.org)" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> box-shadow属性 </title>
+	<style type="text/css">
+		div {
+			width: 300px;
+			height: 50px;
+			border: 1px solid black;
+			margin: 30px;
+		}
+	</style>
+</head>
+<body>
+<div style="box-shadow: -10px -8px 6px #444;">
+	box-shadow: -10px -8px 6px #444;（左上阴影）</div>
+<div style="box-shadow: 10px -8px 6px #444;">
+	box-shadow: -10px 8px 6px #444;（右上阴影）</div>
+<div style="box-shadow: -10px 8px 6px #444;">
+	box-shadow: -10px 8px 6px #444;（左下阴影）</div>
+<div style="box-shadow: 10px 8px 6px #444;">
+	box-shadow: 10px 8px 6px #444;（右下阴影）</div>
+<div style="box-shadow: 10px 8px #444;">
+	box-shadow: box-shadow: 10px 8px #444;（右下阴影，不指定模糊程度）</div>
+<div style="box-shadow: 10px 8px 20px #444;">
+	box-shadow: 10px 8px 20px #444;（右下阴影、增大模糊程度）</div>
+<div style="box-shadow: 10px 8px 10px -10px red;">
+	box-shadow: 10px 8px 10px -10px red;（右下阴影、缩小阴影区域）</div>
+<div style="box-shadow: 10px 8px 20px 15px red;">
+	box-shadow: 10px 8px 20px 15px red;（右下阴影、放大阴影区域）</div>
+</body>
+</html> -->
+
+
+<!-- 阴影添加在内部
+<html>
+<head>
+	<meta charset=utf-8" />
+	<title> box-shadow属性 </title>
+	<style type="text/css">
+		div {
+			width: 300px;
+			height: 50px;
+			border: 1px solid black;
+			margin: 30px;
+		}
+	</style>
+</head>
+<body>
+<div style="box-shadow: -10px -8px 6px #444 inset;">
+	box-shadow: -10px -8px 6px #444 inset;（左上阴影）</div>
+<div style="box-shadow: 10px -8px 6px #444 inset;">
+	box-shadow: -10px 8px 6px #444 inset;（右上阴影）</div>
+<div style="box-shadow: -10px 8px 6px #444 inset;">
+	box-shadow: -10px 8px 6px #444 inset;（左下阴影）</div>
+<div style="box-shadow: 10px 8px 6px #444 inset;">
+	box-shadow: 10px 8px 6px #444 inset;（右下阴影）</div>
+<div style="box-shadow: 10px 8px #444 inset;">
+	box-shadow: box-shadow: 10px 8px #444 inset;（右下阴影，不指定模糊程度）</div>
+<div style="box-shadow: 10px 8px 20px #444 inset;">
+	box-shadow: 10px 8px 20px #444 inset;（右下阴影、增大模糊程度）</div>
+<div style="box-shadow: 10px 8px 10px -10px red inset;">
+	box-shadow: 10px 8px 10px -10px red inset;（右下阴影、缩小阴影区域）</div>
+<div style="box-shadow: 10px 8px 20px 15px red inset;">
+	box-shadow: 10px 8px 20px 15px red inset;（右下阴影、放大阴影区域）</div>
+</body>
+</html>
+ -->
+
+
+对表及单元格添加阴影
+<html>
+<head>
+	<meta name="author" content="Yeeku.H.Lee(CrazyIt.org)" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> box-shadow属性 </title>
+	<style type="text/css">
+		table {
+			width: 500px;
+			border-spacing: 30px;
+			box-shadow: 10px 10px 6px #444; 
+		}
+		td {
+			box-shadow: 6px 6px 4px #444; 
+			padding: 5px;
+		}
+	</style>
+</head>
+<body>
+<table>
+	<tr>
+		<td>疯狂Java讲义</td>
+		<td>疯狂Android讲义</td>
+	</tr>
+	<tr>
+		<td>轻量级Java EE企业应用实战</td>
+		<td>疯狂Android讲义</td>
+	</tr>
+</table>
+</html>
+
+
+
+
