@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数及其参数处理</title>
+
+
+</head>
+<body>
+	<!-- 函数 -->
+
+<!-- <script type="text/javascript">
+	hello('yeeku');
+	// 定义函数hello，该函数需要一个参数
+	function hello(name)
+	{
+		alert(name + "，你好");
+	}
+</script>
+
+<script type="text/javascript">
+	// 定义函数hello
+	function hello(name)
+	{
+		// 如果参数类型为字符串，则返回静态字符串
+		if (typeof name == 'string')
+		{
+			return name + "，你好";
+		}
+		// 当参数类型不是字符串时，执行此处的返回语句
+		return '名字只能为字符串'
+	}
+	alert(hello('yeeku'));
+</script>
+
+<script type="text/javascript">
+	var f = function(name)
+	{
+		document.writeln('匿名函数<br />');
+		document.writeln('你好' + name);
+	};
+	f('yeeku');
+</script> -->
+
+<!-- <script type="text/javascript">
+	// 将有名字的函数赋值给变量f，因此test将会被忽略
+	var f = function test(name)
+	{
+		document.writeln('匿名函数<br />');
+		document.writeln('你好' + name);
+	};
+	f('yeeku');
+	// test函数并不存在，下面代码出现错误
+	test("abc");
+</script> -->
+
+<!-- <script type="text/javascript">
+	// 定义匿名函数，并将函数赋给变量f
+	var f = new Function('name' ,
+		"document.writeln('Function定义的函数<br />');"
+		+ "document.writeln('你好' + name);");
+	// 通过变量调用匿名函数
+	f('yeeku');
+</script> -->
+
+<!-- <script type="text/javascript">
+	// 定义求阶乘的函数
+	function factorial(n)
+	{
+		// 如果n的类型是数值，才执行函数
+		if (typeof(n) == "number" && n > 0)
+		{
+			// 当n等于1时，直接返回1
+			if (n == 1) 
+			{
+				return 1;
+			}
+			// 当n不等于1时，通过递归返回值。
+			else
+			{
+				return n * factorial(n - 1);
+			}
+		}
+		// 当参数不是数值时，直接返回
+		else
+		{
+			alert("参数类型不对！");
+		}
+	}
+	// 调用阶乘函数
+	alert(factorial(5));
+</script> -->
+
+
+<!-- <script type="text/javascript">
+	// 定义全局函数
+	function outer()
+	{
+		// 定义第一个局部函数
+		function inner1()
+		{
+			document.write("局部函数11111<br />");
+		}
+		// 定义第二个局部函数
+		function inner2()
+		{
+			document.write("局部函数22222<br />");  
+		}
+		document.write("开始测试局部函数...<br />");
+		// 在函数中调用第一个局部函数
+		inner1();
+		// 在函数中调用第二个局部函数
+		inner2();
+		document.write("结束测试局部函数...<br />");
+	}
+	document.write("调用outer之前...<br />");
+	// 调用全局函数
+	outer();
+	document.write("调用outer之后...<br />");
+</script>
+
+<script type="text/javascript">
+	//定义全局函数
+	function outer()
+	{
+		//定义第一个局部函数
+		function inner1()
+		{
+			document.write("局部函数11111<br />");
+		}
+		//定义第二个局部函数
+		function inner2()
+		{
+			document.write("局部函数22222<br />");  
+		}
+		document.write("开始测试局部函数...<br />");
+		//在浏览器中调用第一个局部函数
+		inner1();
+		//在浏览器中调用第二个局部函数
+		inner2();
+		document.write("结束测试局部函数...<br />");
+	}
+	document.write("调用outer之前...<br />");
+	//调用全局函数
+	outer();
+	//在外部函数之外的地方调用局部函数
+	inner1();
+	document.write("调用outer之后...<br />");
+</script> -->
+
+
+<!-- <script type="text/javascript">
+	// 定义一个函数，并将它赋给hello变量
+	var hello = function(name)
+	{
+		return name + "，您好";
+	}
+	// 判断函数是否为Function的实例、是否为Object的实例
+	alert("hello是否为Function对象:" + (hello instanceof Function)
+		+ "\nhello是否为Object对象:" + (hello instanceof Object));
+	alert(hello);
+</script>
+
+
+<script type="text/javascript">
+	// 定义一个函数
+	var test = function(name)
+	{
+		return "你好，" + name ;
+	}
+	// 直接调用函数
+	var rval = test('leegang');
+	// 将函数作为类的构造器
+	var obj = new test('leegang');
+	alert(rval + "\n" + obj); 
+</script> -->
+
+
+<!-- <script type="text/javascript">
+	// 定义了一个函数，该函数也是一个类
+	function Person(name , age)
+	{
+		// 将参数name的值赋给name属性
+		this.name = name;
+		// 将参数age的值赋给age属性
+		this.age = age;
+		// 为函数分配info方法，使用匿名函数来定义方法
+		this.info = function()
+		{
+			document.writeln("我的名字是：" + this.name + "<br />");
+			document.writeln("我的年纪是：" + this.age + "<br />");
+		};
+	}
+	// 创建p对象
+	var p = new Person('yeeku' , 29);
+	// 执行info方法
+	p.info();
+</script> -->
+
+<!-- <script type="text/javascript">
+	// 直接定义一个函数，并未指定该函数属于哪个对象。
+	// 该对象默认属于window对象
+	function hello(name)
+	{
+		document.write(name + ", 您好<br />");		
+	}
+	// 以window作为调用者，调用hello函数
+	window.hello("孙悟空");
+	// 定义一个对象
+	var p = {
+		// 定义一个函数，该函数属于p对象。
+		walk: function()
+		{
+			for(var i = 0 ; i < 2 ; i++)
+			{
+				document.write("慢慢地走...");
+			}
+		}
+	}
+	p.walk();
+</script>
+
+
+<script type="text/javascript">
+	// 直接定义一个函数，并未指定该函数属于哪个对象。
+	// 该对象默认属于window对象
+	function hello(name)
+	{
+		document.write(name + ", 您好<br />");		
+	}
+	// 访问hello,将输出hello函数的代码。
+	alert(hello);
+	// 对hello变量赋值，相当于把hello函数（也是变量）重新赋值了
+	hello = "疯狂软件";
+	// hello只是一个普通变量，不是函数了，下面代码出错
+	hello("孙悟空");     // ①
+</script> -->
+
+
+<!-- <script type="text/javascript">
+	// 定义函数Person
+	function Person(national, age)
+	{
+		// this修饰的变量为实例属性
+		this.age = age;
+		// Person修饰的变量为类属性
+		Person.national = national;
+		// 以var定义的变量为局部变量
+		var bb = 0;
+	}
+	// 创建Person的第一个对象p1。国籍为中国，年纪为29
+	var p1 = new Person('中国' , 29);
+	document.writeln("创建第一个Person对象<br />");
+	// 输出第一个对象p1的年纪和国籍
+	document.writeln("p1的age属性为" + p1.age + "<br />");
+	document.writeln("p1的national属性为" + p1.national + "<br />");
+	document.writeln("通过Person访问静态national属性为" 
+		+ Person.national + "<br />");
+	// 输出bb属性
+	document.writeln("p1的bb属性为" + p1.bb + "<br /><hr />");
+	// 创建Person的第二个对象p2
+	var p2 = new Person('美国' , 32);
+	document.writeln("创建两个Person对象之后<br />"); 
+	// 再次输出p1的年纪和国籍
+	document.writeln("p1的age属性为" + p1.age + "<br />");
+	document.writeln("p1的national属性为" + p1.national + "<br />");
+	// 输出p2的年纪和国籍
+	document.writeln("p2的age属性为" + p2.age + "<br />");
+	document.writeln("p2的national属性为" + p2.national + "<br />");
+	// 通过类名访问类属性
+	document.writeln("通过Person访问静态national属性为"
+		+ Person.national + "<br />");
+</script>
+ -->
+
+<!-- <script type="text/javascript">
+	function Student(grade,subject){
+		this.grade=grade;
+		Student.subject=subject;
+	}
+	s1=new Student(5,"java");
+	with(document){
+		writeln('s1'+s1.grade+"<br>");
+		writeln('s1'+s1.subject+"<br>");
+		writeln('stu'+Student.subject+"<br>");
+	}
+	s1.subject="ruby";
+	with(document){
+		writeln('s1'+s1.grade+"<br>");
+		writeln('s1'+s1.subject+"<br>");
+		writeln('stu'+Student.subject+"<br>");
+	}
+</script> -->
+
+<!-- <script type="text/javascript">
+	// 定义一个each函数
+	var each = function(array , fn)
+	{
+		for(var index in array)
+		{
+			// 以window为调用者来调用fn函数，
+			// index、array[index]是传给fn函数的参数
+			fn.call(null , index , array[index]);
+			/*fn.call(array[index], index, array[index]);*/
+		}
+	}
+	// 调用each函数，第一个参数是数组，第二个参数是函数
+	each([4, 20 , 3] , function(index , ele)
+	{
+		document.write("第" + index + "个元素是：" + ele + "<br />");
+	});
+	/*each([4,20,30],function(){alert(this);});*/
+</script> -->
+
+<!-- <script type="text/javascript">
+	var myfun=function(a,b){
+		alert(a+" "+b);
+	}
+	myfun.call(window,12,23);
+	myfun.apply(window,[12,23]);
+	
+	var example=function(n,m){
+		myfun.apply(this,arguments);
+	}
+	example(12,13);
+</script>
+
+
+<script type="text/javascript">
+	function Person(name)
+	{
+		this.name = name;
+		// 定义一个info方法
+		this.info = function()
+		{
+			alert("我的name是：" + this.name);
+		}
+	}
+	var p = new Person("yeeku");
+	// 调用p对象的info方法
+	p.info();
+	var name = "测试名称";
+	// 以window对象作为调用者来调用p对象的info方法
+	p.info.call(window);
+</script>
+
+
+<script type="text/javascript">
+	// 定义Dog函数，等同于定义了Dog类
+	function Dog(name , age , bark)
+	{
+		// 将name、age、bark形参赋值给name、age、bark实例属性
+		this.name = name;
+		this.age = age;
+		this.bark = bark;
+		// 使用内嵌函数为Dog实例定义方法
+		this.info = function()
+		{
+			return this.name + "的年纪为：" + this.age
+				+ ",它的叫声:" + this.bark;
+		}
+	}
+	// 创建Dog的实例
+	var dog = new Dog("旺财" , 3 , '汪汪,汪汪...');
+	// 创建Cat函数，对应Cat类
+	function Cat(name,age)
+	{
+		this.name = name;
+		this.age = age;
+	}
+	// 创建Cat实例。
+	var cat = new Cat("kitty" , 2);
+	// 将dog实例的info方法分离出来，再通过call方法完调用info方法，
+	// 此时以cat为调用者
+	alert(dog.info.call(cat));
+</script> -->
+
+
+<!-- <script type="text/javascript">
+	// 调用add函数
+	console.log(add(2, 5));
+	// 定义add函数（会发生函数提升）
+	function add(a , b)
+	{
+		console.log("执行add函数");
+		return a + b;
+	}
+</script>
+
+<script type="text/javascript">
+	// 调用add函数
+	console.log(add(2, 5));
+	// 定义add函数，此时只提升add变量名，函数定义不会被提升
+	var add = function(a , b)
+	{
+		console.log("执行add函数");
+		return a + b;
+	}
+</script>
+
+<script type="text/javascript">
+	function test(){
+		// 调用add函数
+		console.log(add(2, 5));
+		// 定义add函数（会发生函数提升）
+		function add(a , b)
+		{
+			console.log("执行add函数");
+			return a + b;
+		}
+	}
+	test();
+</script>
+
+<script type="text/javascript">
+	function test(){
+		// 定义add函数，此时只提升add变量名，函数定义不会被提升
+		add = function(a , b)
+		{
+			console.log("执行add函数");
+			return a + b;
+		}
+	}
+	test();
+	// test()函数执行之后，该函数内定义的add变成全局函数
+	console.log(add(2, 5));
+</script>
+
+
+<script type="text/javascript">
+	function a(){
+	}
+	var a; // 定义变量，不指定初始值
+	console.log(a);// 输出a的函数体
+	var b; // 定义变量，不指定初始值
+	function b(){
+	}
+	console.log(b);// 输出b的函数体
+	var c = 1; // 定义变量，并指定初始值
+	function c(){
+	}
+	console.log(c);// 输出1
+	function d(){
+	}
+	var d = 1; // 定义变量，并指定初始值
+	console.log(d);// 输出1
+</script> -->
+
+
+<!-- <script type="text/javascript">
+var arr = ["yeeku", "fkit", "leegang", "crazyit"];
+// 使用函数作为map()方法的参数
+var newArr1 = arr.map(function(ele){ 
+	return ele.length;
+});
+// 使用箭头函数作为map()方法的参数
+var newArr2 = arr.map((ele) => {
+	return ele.length;
+});
+// 由于箭头函数只有一个形参，可以省略形参列表的圆括号
+// 箭头函数执行体只有一条return语句，可以省略return关键字
+var newArr3 = arr.map(ele => ele.length);
+console.log(newArr3);
+// 使用函数作为forEach()方法的参数
+arr.forEach(function(ele){
+	console.log(ele);
+});
+// 使用箭头函数作为map()方法的参数
+arr.forEach((ele) => {
+	console.log(ele);
+});
+// 由于箭头函数只有一个形参，可以省略形参列表的圆括号
+// 箭头函数执行体只有一条语句，可以省略执行体的花括号
+arr.forEach(ele => console.log(ele));
+</script>
+
+<script type="text/javascript">
+// 定义箭头函数，将箭头函数赋值给f变量
+var f = () => {
+	console.log("测试箭头函数");
+	console.log("函数结束");
+}
+// 执行f函数
+f();
+</script> -->
+
+
+<!-- <script type="text/javascript">
+function Person() {
+	// Person()作为构造器使用时，this代表该构造器创建的对象
+	this.age = 0;
+	setInterval(function growUp(){
+		// 对于普通函数来说，直接执行该函数时，this代表全局对象（window）
+		// 因此下面的this不同于Person构造器中的this
+		console.log(this === window);
+		this.age++;
+	}, 1000);
+}
+var p = new Person();
+setInterval(function(){
+	console.log(p.age); // 此处访问p对象的age，将总是输出0
+}, 1000);
+</script> -->
+
+
+<!-- <script type="text/javascript">
+function Person() {
+	// Person()作为构造器使用时，this代表该构造器创建的对象
+	this.age = 0;
+	setInterval(() => {
+		// 箭头函数中this总代表包含箭头函数的上下文。
+		console.log(this === window);
+		// 此处的this，将完全等同于Person构造器中的this
+		this.age++;
+	}, 1000);
+}
+var p = new Person();
+setInterval(function(){
+	console.log(p.age); // 此处访问p对象的age，将总是输出数值不断加1
+}, 1000);
+</script>
+
+
+<script type="text/javascript">
+var f = () => { return this; };
+console.log(f() === window); // 输出true
+</script> -->
+
+
+<!-- <script type="text/javascript">
+var arguments = "yeeku";
+// 箭头函数中arguments引用当前上下的arguments，即"yeeku"字符串
+var arr = () => arguments;
+console.log(arr()); // 输出yeeku
+function foo()
+{
+	// 箭头函数中arguments引用当前上下的arguments，
+	// 此时arguments代表调用foo函数的参数
+	var f = (i) => 'Hello,' + arguments[0];
+	return f(2);
+}
+console.log(foo("yeeku", "fkit")); // 输出Hello,yeeku
+</script>
+
+<script type="text/javascript">
+	var f=()=>({name:'yeeku'});
+	console.log(f());
+</script> -->
+
+	<!-- 函数的参数处理 -->
+
+
+<!-- <script type="text/javascript">
+	// 定义一个函数，该函数接受一个参数
+	function change(arg1)
+	{
+		// 对参数值赋值，对实参不会有任何影响
+		arg1 = 10;
+		document.write("函数执行中arg1的值为：" + arg1 + "<br/>");
+	}
+	// 定义变量x的值为5
+	var x = 5;
+	// 输出函数调用之前x的值
+	document.write("函数调用之前x的值为：" + x + "<br />");
+	change(x);
+	document.write("函数调用之后x的值为：" + x + "<br />");
+</script>
+
+
+
+<script type="text/javascript">
+	// 定义函数，该函数接受一个参数
+	function changeAge(person)
+	{
+		// 改变person的age属性
+		person.age = 10;
+		// 输出person的age属性
+		document.write("函数执行中person的age值为：" 
+			+ person.age + "<br />");
+		// 将person变量直接赋为null
+		person = null;
+	}
+	// 使用JSON语法定义person对象
+	var person = {age : 5};
+	// 输出person的age属性
+	document.write("函数调用之前person的age的值为："
+		+ person.age + "<br />");
+	// 调用函数
+	changeAge(person);
+	// 输出函数调用后person实例的age属性值
+	document.write("函数调用之后person的age的值为：" 
+		+ person.age + "<br />");
+	document.write("person对象为：" + person);
+</script> -->
+
+
+<!-- <script type="text/javascript">
+	function changeAge(person)
+	{
+		if (typeof person == 'object')
+		{
+			// 改变参数的age属性
+			person.age = 10;
+			// 输出参数的age属性
+			document.write("函数执行中person的Age值为："
+				+ person.age + "<br />");
+		}
+		else
+		{
+			alert("参数类型不符合:" + typeof person);
+		}
+	}
+	changeAge();
+</script>
+
+
+<script type="text/javascript">
+	function test()
+	{
+		alert("第一个无参数的test函数");
+	}
+	// 后面定义的函数将会覆盖前面定义的函数
+	function test(name)
+	{
+		alert("第二个带name参数的test函数：" + name);
+	}
+	// 即使不传入参数，程序依然调用带一个参数的test函数。
+	test();
+</script> -->
+
+
+<script type="text/javascript">
+	// 定义函数changeAge,函数需要一个参数
+	function changeAge(person)
+	{
+		// 首先要求person必须是对象，而且person的age属性为number
+		if (typeof person == 'object' 
+			&& typeof person.age == 'number')
+		{
+			//执行函数所需的逻辑操作
+			document.write("函数执行前person的Age值为：" 
+				+ person.age + "<br />");
+			person.age = 10;
+			document.write("函数执行中person的Age值为：" 
+				+ person.age + "<br />");
+		}
+		// 否则将输出提示，参数类型不符合
+		else
+		{
+			document.writeln("参数类型不符合" +
+				typeof person + "<br />");
+		}
+	}
+	// 分别采用不同方式调用函数
+	changeAge();
+	changeAge('xxx');
+	changeAge(true);
+	// 采用JSON语法创建第一个对象
+	p = {abc : 34};
+	changeAge(p);
+	// 采用JSON语法创建第二个对象
+	person = {age : 25};
+	changeAge(person);
+	document.write("函数执行后person的Age值为：" 
+				+ person.age + "<br />");
+</script>
+
+</body>
+</html>
