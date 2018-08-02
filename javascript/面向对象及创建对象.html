@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象及创建对象</title>
+
+
+</head>
+<body>
+	<!-- 面向对象 -->
+
+<script type="text/javascript">
+	// 定义简单函数
+	function Person(name)
+	{
+		this.name = name;
+	}
+	// 使用new关键字，简单创建Person类的实例
+	var p = new Person('yeeku');
+	// 如果p是Person实例，则输出静态文本
+	if (p instanceof Person)
+		document.writeln("p是Person的实例<br />");
+	// 如果p是Object 实例，则输出静态文本
+	if(p instanceof Object)
+		document.writeln("p是Object的实例");
+</script>
+
+
+<script type="text/javascript">
+	function Person(name , age)
+	{
+		// 将name、age形参的值分别赋给name、age实例属性。
+		this.name = name;
+		this.age = age;
+		this.info = function()
+		{
+			alert('info method!');
+		}
+	}
+	var p = new Person('yeeku' , 30);
+	for (propName in p)
+	{
+		// 遍历Person对象的属性
+		document.writeln('p对象的' + propName 
+			+ "属性值为：" + p[propName] + "<br />");
+	}
+</script>
+
+分割线
+
+
+<script type="text/javascript">
+	// 创建Person函数
+	function Person(name , age)
+	{
+		this.name = name;
+		this.age = age;
+		// 为Person对象指定info方法
+		this.info = function()
+		{
+			// 输出Person实例的name和age属性
+			document.writeln("姓名：" + this.name);
+			document.writeln("年龄：" + this.age);
+		}
+	}
+	// 创建Person实例p1
+	var p1 = new Person('yeeku' , 29);
+	// 执行p1的info方法
+	p1.info();
+	document.writeln("<hr />");
+	// 创建Person实例p2
+	var p2 = new Person('wawa' , 20);
+	// 执行p2的info方法
+	p2.info();
+</script>
+
+<script type="text/javascript">
+	// 创建Person函数
+	function Person()
+	{
+		// locVal是个局部变量，原本应该该函数结束后立即失效
+		var locVal = '疯狂Java联盟';
+		this.info = function()
+		{
+			// 此处会形成闭包
+			document.writeln("locVal的值为：" + locVal);
+			return locVal;
+		}
+	}
+	var p = new Person();
+	// 调用p对象的info()方法
+	var val = p.info();
+	// 输出val返回值，该返回值就是局部变量locVal。
+	alert(val);
+</script>
+
+<script type="text/javascript">
+	// 定义一个Person函数，同时也定义了Person类
+	function Person(name , age)
+	{
+		// 将局部变量name、age赋值给实例属性name、age
+		this.name = name;
+		this.age = age;
+		// 使用内嵌的函数定义了Person类的方法
+		this.info = function()
+		{
+			document.writeln("姓名：" + this.name + "<br />");
+			document.writeln("年龄：" + this.age + "<br />");
+		}
+	}
+	// 创建Person的实例p1
+	var p1 = new Person('yeeku' , 29);
+	// 执行Person的info方法
+	p1.info();
+	// 此处不可调用walk方法，变量p还没有walk方法
+	// 将walk方法增加到Person的prototype属性上
+	Person.prototype.walk = function()
+	{
+		document.writeln(this.name + '正在慢慢溜达...<br />');
+	}
+	document.writeln('<hr />');
+	// 创建Person的实例p2
+	var p2 = new Person('leegang' , 30);
+	// 执行p2的info方法
+	p2.info();
+	document.writeln('<hr />');
+	// 执行p2的walk方法
+	p2.walk();
+	// 此时p1也具有了walk方法——JavaScript允许为类动态增加方法和属性
+	// 执行p1的walk方法
+	p1.walk();
+</script>
+
+<script type="text/javascript">
+	// 为Array增加indexof方法，将该函数增加到prototype属性上
+	Array.prototype.indexof = function(obj)
+	{
+		// 定义result的值为-1
+		var result = -1;
+		// 遍历数组的每个元素
+		for (var i = 0 ; i < this.length ; i ++)
+		{
+			// 当数组的第i个元素值等于obj时
+			if (this[i] == obj)
+			{
+				// 将result的值赋为i，并结束循环。
+				result = i;
+				break;
+			}
+		}
+		// 返回元素所在的位置。
+		return result;
+	}
+	var arr = [4, 5, 7, -2];
+	// 测试为arr新增的indexof方法
+	alert(arr.indexof(-2));
+</script>
+
+<script type="text/javascript">
+	// 定义一个Person类
+	function Person(name, age)
+	{
+		this.name = name;
+		this.age = age;
+	}
+	// 使用prototype为Person类添加sayHello方法
+	Person.prototype.sayHello = function()
+	{
+		console.log(this.name + "向您打招呼！");
+	}
+	var per = new Person("牛魔王", 22);  
+	per.sayHello(); // 输出：牛魔王向您打招呼！
+	// 定义一个Student类
+	function Student(grade){
+		 this.grade = grade;
+	}
+	// 将Student的prototype设为Person对象
+	Student.prototype = new Person("未命名" , 0);
+	// 使用prototype为Student类添加intro方法
+	Student.prototype.intro = function(){  
+		console.log("%s是个学生，读%d年级" , this.name, this.grade);
+	}
+	var stu = new Student(5);
+	stu.name = "孙悟空";
+	console.log(stu instanceof Student); // 输出true
+	console.log(stu instanceof Person); // 输出true
+	stu.sayHello(); // 输出：孙悟空向您打招呼！ 
+	stu.intro(); //输出：孙悟空是个学生，读5年级
+</script>
+
+<script type="text/javascript">
+	// 定义一个Person类
+	function Person(name, age)
+	{
+		this.name = name;
+		this.age = age;
+		// 为Person类定义sayHello方法
+		this.sayHello = function()
+		{
+			console.log(this.name + "向您打招呼！");
+		}
+	}
+	var per = new Person("牛魔王", 22);
+	per.sayHello(); // 输出：牛魔王向您打招呼！
+	// 定义Student类
+	function Student(name, age, grade)
+	{
+		// 定义一个实例属性引用Person类
+		this.inherit_temp = Person;
+		// 调用Person类的构造器
+		this.inherit_temp(name, age);
+		this.grade = grade;
+	}
+	// 使用prototype为Student类添加intro方法
+	Student.prototype.intro = function(){  
+		console.log("%s是个学生，读%d年级" , this.name, this.grade);
+	}
+	var stu = new Student("孙悟空", 34, 5);
+	console.log(stu instanceof Student); // 输出true
+	console.log(stu instanceof Person); // 伪继承，所以输出false
+	stu.sayHello(); // 输出：孙悟空向您打招呼！
+	stu.intro(); //输出：孙悟空是个学生，读5年级
+</script>
+
+<script type="text/javascript">
+	// 定义一个Person类
+	function Person(name, age)
+	{
+		this.name = name;
+		this.age = age;
+		// 为Person类定义sayHello方法
+		this.sayHello = function()
+		{
+			console.log(this.name + "向您打招呼！");
+		}
+	}
+	var per = new Person("牛魔王", 22);
+	per.sayHello(); // 输出：牛魔王向您打招呼！
+	// 定义Student类
+	function Student(name, age, grade)
+	{
+		Person.call(this, name, age);
+//		Person.apply(this, [name, age]);
+		this.grade = grade;
+	}
+	// 使用prototype为Student类添加intro方法
+	Student.prototype.intro = function(){  
+		console.log("%s是个学生，读%d年级" , this.name, this.grade);
+	}
+	var stu = new Student("孙悟空", 34, 5);
+	console.log(stu instanceof Student); // 输出true
+	console.log(stu instanceof Person); // 伪继承，所以输出false
+	stu.sayHello(); // 输出：孙悟空向您打招呼！
+	stu.intro(); //输出：孙悟空是个学生，读5年级
+</script>
+
+<script type="text/javascript">
+	// 定义一个函数，同时也定义了一个Person类
+	function Person(name , age)
+	{
+		// 将name、age形参赋值给name、age实例属性
+		this.name = name;
+		this.age = age;
+	}
+	// 分别以两种方式创建Person实例
+	var p1 = new Person();
+	var p2 = new Person('yeeku' , 29);
+	// 输出p1的属性
+	document.writeln("p1的属性如下:"
+		+ p1.name + p1.age + "<br />");
+	// 输出p2的属性
+	document.writeln("p2的属性如下:" 
+		+ p2.name + p2.age);
+</script>
+
+<script type="text/javascript">
+	// 创建空对象
+	var myObj = new Object();
+	// 增加属性
+	myObj.name = 'yeeku';
+	// 增加属性
+	myObj.age = 29;
+	// 输出对象的两个属性
+	document.writeln(myObj.name  + myObj.age);
+</script>
+
+<script type="text/javascript">
+	var myObj = new Object();
+	myObj.name = 'yeeku';
+	myObj.age = 29;
+	// 为对象增加方法
+	myObj.info = new Function("document.writeln('对象的name属性:' + this.name);"
+		+ "document.writeln('<br />');"
+		+ "document.writeln('对象的age属性:' + this.age)");
+	document.writeln("<hr / >");
+	myObj.info();
+</script>
+
+<script type="text/javascript">
+	//创建空对象
+	var myObj = new Object();
+	//为空对象增加属性
+	myObj.name = 'yeeku';
+	myObj.age = 29;
+	//创建一个函数
+	function abc()
+	{
+		document.writeln("对象的name属性:" + this.name);
+		document.writeln("<br />");
+		document.writeln("对象的age属性:" + this.age);
+	};
+	//将已有的函数添加为对象的方法
+	myObj.info = abc;
+	document.writeln("<hr />");
+	//调用方法
+	myObj.info();
+</script>
+
+<script type="text/javascript">
+	// 定义一个对象
+	var person =
+	{
+		// 定义第一个简单属性
+		name : 'wawa',
+		// 定义第二个简单属性
+		age : 29 ,
+		// 定义第三个属性：数组
+		schools : ['小学' , '中学' , "大学"],
+		// 定义第四个属性，对象数组
+		parents :[
+			{
+				name : 'father',
+				age : 60,
+				address : '广州'
+			} 
+			,
+			{
+				name : 'mother',
+				age : 58,
+				address : '深圳'
+			}
+		]
+	};
+	alert(person.parents);
+</script>
+
+
+
+</body>
+</html>
