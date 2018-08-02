@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>运算符及语句</title>
+
+
+</head>
+<body>
+	<!-- 运算符 -->
+
+
+<!-- <script type="text/javascript">
+	// 将变量str赋值为JavaScript
+	var str = "JavaScript";
+	// 将变量pi赋值为3.14
+	var pi = 3.14;
+	// 将变量赋值为true
+	var visited = true;
+
+	// 将变量str赋值为JavaScript
+	var str = "JavaScript";
+	// 将变量str的值赋给str2
+	var str2 = str
+
+	// 为a, b , c ,d赋值，四个变量的值都是7
+	var a = b = c = d = 7;
+	// 输出四个变量的值。
+	alert(a + '\n' + b + '\n' + c + '\n' + d);
+
+
+	// 将变量x赋值为12.34
+	var x = 12.34;
+	// 将表达式的值赋给y
+	var y = x + 5;
+	// 输出y的值
+	alert(y);
+</script> -->
+
+
+<!-- <script type="text/javascript">
+	var a = 5.2;
+	var b = 3.1;
+	var sum = a + b;
+	// sum的值为8.3
+	alert(sum);
+
+	var c = 5.2;
+	var d = 3.1;
+	var sub = c - d;
+	// sub的值为2.1
+	alert(sub);
+
+	var e = 5.2;
+	var f = 3.1;
+	var product= e * f;
+	// product的值为16.12
+	alert(product);
+
+	var m = 36;
+	var n = 9;
+	var div = m / n;
+	// div的值为4
+	alert(div);
+
+	var x = 5.2;
+	var y = 3.1;
+	var mod = x % y;
+	// mod的值为2.1
+	alert(mod);
+</script> -->
+
+
+<!-- <script type="text/javascript">
+	var a = 5;
+	// 让a先执行算术运算，然后自加
+	var b = a++ + 6;
+	alert(a + "\n" + b);
+</script>
+
+
+<script type="text/javascript">
+	var a = 5;
+	//让a先执行自加，执行算术运算。
+	var b = ++a + 6;
+	alert(a + "\n" + b);
+</script> -->
+
+
+<!-- <script type="text/javascript">
+	// 定义变量a为3.2
+	var a = 3.2;
+	// 求a的5次方，并将计算结果赋为b。
+	var b = Math.pow(a , 5);
+	// 输出b的值
+	alert(b);
+	// 求a的平方根，并将结果赋给c
+	var c = Math.sqrt(a);
+	// 输出c的值
+	alert(c);
+	// 计算随机数
+	var d = Math.random();
+	// 输出随机数d的值
+	alert(d);
+</script>
+ -->
+
+
+<!-- <script type="text/javascript">
+	// 输出5 & 9 和 5 | 9 的值
+	alert((5 & 9) + "==>" + (5 | 9));
+	// 输出 -5的异或 和 5的异或 的值
+	alert((~-5).toString(2) + "==>" + (~5).toString(2));
+</script>
+
+
+<script type="text/javascript">
+	// 输出5 << 2 和 5 >> 2 的值
+	alert((5 << 2) + "==>" + (5 >> 2));
+	alert((-5>>2).toString(2));
+</script> -->
+
+<!-- <script type="text/javascript">
+	// 判断5是否等于"5"
+	alert(5 == "5");
+	// 判断5是否严格等于"5"
+	alert(5 === "5");
+</script>
+
+
+<script type="text/javascript">
+	// 先比较第一个字母，z的Unicode值比a的Unicode值大，返回真
+	alert("z" > "abc");
+	// 先比较第一个字母，a的Unicode值比Z的Unicode值大，返回真
+	alert("abc" > "XYZ");
+	// 前两个字母相同，比较第三个字母，C的Unicode值比B的Unicode值大，返回真
+	alert("ABC" > "ABB");
+</script> -->
+
+<!-- <script type="text/javascript">
+	// 直接对false求非运算，将返回true
+	alert(!false);
+	// 5>3返回true，’6’自动类型转换为整数6，6>10返回false，求与后返回false
+	alert(5 > 3 && '6' > 10);
+	// 4>=5返回false，"abc">"abb"返回true。求或返回true
+	alert(4 >= 5 || "abc" > "abb"); 
+</script>
+
+<script type="text/javascript">
+	// 使用位运算符代替逻辑运算符
+	alert( 6 > 5 | 3 > 4);
+	alert( true ^ false);
+</script>
+
+
+<script type="text/javascript">
+	// 定义变量a, b，并为其赋值
+	var a = 5;
+	var b = 10
+	// 如果a>4，或b>10
+	if (a > 4 | b++ > 10)
+		alert(a + '\n' + b);
+</script>
+
+<script type="text/javascript">
+	//定义变量a, b，并为其赋值
+	var a = 5;
+	var b = 10
+	//如果a>4，或b>10
+	if (a > 4 || b++ > 10)
+		alert(a + '\n' + b);
+</script> -->
+
+
+<!-- <script type="text/javascript">
+	// 使用三目运算符
+	5 > 3 ? alert("5大于3") : alert("5小3") ;
+</script>
+
+<script type="text/javascript">
+	// 声明变量a , b , c , d。
+	var a , b , c , d;
+	// 使用逗号运算符为a赋值，最右边的表达式为56,因此a的值为56。
+	a = (b = 5, c = 7, d = 56);
+	// 输出四个变量的值。
+	document.write('a = ' + a + ' b = '
+		+ b + ' c = ' + c + ' d = ' + d);
+</script>
+
+<script type="text/javascript">
+	var a = 5;
+	var b = true;
+	var str = "hello javascript";
+	alert(typeof(a) + "\n" + typeof(b) + "\n" + typeof(str));
+</script>
+
+<script type="text/javascript">
+	// 定义一个数组
+	var a = [4, 5];
+	// 判断a变量是否为Array的实例
+	alert(a instanceof Array);
+	// 判断a变量是否为Object的实例
+	alert(a instanceof Object);
+</script> -->
+
+
+	<!-- 语句 -->
+
+
+<!-- <script type="text/javascript">
+	// 声明一个数组
+	var a = [];
+	// 使用空语句，完成数组的初始化
+	for (var i = 0 ; i < 10 ; a[i++] = i + 20);
+	// 遍历数组元素
+	for ( index in a)
+	{
+		document.writeln(a[index] + "<br />");
+	}
+</script> -->
+
+<!-- <script type="text/javascript">
+	for(var i=0;i<10;i++){
+		document.writeln(i+"<br>");
+		if(i>4)throw new Error("用户自定义错误");
+	}
+</script>
+
+<script type="text/javascript">
+	try{
+		for(var i=0;i<10;i++){
+			document.writeln(i+"<br>");
+			if(i>4)throw new Error('用户自定义错误');
+		}
+	}
+	catch(e){
+		document.writeln('系统异常'+e.message+"<br>");
+	}
+	finally{
+		document.writeln('系统的finally快');
+	}
+
+</script> -->
+<!-- <script type="text/javascript">
+	with(document){
+	writeln("ggg");
+	writeln("ppp");
+	writeln("qqq");
+}</script>
+ -->
+
+
+	<!-- 流程控制 -->
+
+
+<!-- <script type="text/javascript">
+	// 定义变量a ，并为其赋值
+	var a = 5;
+	// 如果a>4，执行下面的执行体
+	if (a > 4)
+		alert('a大于4');
+	// 否则，执行下面的执行体
+	else
+		alert('a不大于4');
+</script>
+
+<script type="text/javascript">
+	// 声明变量score，并为其赋值为C
+	var score = 'C';
+	// 执行swicth分支语句
+	switch (score)
+	{
+		case 'A': document.writeln("优秀.");
+			break;
+		case 'B': document.writeln("良好.");
+			break;
+		case 'C': document.writeln("中");
+			break;
+		case 'D': document.writeln("及格");
+			break;
+		case 'F': document.writeln("不及格");
+			break;
+		default: document.writeln("成绩输入错误");
+	}
+</script> -->
+
+<!-- <script type="text/javascript">
+	var count = 0;
+	// 只要count < 10，程序将一直执行循环体
+	while (count < 10) 
+	{
+		document.write(count + "<br />");
+		count++;
+	}
+	document.write("循环结束!");
+</script>
+
+<script type="text/javascript">
+	// 定义变量count
+	var count = 0;
+	// 执行do while循环
+	do
+	{
+		document.write(count +"<br />");
+		count++;
+	// 当count < 10时执行下一次循环
+	}while (count < 10);
+	document.write("循环结束!");
+</script>
+ -->
+
+
+<!-- <script type="text/javascript">
+	for (var count = 0 ; count < 10 ; count++)
+	{
+		document.write(count + "<br />");
+	}
+	document.write("循环结束!");
+</script> -->
+
+<!-- <script type="text/javascript">
+	// 定义数组
+	var a = ['hello' , 'javascript' , 'world'];
+	// 遍历数组的每个元素
+	for (kk in a)
+		document.writeln('索引' + kk + '的值是:' + a[kk] + "<br />" );
+</script>
+
+
+<script type="text/javascript">
+	// 在页面输出静态文本
+	document.write("<h1>Navigator对象的全部属性如下：</h1>");
+	// 遍历navigator对象的所有属性
+	for (proName in navigator)
+	{
+		// 输出navigator对象的所有属性名，以及对应的属性值
+		document.write('属性' + proName + '的值是：' + navigator[proName]);
+		document.write("<br />");
+	}
+</script> -->
+
+
+<!-- <script type="text/javascript">
+	// 以i为计数器循环
+	for (var i = 0 ; i < 5 ; i++)
+	{
+		// 以j为计数器循环
+		for (var j = 0 ; j < 5 ; j++)
+		{
+			document.writeln('j的值为：' + j);
+			// 当i >= 2时候，使用break中止循环。
+			if (i >= 2) break;
+			document.writeln('i值为：' + i);
+			document.writeln('<br />');
+		}
+	}
+</script>
+
+<script type="text/javascript">
+	// 以i为计数器循环
+	for (var i = 0 ; i < 5 ; i++)
+	{
+		// 以j为计数器循环
+		for (var j = 0 ; j < 5 ; j++)
+		{
+			document.writeln('j的值为：' + j);
+			// 当i >= 2时，使用continue中止本次循环。
+			if (i >= 2) continue;
+			document.writeln('i的值为：' + i);
+			document.writeln('<br />');
+		}
+	}
+</script> -->
+
+
+<script type="text/javascript">
+	// 使用outer标签表明外部循环
+	outer:
+	for (var i = 0 ; i < 5 ; i++)
+	{
+		for (var j = 0 ; j < 5 ; j++)
+		{
+			document.writeln('j的值为：' + j);
+			// 当j >= 2时，使用break跳出outer循环。
+			if (j >= 2) break outer;
+			document.writeln('i的值为：' + i);
+			document.writeln('<br />');
+		}
+	}
+</script>
+
+<script type="text/javascript">
+	// 使用outer标签表明外部循环
+	outer :
+	for (var i = 0 ; i < 5 ; i++)
+	{
+		for (var j = 0 ; j < 5 ; j++)
+		{
+			document.writeln('j的值为：' + j);
+			// 当j >= 2时，使用continue结束outer循环。
+			if (j >= 2) continue outer;
+			document.writeln('i的值为：' + i);
+			document.writeln('<br />');
+		}
+	}
+</script>
+
+</body>
+</html>
