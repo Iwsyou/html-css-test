@@ -1,0 +1,276 @@
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8" />
+	<title> 首页 </title>
+	
+	<style type="text/css">
+		table{
+			display:inline-table;
+			width=320px;
+			border:1px solid lightgray;
+			border-collapse:collapse;
+			vertical-align:top;
+			margin-right:0px; 
+		}
+		td{
+			padding:15px;
+			cursor:pointer;
+			border:1px solid lightgrey;
+		}
+		tr{
+			background:linear-gradient(to right,#f6f6f6,#fff);
+		}
+		tr:hover{
+			background:linear-gradient(to right,#eee,#f6f6f6);
+		}
+		div>div{
+			display:inline-block;
+			width:400px;
+			height: 300px;
+			padding: 10px;
+			box-sizing: border-box;
+			border:1px solid lightgrey;
+			margin-left:0px;
+
+		}
+	</style>
+
+
+</head>
+<body>
+
+
+<script type="text/javascript">
+	alert(window.history);
+	var his = "当前的浏览器信息是:<br>";
+	// 遍历该浏览器的全部属性
+	for(var propname in window.history)
+	{
+		// 将所有属性名、属性值连缀在一起
+		his += propname + ": " + window.history[propname] + "<br>"
+	}
+	document.writeln(his);
+</script>
+
+
+<div style="width:725px;">
+	<table border="1">
+		<tr><td title="java">疯狂Java讲义</td></tr>
+		<tr><td title="ee">轻量级Java EE企业应用实战</td></tr>
+		<tr><td title="android">疯狂Android讲义</td></tr>
+<tr><td title="html">疯狂HTML 5/CSS 3/JavaScript讲义</td></tr>
+<tr><td title="front">疯狂前端讲义</td></tr>
+	</table><div id="show"></div>
+</div>
+<script type="text/javascript">
+	var xhr = new XMLHttpRequest();
+	window.onload = function(){
+		// 页面加载时，替换history的状态
+		history.replaceState(null, "首页",
+			"index.html?id=java")
+	}
+	// 获取页面上所有td元素
+	var tdList = document.querySelectorAll("td");
+	// 遍历所有td元素，为它们的onclick事件绑定处理函数
+	for(var i = 0; i < tdList.length ; i++)
+	{
+		tdList[i].onclick = function(src){
+			// 以当前单元格的title为参数发送异步请求
+			sendGet("books.jsp?id=" + src.target.title);
+			// 向history压入状态
+			history.pushState({"cellTitle":src.target.title}, 
+				"首页", "index.html?id=" + src.target.title);
+			// 取消所有td元素的背景色
+			var tdList = document.querySelectorAll("td");
+			for(var i = 0; i < tdList.length ; i++)
+			{
+				tdList[i].style = undefined;
+			}
+			// 将当前单击的单元格设置背景色
+			src.target.style.background = 
+				"linear-gradient(to right, #ddd, #eee)";
+		}
+	}
+	function sendGet(url){
+		// 设置处理响应的回调函数
+		xhr.onreadystatechange = function()
+		{
+			if(xhr.readyState == 4 && xhr.status == 200)
+			{
+				// 获取服务器响应
+				document.querySelector("#show").innerHTML = xhr.responseText;
+			}
+		};
+		// 发送异步请求
+		xhr.open("GET" , url  , true);
+		// 发送请求
+		xhr.send();
+	}
+	// 为窗口的popstate事件绑定监听器
+	window.addEventListener("popstate", function(){
+		// 获取histroy的状态数据
+		var curTitle = history.state["cellTitle"];
+		var tdList = document.querySelectorAll("td");
+		// 取消所有单元格的背景色，只设置被选中单元格的背景色
+		for(var i = 0; i < tdList.length; i++)
+		{
+			if(tdList[i].title == curTitle)
+				tdList[i].style.background = "linear-gradient(to right, #ddd, #eee)";
+			else
+				tdList[i].style = undefined;
+		}
+		// 通过窗口地址栏获取请求参数
+		queryStr = window.location.href.split("?")[1];
+		// 发送异步请求
+	    sendGet("books.jsp?" + queryStr);
+	});
+</script>
+</body>
+</html> -->
+
+
+	<!-- document对象使用 -->
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8" />
+	<title> 动态页面 </title>
+</head>
+<body>
+	<script type="text/javascript">
+	var n=0;
+	var win=null;
+	var show=function(msg){
+		if(win==null||win.closed){
+			win=window.open("","console","width=400,height=250,realizable");
+			win.document.open("text/html");
+		}
+		win.focus();
+		win.document.writeln(msg);
+	}
+	</script>
+	激发事件的按钮
+	<input type="button" value="单击" 
+		onclick="show('您单击了按钮:' + ++n + '次。<br/>');">
+
+
+
+<script type="text/javascript">
+var setCookie = function(name , value)
+{
+	// 定义变量，保存当前时间
+	var expdate = new Date();
+	// 将expdate的月份 + 1。
+	expdate.setMonth(expdate.getMonth() + 1);
+	// 添加Cookie
+	document.cookie = name + "=" + escape(value) ;
+		+ "; expires=" + expdate.toGMTString() +  ";";
+}
+var getCookie = function(name) 
+{
+	// 访问Cookie的name开始处
+	var offset = document.cookie.indexOf(name)
+	// 如果找到指定Cookie
+	if (offset != -1) 
+	{
+		// 从Cookie名后位置开始搜索
+		offset += name.length + 1;
+		// 找到Cookie名后第一个分号（;）
+		end = document.cookie.indexOf(";", offset) ;
+		// 如果没有找到分号
+		if (end == -1)
+		{
+			end = document.cookie.length;
+		}
+		// 截断字符串中Cookie的值
+		return unescape(document.cookie.substring(offset, end));
+	}
+	else
+	{
+		return "";
+	}
+}
+setCookie('user' , 'crazyit.org');
+alert(getCookie('user'));
+</script>	
+</body>
+</html> -->
+  
+
+  <!-- L浏览器分析 -->
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<meta name="author" content="Yeeku.H.Lee(CrazyIt.org)" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> 分析页面加载时间 </title>
+	<script type="text/javascript">
+		// 记录进入页面的时刻
+		var start = new Date().getTime();
+		var load = function()
+		{
+			// 获取页面加载完成时的时刻。
+			var now = new Date().getTime();
+			var page_load_time = now - start;
+			alert("页面加载时间: " + page_load_time);
+		}
+	</script>
+</head>
+<body onload="load();">
+<img src="http://www.crazyit.org/logo.jpg" alt="疯狂Java联盟"/>
+</body >
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="author" content="Yeeku.H.Lee(CrazyIt.org)" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> 分析页面加载时间 </title>
+	<script type="text/javascript">
+		var load = function()
+		{
+			// 记录页面加载完成时的时刻
+			var now = new Date().getTime();
+			var page_load_time = now - performance.timing.navigationStart;
+			alert("页面加载时间: " + page_load_time);
+		}
+	</script>
+</head>
+<body onload="load();">
+<img src="http://www.crazyit.org/logo.jpg" alt="疯狂Java联盟"/>
+</body >
+</html>
+
+
+
+
+<script type="text/javascript">
+	switch (performance.navigation.type)
+	{
+		case 0:
+			alert("正常导航到该页面！");
+			break;
+		case 1:
+			alert("用户重新加载该页面！");
+			break;
+		case 2:
+			alert("用户“前进”到该页面！");
+			break;
+		default :
+			alert("其他方法进入该页面！");
+			break;
+	}
+</script>
+
+
+
+
+

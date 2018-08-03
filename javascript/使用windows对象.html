@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<!-- <html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用Windows对象</title>
+
+
+</head>
+<body>
+<body onload="setTime();"> -->
+<!-- <body onload="stack();">
+<script type="text/javascript">
+// 定义全局变量a
+var a = 5;
+// 判断window对象的属性a和全局变量a是否相等
+alert(window.a === a);
+// 为window对象增加属性
+window.book = "疯狂Ajax讲义";
+// 访问全局变量，将输出“疯狂Ajax讲义”
+alert(book);
+</script>
+
+<script type="text/javascript">
+	//修改窗口的状态栏文字。
+	window.status="自定义状态栏文字";
+</script>
+
+<script type="text/javascript">
+	// 自定义的状态文字
+	var statusText = "自定义的动画状态栏文字...";
+	var out = "";
+	// 动画间隔时间
+	var pause = 25;
+	// 动画宽度
+	var animateWidth = 20;
+	var position = animateWidth;
+	var i = 0 ;
+	var stack = function()
+	{
+		if (statusText.charAt(i) != " ")
+		{
+			out = "";
+			// 将0到i-1个字符拼成输出字符串
+			for (var j = 0; j < i; j++)
+			{
+				out += statusText.charAt(j);
+			}
+			// 增加一定宽度空格
+			for (j = i; j < position; j++)
+			{
+				out += " ";
+			}
+			// 将第i个字符添加到输出字符串里去
+			out += statusText.charAt(i);
+			for (j = position; j < animateWidth; j++)
+			{
+				out += " ";
+			}
+			window.status = out;
+			// 如果后出来的字紧靠了前面字符串
+			if (position == i)
+			{
+				animateWidth++;
+				position = animateWidth;
+				// i加1，对应为多出现一个字符
+				i++;
+			}
+			else
+			{
+				position--;
+			}
+		}
+		else
+		{
+			i++
+		}
+		if (i < statusText.length)
+		{
+			setTimeout("stack()",pause);
+		}
+	}
+</script>
+
+<script type="text/javascript">
+	var loc=window.location;
+	var loca="当前locatiom信息是：\n";
+	for(var p in loc){
+		loca+=p+":"+loc[p]+"<br>";
+	}
+	document.writeln(loca);
+</script>
+
+<script type="text/javascript">
+	alert(window.screen);
+	var str = "当前的屏幕信息是:\n";
+	// 遍历screen对象的所有属性
+	for(var propname in window.screen)
+	{
+		str += propname + ": "
+			+ window.screen[propname] + "<br>"
+	}
+	document.writeln(str);
+</script>
+
+<script type="text/javascript">
+	var width=window.screen.width;
+	var height=window.screen.height;
+	window.open("DOM和HTML.html","_blank","left=0,top=0,widyh=" +width + ",height=" +height+ ",toolbar=no,menubar=no,resize=no");
+</script> -->
+
+<!-- <a href="www.crazyit.org" onclick="return confirm('确认是否导航');">Java联盟</a> -->
+
+<!-- 你的名字是：<span id="name"></span>
+	<script type="text/javascript">
+		name = prompt("请输入你的名字：" ,"");
+		document.getElementById("name").innerHTML = name;
+	</script>
+ -->
+
+	<!-- <span id="tm"></span>
+	<script type="text/javascript">
+		// 定义定时器变量
+		var timer;
+		// 保存页面运行的起始时间
+		var cur = new Date().getTime(); 
+		var setTime = function()
+		{
+			// 在tm元素中显示当前时间
+			document.getElementById("tm").innerHTML = 
+				new Date().toLocaleString();
+			// 如果当前时间比起始时间大于60秒，停止定时器的调度
+			if (new Date().getTime() - cur > 60 * 1000)
+			{
+				// 清除timer定时器
+				clearInterval(timer);
+			}
+		}
+		// 指定每隔1000毫秒执行setTime()函数一次
+		timer = setInterval("setTime();" , 1000);
+	</script> -->
+
+
+<!-- <span id="tm"></span>
+	<script type="text/javascript">
+		// 定义定时器变量
+		var timer;
+		// 保存页面运行的起始时间
+		var cur = new Date().getTime(); 
+		var setTime = function()
+		{
+			// 在tm元素中显示当前时间
+			document.getElementById("tm").innerHTML
+				= new Date().toLocaleString();
+			// 如果当前时间比起始时间小于等于60秒，执行定时器的调度
+			if (new Date().getTime() - cur <= 60 * 1000)
+			{
+				// 指定延迟1000毫秒后执行setTime()函数。
+				window.setTimeout("setTime();" , 1000);
+			}
+		}
+		// 直接调用setTime()函数
+		setTime();
+	</script> -->
+<!-- </body>
+</html> -->
+
+
+<html>
+<head>
+	<meta name="author" content="Yeeku.H.Lee(CrazyIt.org)" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> 通知测试 </title>
+	<script type="text/javascript">
+	let fkNotify;
+	function notifyMe() {
+		// 检查当前浏览器是否支持通知API
+		if (!("Notification" in window))
+		{
+			alert("当前浏览器不支持桌面通知！");
+		}
+		// 如果通知已经得到了用户授权
+		else if (Notification.permission === "granted")
+		{
+			// 创建通知
+			fkNotify = new Notification("您好，来自yeeku的通知！"
+				, {icon:"fklogo.gif"});
+		}
+		// 如果通知API没有被用户明确拒绝
+		else if (Notification.permission === "default")
+		{
+			// 请求获得通知权限
+			Notification.requestPermission(function (permission) {
+				// 如果用户授权接受通知API
+				if (permission === "granted")
+				{
+					fkNotify = new Notification("您好，来自yeeku的通知！"
+						, {icon:"fklogo.gif"});
+				}
+			});
+		}
+		if(fkNotify)
+		{
+			fkNotify.addEventListener("show" , function(){
+				alert("通知被显示出来");
+			}, false);
+			fkNotify.addEventListener("close" , function(){
+				alert("通知被关闭");
+			}, false);
+		}
+		// 如果用户明确拒绝了通知API，程序将不再使用通知API
+	}
+	function closeNotify()
+	{
+		fkNotify.close();
+	}
+	</script>
+</head>
+<body>
+<button onclick="notifyMe();">发送通知</button>
+<button onclick="closeNotify();">关闭通知</button>
+</body>
+</html>
