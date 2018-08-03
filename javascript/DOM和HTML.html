@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> 根据ID访问HTML元素 </title>
+	<script type="text/javascript">
+		var accessById = function()
+		{
+			alert(document.getElementById("a").innerHTML + "\n"
+				+ document.getElementById("b").value);
+		}
+	</script>
+	</head>
+<body>
+	<div id="a">疯狂Java讲义</div>
+	<textarea id="b" rows="3" cols='25'>轻量级Java EE企业应用实战
+		</textarea>
+	<input type="button" value="访问2个元素" onclick="accessById();"/>
+</body>
+</html> -->
+
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> 根据选择器访问HTML元素 </title>
+	<script type="text/javascript">
+		var accessById = function()
+		{
+			alert(document.querySelector("#a").innerHTML + "\n"
+				+ document.querySelector("#b").value);
+		}
+	</script>
+	</head>
+<body>
+	<div id="a">疯狂Java讲义</div>
+	<textarea id="b" rows="3" cols='25'>轻量级Java EE企业应用实战
+		</textarea>
+	<input type="button" value="访问2个元素" onclick="accessById();"/>
+</body>
+</html> -->
+
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> 根据选择器访问HTML元素 </title>
+	<script type="text/javascript">
+		var change = function()
+		{
+			var divList = document.querySelectorAll("div");
+			alert(divList);
+			for (var i in divList)
+			{
+				divList[i].innerHTML = "测试内容" + i;
+				divList[i].style.width = "300px";
+				divList[i].style.height = "50px";
+				divList[i].style.margin = "10px";
+				divList[i].style.backgroundColor = "#faa";
+			}
+		}
+	</script>
+	</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<input type="button" onclick="change();" value="修改全部div元素"/>
+</body>
+</html> -->
+
+<!-- <html>
+<head>
+	<meta name="author" content="Yeeku.H.Lee(CrazyIt.org)" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> 根据节点关系访问HTML元素 </title>
+	<style type="text/css">
+		/* 定义改变背景色的CSS，表示被选中的项 */
+		.selected {
+			background-color:#66f
+		}
+	</style>
+	</head>
+	<body>
+	<ol id="books">
+		<li id="java">疯狂Java讲义</li>
+		<li id="ssh">轻量级Java EE企业应用实战</li>
+		<li id="ajax" class="selected">疯狂Ajax讲义</li>
+		<li id="xml">疯狂XML讲义</li>
+		<li id="ejb">经典Java EE企业应用实战</li>
+		<li id="android">疯狂Android讲义</li>
+	</ol>
+	<input type="button" value="父节点"
+		onclick="change(curTarget.parentNode);"/>
+	<input type="button" value="第一个"
+		onclick="change(curTarget.parentNode.firstChild.nextSibling);"/>
+	<input type="button" value="上一个"
+		onclick="change(curTarget.previousSibling.previousSibling);"/>
+	<input type="button" value="下一个"
+		onclick="change(curTarget.nextSibling.nextSibling);"/>
+	<input type="button" value="最后一个"
+		onclick="change(curTarget.parentNode.lastChild.previousSibling);"/>
+	<script type="text/javascript">
+		var curTarget = document.getElementById("ajax");
+		var change = function(target)
+		{
+			alert(target.innerHTML);
+		}
+	</script>
+</body>
+</html>
+ -->
+
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> 访问表单控件 </title>
+</head>
+<body>
+	<form id="d" action="" method="get">
+		<input name="user" type="text" /><br />
+		<input name="pass" type="text" /><br />
+		<select name="color">
+			<option value="red">红色</option>
+			<option value="blue">蓝色</option>
+		</select><br />
+		<input type="button" value="第一个" onclick=
+			"alert(document.getElementById('d').elements[0].value);" />
+		<input type="button" value="第二个" onclick=
+			"alert(document.getElementById('d').elements['pass'].value);" />
+		<input type="button" value="第三个"	onclick=
+			"alert(document.getElementById('d').color.value);" />
+	</form>
+</body>
+</html> -->
+
+
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> 访问列表项 </title>
+</head>
+<body>
+	<select id="mySelect" name="mySelect" size="6">
+		<option value="java">疯狂Java讲义</option>
+		<option value="ssh">轻量级Java EE企业应用实战</option>
+		<option value="ajax" selected>疯狂Ajax讲义</option>
+		<option value="xml">疯狂XML讲义</option>
+		<option value="ejb">经典Java EE企业应用实战</option>
+		<option value="android">疯狂Android讲义</option>
+	</select><br />
+	<input type="button" value="第一个" onclick=
+		"change(curTarget.options[0]);" />
+	<input type="button" value="上一个"	onclick=
+		"change(curTarget.options[curTarget.selectedIndex - 1]);" />
+	<input type="button" value="下一个" onclick=
+		"change(curTarget.options[curTarget.selectedIndex + 1]);" />
+	<input type="button" value="最后一个" onclick=
+		"change(curTarget.options[curTarget.length - 1]);" />
+	<script type="text/javascript">
+		var curTarget = document.getElementById("mySelect");
+		var change = function(target)
+		{
+			alert(target.text);
+		}
+	</script>
+</body>
+</html> -->
+
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> 访问表格元素 </title>
+</head>
+<body>
+	<table id="d" border="1">
+	<caption>疯狂Java体系</caption>
+		<tr>
+			<td>疯狂Java讲义</td>
+			<td>轻量级Java EE企业应用实战</td>
+		</tr>
+		<tr>
+			<td>疯狂Ajax讲义</td>
+			<td>经典Java EE企业应用实战</td>
+		</tr>
+		<tr>
+			<td>疯狂XML讲义</td>
+			<td>疯狂Android讲义</td>
+		</tr>
+	</table>
+	<input type="button" value="表格标题" onclick=
+		"alert(document.getElementById('d').caption.innerHTML);" />
+	<input type="button" value="第一行、第一格" onclick=
+		"alert(document.getElementById('d').rows[0].cells[0].innerHTML);" />
+	<input type="button" value="第二行、第二格" onclick=
+		"alert(document.getElementById('d').rows[1].cells[1].innerHTML);" />
+	<input type="button" value="第三行、第二格" onclick=
+		"alert(document.getElementById('d').rows[2].cells[1].innerHTML);" />
+	<input type="button" value="饕餮" onclick=
+		"alert(document.getElementById('d').rows[2].innerHTML);" />
+</body>
+</html> -->
+
+
+<!-- <html>
+<head>
+	<meta charset=utf-8" />
+	<title> 编辑表格值 </title>
+</head>
+<body>
+	改变第<input id="row" type="text" size="2" />行，
+	第<input id="cel" type="text" size="2" />列的值为:
+	<input id="celVal" type="text" size="16" /><br />
+	<input id="chg" type="button" value="改变" onclick="change();" />
+	<table id="d" border="1" style="width:580px;border-collapse:collapse;">
+		<tr>
+			<td>疯狂Java讲义</td>
+			<td>轻量级Java EE企业应用实战</td>
+		</tr>
+		<tr>
+			<td>疯狂Ajax讲义</td>
+			<td>经典Java EE企业应用实战</td>
+		</tr>
+		<tr>
+			<td>疯狂XML讲义</td>
+			<td>疯狂Android讲义</td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+		var change = function()
+		{
+			var tb = document.getElementById("d");
+			var row = document.getElementById("row").value ;
+			row = parseInt(row);
+			// 如果需要修改的行不是整数，弹出警告
+			if(isNaN(row))
+			{
+				alert("您要修改的行必须是整数");
+				return false;
+			}
+			var cel = document.getElementById("cel").value ;
+			cel = parseInt(cel);
+			// 如果需要修改的列不是整数，弹出警告 
+			if(isNaN(cel))
+			{
+				alert("您要修改的列必须是整数");
+				return false;
+			}
+			// 如果需要修改的行或者列超出了表格的行或列，弹出警告
+			if (row > tb.rows.length || 
+				cel > tb.rows.item(0).cells.length)
+			{
+				alert("要修改的单元格不在该表格内");
+				return false;
+			}
+			//	修改单元格的值
+			tb.rows.item(row - 1).cells.item(cel - 1).innerHTML
+				= document.getElementById("celVal").value;
+		}
+	</script>
+</body>
+</html>
+ -->
+
+
+<html>
+<head>
+	<meta charset=utf-8" />
+	<title> 创建或复制节点 </title>
+</head>
+<body id="test">
+<!-- 	<script type="text/javascript">
+var a=document.createElement("div");
+alert(a);
+</script>
+
+<script type="text/javascript">
+// 创建一个新节点，传入不合法的标签名
+var a = document.createElement("divxxx");
+// 使用警告框输出节点
+alert(a);
+</script> -->
+
+<!-- <ul id="d">
+	<li>疯狂Java讲义</li>
+</ul>
+<script type="text/javascript">
+	var ul=document.getElementById("d");
+	var ajax = ul.firstChild.nextSibling.cloneNode(false);
+	ajax.innerHTML="疯狂ajax讲义";
+	//ul.appendChild(ajax);
+	ul.insertBefore(ajax,ul.firstChild);
+</script> -->
+
+<!-- <script type="text/javascript">
+		// 创建<select.../>对象
+		var a = document.createElement("select");
+		// 为<select.../>对象增加10个选项
+		for (var i = 0 ; i < 10 ; i++)
+		{
+			// 创建一个<option.../>元素
+			var op = document.createElement("option");
+			op.innerHTML = '新增的选项' + i;
+			// 将新的选项添加到列表框的最后
+			a.add(op ,null);
+			//a.appendChild(op);
+		}
+		// 设置列表框高度为5
+		a.size = 5;
+		// 将列表框增加成body元素的子节点
+		document.getElementById("test").appendChild(a);
+	</script>
+ -->
+
+<!-- <script type="text/javascript">
+		// 创建<select.../>对象
+		var a = document.createElement("select");
+		a.style.width = "200px";
+		// 为<select.../>对象增加10个选项
+		for (var i = 0 ; i < 10 ; i++)
+		{
+			// 创建一个<option.../>元素
+			var op = new Option('新增的选项' + i , i);		
+			// 直接为指定选项赋值
+			a.options[i] = op;
+			//a.appendChild(op);
+			//a.add(op,null);
+		}
+		// 设置列表框高度为5
+		a.size = 5;
+		// 将列表框增加成body元素的子节点
+		document.getElementById("test").appendChild(a);
+	</script> -->
+
+<!-- <script type="text/javascript">
+		// 创建一个表格对象
+		var a = document.createElement("table");
+		a.style.width = "800px";
+		a.style.borderCollapse = "collapse";
+		// 设置表格的边框为1
+		a.border=1;
+		var caption = a.createCaption();
+		caption.innerHTML = "表格标题";
+		// 为表格循环插入5行
+		for (var i = 0 ; i < 5 ; i++)
+		{
+			// 插入行
+			var tr = a.insertRow(i);
+			// 为每行循环插入7列
+			for (var j = 0 ; j < 7 ; j++)
+			{
+				// 循环插入7列
+				var td = tr.insertCell(j);
+				td.style.padding = "5px";
+				// 设置每个单元格的内容
+				td.innerHTML = "单元格内容 " + i + j;
+			}
+		}
+		//将表格元素添加到HTML文档内
+		document.getElementById("test").appendChild(a);
+	</script> -->
+
+
+<!-- 	<input id="add" type="button" value="增加" disabled
+	onclick="add();"/>
+<input id="del" type="button" value="删除" 
+	onclick="del();"/>
+<div id="target" style="width:240px; height:50px;
+	border:1px solid black">被控制的目标元素
+</div>
+<script type="text/javascript">
+	//获取body元素
+	var body = document.getElementById("test");
+	//获取被控制的目标元素
+	var target = document.getElementById("target");
+	var add = function()
+	{
+		// 添加目标元素
+		body.appendChild(target);
+		document.getElementById("add").disabled = "disabled";
+		document.getElementById("del").disabled = "";
+	}
+	var del = function()
+	{
+		// 删除目标元素
+		body.removeChild(target);
+		document.getElementById("del").disabled = "disabled";
+		document.getElementById("add").disabled = "";
+	}
+</script> -->
+
+<!-- <input id="opValue" type="text"/>
+	<input id="add" type="button" value="增加"
+		onclick="add();"/>
+	<input id="del" type="button" value="删除"
+		onclick="del();"/><br />
+	<select id="show" size="8" style="width:180px;">
+	</select>
+	<script type="text/javascript">
+		var show = document.getElementById("show");
+		// 增加下拉列表选项的函数
+		var add = function()
+		{
+			// 以文本框的值创建一个<option.../>元素
+			var op = new Option(document
+				.getElementById('opValue').value);
+			// 增加选项
+			show.options[show.options.length] = op;
+		}
+		var del = function()
+		{
+			// 如果有选项
+			if(show.options.length > 0)
+			{
+				// 删除最后的一个选项
+				//show.remove(show.options.length - 1);
+				show.options[show.options.length-1]=null;
+			}
+		}
+	</script> -->
+
+<!-- <input id="delrow" type="button" value="删除表格最后一行"
+	onclick="delrow();" /><br />
+<input id="delcell" type="button" value="删除最后一行的最后一格"
+	onclick="delcell();" /><br />
+	<table id="te" border="1" style="width:500px;">
+		<caption>疯狂Java体系</caption>
+		<tr>
+			<td>疯狂Java讲义</td>
+			<td>轻量级Java EE企业应用实战</td>
+		</tr>
+		<tr>
+			<td>疯狂Ajax讲义</td>
+			<td>经典Java EE企业应用实战</td>
+		</tr>
+		<tr>
+			<td>疯狂XML讲义</td>
+			<td>疯狂Android讲义</td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+		// 获取目标表格
+		var tab = document.getElementById("te");
+		// 删除行的函数
+		var delrow = function()
+		{
+			if (tab.rows.length > 0)
+			{
+				// 删除最后一行
+				tab.deleteRow(tab.rows.length - 1); 
+			}
+		}
+		// 删除目标表格的最后一格
+		var delcell = function()
+		{
+			// 获取表格的所有行
+			var rowList = tab.rows;
+			// 获取表格的最后一行
+			var lastRow = rowList.item(rowList.length - 1);
+			if(lastRow.cells.length > 0)
+			{
+				// 删除表格的最后一格
+				lastRow.deleteCell(lastRow.cells.length - 1);
+			}
+		}
+	</script> -->
+
+<a href="http://www.crazyit.org">疯狂Java联盟</a><br />
+	<img id="lee" src="http://www.crazyit.org/logo.jpg"
+	alt="疯狂Java联盟" /><br />
+	<form>
+		<input type="text" name="user" value="文本框"/><br />
+		<input type="button" id='bn' value="按钮"/>
+	</form>
+	<script type="text/javascript">
+		// 访问body元素
+		alert(document.body.id);
+		// 访问第一个超链接
+		alert(document.links[0].href);
+		// 访问id或name为lee的图片
+		alert(document.images['lee'].alt);
+		// 访问页面的第一个表单
+		form = document.forms[0];
+		alert(form.innerHTML);
+		// 访问表单里第一个元素
+		alert(form.elements[0].value);
+		// 访问表单里id或name为bn的元素
+		alert(form.elements['bn'].value);
+		// 下面的代码在Internet Explorer 6中可行
+		alert(document.all['bn'].value);
+	</script>
+
+
+
+
+</body>
+</html>
+
+
+
+
+
