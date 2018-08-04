@@ -353,10 +353,10 @@ var check = function()
 
 	</script> -->
 
-
-<!-- 测试用的第一个按钮 -->
+<!-- 
+测试用的第一个按钮
 	<input id="bn1" type="button" value="按钮1" />
-	<!-- 测试用的第二个按钮 -->
+	测试用的第二个按钮
 	<input id="bn2" type="button" value="按钮2" />
 	<div id="show"></div>
 	<script type="text/javascript">
@@ -384,7 +384,133 @@ var check = function()
 			.addEventListener("click", rd, false);
 		document.getElementById("bn2")
 			.addEventListener("click", gotClick, false);
-	</script>
+	</script> -->
+
+
+
+
+<script type="text/javascript">
+	var drag = function(target, event)
+{
+	// ¶¨Òå¿ªÊ¼ÍÏ¶¯Ê±µÄÊó±êÎ»ÖÃ£¨Ïà¶Ôwindow×ø±ê£©
+	var startX = event.clientX;
+	var startY = event.clientY;
+	// ¶¨Òå½«Òª±»ÍÏ¶¯ÔªËØµÄÎ»ÖÃ£¨Ïà¶ÔÓÚdocument×ø±ê£©
+	// ÒòÎª¸ÃtargetµÄpositionÎªabsolutely£¬
+	// ËùÒÔ¿ÉÈÏÎªËüµÄ×ø±êÏµÊÇ»ùÓÚdocumentµÄ
+	var origX = target.offsetLeft;
+	var origY = target.offsetTop;
+	// ÒòÎªºóÃæ¸ù¾ÝeventµÄclientX¡¢clientYÀ´»ñÈ¡Êó±êÎ»ÖÃÊ±£¬
+	// Ö»ÄÜ»ñÈ¡windows×ø±êÏµµÄÎ»ÖÃ£¬ËùÒÔÐèÒª¼ÆËãwindow×ø±êÏµ
+	// ºÍdocument×ø±êÏµµÄÆ«ÒÆ¡£
+	// ¼ÆËãwindows×ø±êÏµºÍdocument×ø±êÏµÖ®¼äµÄÆ«ÒÆ
+	var deltaX = startX - origX;
+	var deltaY = startY - origY;
+	// Êó±êËÉ¿ªµÄÊÂ¼þ´¦ÀíÆ÷
+	var upHandler = function(evt) 
+	{
+		// ÔÚIE 8¼°¸üÔçµÄIEä¯ÀÀÆ÷ÖÐ»ñÈ¡ÊÂ¼þ¶ÔÏó
+		if (!evt) evt = window.event; 
+		// È¡Ïû±»ÍÏ¶¯¶ÔÏóµÄÊó±êÒÆ¶¯£¨mousemove£©ºÍÊó±êËÉ¿ª£¨mouseup£©µÄÊÂ¼þ´¦ÀíÆ÷
+		if (document.removeEventListener)
+		{
+			// È¡ÏûÔÚÊÂ¼þ²¶»ñ½×¶ÎµÄÊÂ¼þ´¦ÀíÆ÷
+			document.removeEventListener("mouseup", upHandler, true);
+			document.removeEventListener("mousemove", moveHandler, true);
+		}
+		// ÔÚIE 8¼°¸üÔçµÄIEä¯ÀÀÆ÷£¬È¡ÏûÊÂ¼þ´¦ÀíÆ÷
+		else if (document.detachEvent) 
+		{
+			target.detachEvent("onlosecapture", upHandler);
+			target.detachEvent("onmouseup", upHandler);
+			target.detachEvent("onmousemove", moveHandler);
+			target.releaseCapture( );
+		}
+		// ×èÖ¹ÊÂ¼þ´«²¥
+		stopProp(evt);
+	}
+	// ×èÖ¹ÊÂ¼þ´«²¥£¨¸Ãº¯Êý¿ÉÒÔ¿çä¯ÀÀÆ÷£©
+	var stopProp = function(evt)
+	{
+		// Èç¹ûÖ§³ÖstopPropagationº¯Êý£¬µ÷ÓÃ¸Ãº¯ÊýÈ¡Ïû´«²¥
+		if (evt.stopPropagation)
+		{
+			evt.stopPropagation();
+		}
+		// ´¦ÀíIE 8¼°¸üÔçµÄIEä¯ÀÀÆ÷
+		else
+		{
+			// µ÷ÓÃcancelBubbleÈ¡ÏûÃ°ÅÝ
+			evt.cancelBubble = true;
+		}
+	}
+	// Îª±»ÍÏ¶¯¶ÔÏóµÄÊó±êÒÆ¶¯£¨mousemove£©ºÍÊó±êËÉ¿ª£¨mouseup£©×¢²áÊÂ¼þ´¦ÀíÆ÷
+	if (document.addEventListener)
+	{
+		// ÔÚÊÂ¼þ²¶»ñ½×¶Î°ó¶¨ÊÂ¼þ´¦ÀíÆ÷
+		document.addEventListener("mousemove", moveHandler, true);
+		document.addEventListener("mouseup", upHandler, true);
+	}
+	else if (document.attachEvent) 
+	{
+		// ÔÚIE 8¼°¸üÔçµÄIEä¯ÀÀÆ÷ÖÐ£¬ÉèÖÃ¸ÃÔªËØÖ±½Ó²¶»ñ¸ÃÊÂ¼þ
+		target.setCapture();
+		// Îª¸ÃÔªËØÊó±êÒÆ¶¯Ê±°ó¶¨ÊÂ¼þ´¦ÀíÆ÷
+		target.attachEvent("onmousemove", moveHandler);
+		// ÎªÊó±êËÉ¿ªÊ±°ó¶¨ÊÂ¼þ´¦ÀíÆ÷
+		target.attachEvent("onmouseup", upHandler);
+		// ½«Ê§È¥²¶»ñÊÂ¼þµ±³ÉÊó±êËÉ¿ª´¦Àí¡£
+		target.attachEvent("onlosecapture", upHandler);
+	}
+	// ×èÖ¹ÊÂ¼þ´«²¥
+	stopProp(event);
+	// ¿çä¯ÀÀÆ÷µØÈ¡ÏûÊÂ¼þÄ¬ÈÏÐÐÎª
+	if (event.preventDefault)
+	{
+		// È¡ÏûÄ¬ÈÏÐÐÎª
+		event.preventDefault( ); 
+	}
+	else
+	{
+		// ÔÚIE 8¼°¸üÔçµÄIEä¯ÀÀÆ÷ÖÐÈ¡ÏûÊÂ¼þµÄÄ¬ÈÏÐÐÎª
+		event.returnValue = false;
+	}
+	// Êó±êÒÆ¶¯µÄÊÂ¼þ´¦ÀíÆ÷
+	function moveHandler(evt)
+	{
+		// ÔÚIE 8¼°¸üÔçµÄIEä¯ÀÀÆ÷ÖÐ»ñÈ¡ÊÂ¼þ¶ÔÏó
+		if (!evt) evt = window.event; 
+		// ½«±»ÍÏ¶¯ÔªËØµÄÎ»ÖÃÒÆ¶¯µ½µ±Ç°Êó±êÎ»ÖÃ¡£
+		// ÏÈ½«window×ø±êÏµÎ»ÖÃ×ª»»³Édocument×ø±êÏµÎ»ÖÃ£¬ÔÙÐÞ¸ÄÄ¿±ê¶ÔÏóµÄCSSÎ»ÖÃ¡£
+		target.style.left = (evt.clientX - deltaX) + "px";
+		target.style.top = (evt.clientY - deltaY) + "px";
+		// ×èÖ¹ÊÂ¼þ´«²¥
+		stopProp(evt);
+	}
+}
+</script>
+
+<div style="position:absolute;
+			left:120px;
+			top:150px;
+			width:250px; 
+			border:1px solid black;">
+	<div style="background-color:#416ea5; 
+				width:250px;
+				height:22px;
+				cursor:move;
+				font-weight:bold;
+				border-bottom:1px solid black;"
+		onmousedown="drag(this.parentNode, event);">
+		可拖动标题
+	</div>
+	<p>可被拖动的窗口</p>
+	<p>窗口内容</p>
+</div>
+定义一个可拖动的图片
+<img src="logo.jpg" alt="按住Shift可拖动"
+	style="position:absolute;"
+	onmousedown="if(event.shiftKey) drag(this, event);" />
 
 
 
