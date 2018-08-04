@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件处理函数及环境</title>
+
+
+</head>
+<body onresize="console.info(event);">
+<!-- 	<h2>数据校验表单</h2>
+<form method="post" onsubmit="return check(this);"
+id="register" name="register" action="#">
+用户名：<input type="text" name="user" /><p>
+密&nbsp;&nbsp;码：<input type="password" name="pass" /><p>
+电&nbsp;&nbsp;邮：<input type="text" name="email" /><p>
+<input type="submit" value="提交" />
+</form>
+<script type="text/javascript">
+// 为字符串增加trim方法，使用正则表达式截取空格
+String.prototype.trim = function()
+{
+	return this.replace( /^\s*/, "" ).replace( /\s*$/, "" );
+}
+// 负责处理表单submit事件的函数
+var check = function()
+{
+	// 访问页面中第一个表单
+	var form = document.forms[0];
+	// 错误字符串
+	var errStr = "";
+	// 当用户名为空
+	if (form.user.value == null 
+		|| form.user.value.trim() == "")
+	{
+		errStr += "\n用户名不能为空!";
+		form.user.focus();
+	}
+	// 当密码为空
+	if (form.pass.value == null 
+		|| form.pass.value.trim() == "")
+	{
+		errStr += "\n密码不能为空!";
+		form.pass.focus();
+	}
+	// 当电子邮件为空
+	if (form.email.value == null
+		|| form.email.value.trim() == "")
+	{
+		errStr += "\n电子邮件不能为空!";
+		form.email.focus();
+	}
+	// 使用正则表达式校验电子邮件的格式是否正确
+	if(!/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+		.test(form.email.value.trim()))
+	{
+		errStr += "\n电子邮件的格式不正确!";
+		form.email.focus();
+	}
+	//	如果错误字符串不为空，表明校验出错
+	if( errStr != "" )
+	{
+		// 弹出出错信息
+		alert(errStr);
+		// 返回false，用于阻止表单提交
+		return false;
+	}
+}
+</script> -->
+
+<!-- <div id="test">
+	div元素的子元素：按钮
+	<input id="testbn" type="button" value="单击我" />
+</div>
+<hr />
+<div id="results"> </div>
+<script type="text/javascript">
+	// 事件处理函数
+	var gotClick1 = function(event) 
+	{
+		// 该事件处理函数简单输出事件的当前对象
+		document.getElementById("results").innerHTML += 
+			"事件捕获阶段: " + event.currentTarget + "<br />";
+	}
+	// 事件处理函数
+	function gotClick2(event) 
+	{
+		// 该事件处理函数简单输出事件的当前对象
+		document.getElementById("results").innerHTML +=
+			"事件冒泡阶段：" + event.currentTarget + "<br />";
+	}
+	// 为testbn按钮绑定事件处理函数（捕获阶段）
+	document.getElementById("testbn")
+		.addEventListener("click" , gotClick1 , true); 
+	// 为test对象绑定事件处理函数（捕获阶段）
+	document.getElementById("test")
+		.addEventListener("click" , gotClick1 , true); 
+	// 为testbn按钮绑定事件处理函数（冒泡阶段）
+	document.getElementById("testbn")
+		.addEventListener("click" , gotClick2 , false); 
+	// 为按钮所在的div对象绑定事件处理函数（冒泡阶段）。
+	document.getElementById("test")
+		.addEventListener("click" , gotClick2 , false);
+</script> -->
+
+
+<!-- <input type="button" value="按钮" name="bn"
+	onclick="showThisName();"/>
+<script type="text/javascript">
+	// 为当前的浏览器窗口的name属性赋值
+	window.name = "测试窗口";
+	var showThisName = function() 
+	{
+		// 此时的this将引用到脚本所在的窗口
+		alert(this.name);
+	}
+</script>
+ -->
+
+
+<!-- <input id="bn1" type="button" value="按钮1" 
+	onclick="alert(this.value);"/>
+<input id="bn2" type="button" value="按钮2" />
+<input id="bn3" type="button" value="按钮3" />
+<script type="text/javascript">
+	var test = function()
+	{
+		alert(this.value);
+	}
+	// 将test函数设置为按钮bn3的事件处理器
+	document.getElementById("bn2").onclick = test;
+	// 使用JSON格式定义了一个对象
+	var p = 
+	{
+		value: 'p对象',
+		info: function()
+		{
+			alert(this.value);
+		}
+	}
+	// 将对象p的info方法设置为按钮bn3的事件处理器
+	document.getElementById("bn3").onclick = p.info;
+	//document.getElementById("bn3").onclick = function(){p.info();}
+	// 直接调用对象p的info()方法
+	p.info();
+</script>
+ -->
+
+<!-- <button id="a">按钮</button>
+	<script type="text/javascript">
+		// 定义一个形参evt
+		var clickHandler = function(evt)
+		{
+			// 事件对象将作为第一个参数传入clickHandler对象
+			alert(evt.target.innerHTML);
+		}
+		// 为按钮a绑定事件处理器
+		document.getElementById("a").onclick = clickHandler;
+	</script>
+ -->
+
+<!-- <button id="a">按钮</button>
+	<script type="text/javascript">
+	// 定义一个形参evt
+	var clickHandler = function(event)
+	{
+		eve = event || window.event;
+		// 对于DOM事件模型，访问事件目标用target属性
+		if (eve.target)
+		{
+			alert(eve.target.innerHTML);
+		}
+		// // 对于IE 8及更早的IE浏览器
+		else
+		{
+			// 对于IE 8及更早的IE浏览器，访问事件目标用srcElement属性
+			alert(eve.srcElement.innerHTML);
+		}
+	}
+	// 为按钮a绑定事件处理器
+	document.getElementById("a").onclick = clickHandler;
+	</script> -->
+
+
+<!-- <h2>脚本触发事件</h2>
+<form method="post" name="register" 
+	action="http://www.crazyit.org">
+	用户名：<input type="text" name="user" /><p>
+	密&nbsp;&nbsp;码：<input type="password" name="pass" /><p>
+	电&nbsp;&nbsp;邮：<input type="text" name="email" /><p>
+	<input type="button" id="regist" value="提交"/>
+</form>
+<script type="text/javascript">
+	// 为字符串增加trim方法，使用正则表达式截取空格
+	String.prototype.trim = function()
+	{
+		return this.replace( /^\s*/, "" ).replace( /\s*$/, "" );
+	}
+	// 负责处理表单submit事件的函数
+	var check = function ()
+	{
+		// 访问页面中第一个表单
+		var form = document.forms[0];
+		// 错误字符串
+		var errStr = "";
+		// 当用户名为空
+		if (form.user.value == null 
+			|| form.user.value.trim() == "")
+		{
+			errStr += "\n用户名不能为空!";
+			form.user.focus();
+		}
+		// 当密码为空
+		if (form.pass.value == null 
+			|| form.pass.value.trim() == "")
+		{
+			errStr += "\n密码不能为空!";
+			form.pass.focus();
+		}
+		// 当电子邮件为空
+		if (form.email.value == null
+			|| form.email.value.trim() == "")
+		{
+			errStr += "\n电子邮件不能为空!";
+			form.email.focus();
+		}
+		//如果错误字符串不为空，表明数据校验出错
+		if(errStr != "")
+		{
+			//弹出出错提示
+			alert(errStr);
+		}
+		// 如果错误字符串为空，表明数据校验通过，可以提交表单
+		else
+		{
+			// 在代码中手动提交表单
+			form.submit();
+		}
+	}
+	// 为第一个表单的onclick绑定事件处理器
+	document.getElementById("regist").onclick = check;
+</script> -->
+
+
+<!-- 友情链接：<br />
+目标超链接
+<a id="mylink" href="http://www.crazyit.org">疯狂Java联盟</a>
+<div id="show"></div>
+<script type="text/javascript">
+	// 事件捕获阶段的处理函数
+	var killClick1 = function(event)
+	{
+		// 取消事件的默认行为
+		event.preventDefault();
+		// 阻止事件传播
+		event.stopPropagation(); 
+		document.getElementById("show").innerHTML
+			+= '事件捕获阶段' + event.currentTarget + "<br />";
+	}
+	//事件冒泡阶段的处理函数
+	var killClick2 = function(event)
+	{
+		// 取消事件的默认行为
+		event.preventDefault();
+		// 阻止事件传播
+		event.stopPropagation(); 
+		document.getElementById("show").innerHTML
+			+= '事件冒泡阶段' + event.currentTarget + "<br />";
+	}
+	// 在事件捕获阶段，分别为超链接对象、document对象绑定事件处理函数。
+	document.addEventListener("click", killClick1, true);
+	document.getElementById("mylink").addEventListener(
+		"click", killClick1, true);
+	//在事件冒泡阶段，分别为超链接对象、document对象绑定事件处理函数。
+	document.addEventListener("click", killClick2, false);
+	document.getElementById("mylink").addEventListener(
+		"click", killClick2, false);
+</script>
+ -->
+
+<!-- 友情链接：<br />
+	<a id="mylink" href="http://www.crazyit.org">疯狂Java联盟</a>
+	<script type="text/javascript">
+		var killClicks = function(event)
+		{
+			event = event || window.event;
+			// 取消事件的默认行为
+			if (event.preventDefault) event.preventDefault(); // 标准方式
+			if (event.returnValue) event.returnValue = false; // IE 8及更早版本的IE浏览器
+			alert("超链接被单击");
+		}
+		// 为按钮绑定事件处理函数（捕获阶段）
+		document.getElementById("mylink")
+			.addEventListener("click", killClicks, true);
+	</script>
+
+友情链接：<br />
+	<a id="mylink" href="http://www.crazyit.org">疯狂Java联盟</a>
+	显示信息输出的div元素
+	<div id="show"></div>
+	<script type="text/javascript">
+		var killClicks = function(event)
+		{
+			event = event || window.event;
+			// 取消事件的默认行为
+			if (event.preventDefault) event.preventDefault(); // 标准方式
+			if (event.returnValue) event.returnValue = false; // IE 8及更早版本的IE浏览器
+			document.getElementById("show").innerHTML
+				+= "事件捕获阶段：" + event.currentTarget + "<br>";
+		}
+		// 为document对象绑定事件处理函数
+		document.addEventListener("click", killClicks, true);
+		// 为超链接绑定事件处理函数
+		document.getElementById("mylink")
+			.addEventListener("click", killClicks, true);
+	</script>
+ -->
+
+<!-- 友情链接：<br />
+	<a id="mylink" href="http://www.crazyit.org">疯狂Java联盟</a>
+	显示信息输出的div元素
+	<div id="show"></div>
+	<script type="text/javascript">
+		var killClicks = function(event)
+		{
+			event = event || window.event;
+			// 取消事件的默认行为
+			if (event.preventDefault) event.preventDefault(); // 标准方式
+			if (event.returnValue) event.returnValue = false; // IE 8及更早版本的IE浏览器
+			event.stopPropagation();
+			document.getElementById("show").innerHTML
+				+= "事件捕获阶段：" + event.currentTarget + "<br>";
+		}
+		var killClick = function(event)
+		{
+			event = event || window.event;
+			// 取消事件的默认行为
+			if (event.preventDefault) event.preventDefault(); // 标准方式
+			if (event.returnValue) event.returnValue = false; // IE 8及更早版本的IE浏览器
+			event.stopPropagation();
+			document.getElementById("show").innerHTML
+				+= "事件冒泡阶段：" + event.currentTarget + "<br>";
+		}
+		// 为document对象绑定事件处理函数
+		document.addEventListener("click", killClicks, true);
+		// 为超链接绑定事件处理函数
+		document.getElementById("mylink")
+			.addEventListener("click", killClicks, true);
+
+		// 在事件冒泡阶段，分别为超链接对象、document对象绑定事件处理函数。
+	document.addEventListener("click", killClick, false);
+	document.getElementById("mylink").addEventListener(
+		"click", killClick, false);
+
+	</script> -->
+
+
+<!-- 测试用的第一个按钮 -->
+	<input id="bn1" type="button" value="按钮1" />
+	<!-- 测试用的第二个按钮 -->
+	<input id="bn2" type="button" value="按钮2" />
+	<div id="show"></div>
+	<script type="text/javascript">
+		// 第一个按钮被单击时的事件处理函数
+		var rd = function(evt)
+		{
+			document.getElementById("show").innerHTML
+				+= '事件冒泡阶段:' + evt.currentTarget.value
+				+ "被单击了<br />";
+			// 创建一个普通事件
+			var e = document.createEvent("Events");
+			// 初始化事件对象，指定该事件支持冒泡，不允许取消默认行为
+			e.initEvent("click", true, false);
+			// 将事件转发到按钮bn2 
+			document.getElementById("bn2").dispatchEvent(e);
+		}
+		// 第二个按钮被单击时的事件处理函数
+		var gotClick = function(evt)
+		{
+			document.getElementById("show").innerHTML
+				+= '事件冒泡阶段:' + evt.currentTarget.value + "<br />";
+		}
+		// 分别为两个按钮绑定事件处理函数
+		document.getElementById("bn1")
+			.addEventListener("click", rd, false);
+		document.getElementById("bn2")
+			.addEventListener("click", gotClick, false);
+	</script>
+
+
+
+</body>
+</html>
