@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Web Storage</title>
+
+<style type="text/css">
+		table {
+			border-collapse: collapse;
+		}
+		td, th{
+			border-left: 1px solid #888;
+			border-right: 1px solid #888;
+			padding: 8px;
+			background: linear-gradient(#eee, white);
+		}
+	</style>
+
+
+</head>
+<body>
+
+	<!-- 使用WebStorage存储读取数据 -->
+<!-- 	<h2>Storage示例</h2>
+<input type="text" id="input">
+
+<input type="checkbox" id="local"><span>本地存储</span>
+
+<div id="show"></div>
+
+<input type="button" value="保存数据"onclick="saveStorage('input');">
+<input type="button" value="读取数据"onclick="loadStorage('show');">
+<script type="text/javascript">
+var saveStorage=function(id){
+	var checked=document.querySelector("#local").checked;
+	var storage=checked?localStorage:sessionStorage;
+	var target=document.getElementById(id);
+	storage["message"]=target.value;
+}
+
+var loadStorage=function(id){
+	var checked=document.querySelector("#local").checked;
+	var storage=checked?localStorage:sessionStorage;
+	var target=document.getElementById(id);
+	target.innerHTML=storage["message"];
+}
+
+</script> -->
+
+<!-- 基于webstorage的记事本 -->
+
+<!-- <h2>客户端记事本</h2>
+<textarea name="msg"cols="50"rows="8" id="msg" cols="30" rows="10"></textarea><br>
+
+<input type="button" value="添加事件"onclick="addmsg();">
+<input type="button" value="删除事件"onclick="clearmsg();">
+<hr>
+<table style="width:600px">
+	<tr>
+		<th>事件</th>
+		<th>添加时间</th>
+	</tr>
+	<tbody id="show"></tbody>
+</table>
+
+<script type="text/javascript">
+	var loadmsg=function(){
+		var tb=document.getElementById("show");
+		tb.innerHTML="";
+		for(var i=0;i<localStorage.length;i++){
+			var key=localStorage.key(i);
+			var date=new Date();
+			date.setTime(key);
+			var datestr=date.toLocaleDateString()+"&nbsp;"+date.toLocaleTimeString();
+
+			var value=localStorage[key];
+			var row=tb.insertRow(i);
+			row.insertCell(0).innerHTML=value;
+			row.insertCell(1).innerHTML=datestr;
+		}
+	}
+
+	var addmsg=function(){
+		var msg=document.getElementById("msg");
+		var time=new Date().getTime();
+		localStorage[time]=msg.value;
+		msg.value="";
+		alert("数据已保存");
+		loadmsg();
+	}
+
+	var clearmsg=function(){
+		localStorage.clear();
+		alert("全部事件信息已被清除");
+		loadmsg();
+	}
+	window.onload=loadmsg();
+</script>
+ -->
+
+<h2>客户端记事本</h2>
+标题：<input type="text" id="title" name="title"size="60"><br>
+事件信息：<textarea id="content" name="content"cols="50"rows="8"></textarea><br>
+添加人：<input type="text" id="user" name="user"><br>
+<input type="button" value="添加事件"onclick="addmsg()">
+<input type="button" value="删除事件"onclick="clearmsg()">
+<hr>
+<table style="width:800px">
+	<tr>
+		<th>标题</th>
+		<th>事件内容</th>
+		<th>添加人</th>
+		<th>添加时间</th>
+	</tr>
+	<tbody id="show"></tbody>
+</table>
+
+<script type="text/javascript">
+	var loadmsg=function(){
+		var tb=document.getElementById("show");
+		tb.innerHTML="";
+		for(var i=0,j=0;i<localStorage.length;i++){
+			var key=localStorage.key(i);
+			if(key.indexOf('_fk')==0){
+				var date=new Date();
+				date.setTime(key.substring(3));
+				var datestr=date.toLocaleDateString()+"&nbsp;"+
+				date.toLocaleTimeString();
+
+				var msgstr=localStorage[key];
+				var msg=JSON.parse(msgstr);
+				var row=tb.insertRow(j++);
+				row.insertCell(0).innerHTML=msg.title;
+				row.insertCell(1).innerHTML=msg.content;
+				row.insertCell(2).innerHTML=msg.user;
+				row.insertCell(3).innerHTML=datestr;
+			}
+		}
+	}
+
+	var addmsg=function(){
+		var title=document.getElementById("title");
+		var content=document.getElementById("content");
+		var user=document.getElementById("user");
+
+		var msg={
+			title:title.value,
+			content:content.value,
+			user:user.value
+		}
+		var time=new Date().getTime();
+		localStorage['_fk'+time]=JSON.stringify(msg);
+		title.value="";
+		content.value="";
+		user.value="";
+		alert("数据已保存");
+		loadmsg();
+	}
+
+	var clearmsg=function(){
+		localStorage.clear();
+		alert("全部事件信息已被删除");
+		loadmsg();
+	}
+	window.onload=loadmsg();
+</script>
+
+
+<!-- <input type="text" id="val"/><button onclick="localStorage['a'] = document.querySelector('#val').value;">修改</button>
+<div id="show"></div> -->
+
+
+</body>
+</html>
+
+
+<!-- <html>
+<head>
+	<meta name="author" content="Yeeku.H.Lee(CrazyIt.org)" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> 监听存储事件 </title>
+	<script type="text/javascript">
+	window.onstorage = function(event){
+		var str = "被修改的key为：" + event.key;
+		var str = str + "<br>被修改之前的值：" + event.oldValue;
+		var str = str + "<br>被修改之后的值：" + event.newValue;
+		var str = str + "<br>修改Storage的页面：" + event.url;
+		var str = str + "<br>被修改的Storage为：" + event.storageArea;
+		document.querySelector("#show").innerHTML = str;
+	};
+	</script>
+</head>
+<body>
+<div id="show"></div>
+</body>
+</html>
+ -->
