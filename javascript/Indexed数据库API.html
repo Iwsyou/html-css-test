@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Indexed数据库API</title>
+
+
+</head>
+<body>
+
+<!-- <script type="text/javascript">
+	function openDB(){
+		var dbName="Iwsyou";
+		var request=indexedDB.open(dbName);
+		request.onsuccess=function(){
+			alert("数据库打开成功"+request.result);
+		}
+		request.onerror=function(){
+			alert("打开数据库失败");
+		}
+	}
+</script>
+<button onclick="openDB()">打开数据库</button> -->
+
+
+<script type="text/javascript">
+	function openDB(){
+		var dbName="Iwsyou";
+		var idb;
+		var request=indexedDB.open(dbName,5);
+		request.onsuccess=function(){
+			idb=request.result;
+			alert("数据库打开成功"+idb);
+		}
+		request.onerror=function(){
+			alert("打开数据库失败");
+		}
+		request.onupgradeneeded=function(){
+			idb=request.result;
+			var storename="books";
+			if(idb.objectStoreNames.contains(storename)){
+				idb.deleteObjectStore(storename);
+			}
+			var opt={
+				keyPath:"isbn",
+				autoIncrement:false
+			};
+			var store=idb.createObjectStore(storename,opt);
+			store.createIndex("by_name","name",{unique:true});
+			store.createIndex("by_content","content");
+			store.createIndex("by_author","author");
+			store.createIndex("by_price","price");
+		}
+	}
+</script>
+<button onclick="openDB()">创建Object Store</button>
+
+</body>
+</html>
