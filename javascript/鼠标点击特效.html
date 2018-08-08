@@ -1,0 +1,55 @@
+
+﻿<!DOCTYPE HTML>
+<head>
+<meta charset=UTF-8">
+<title>点击字体</title>
+
+<script type='text/javascript' src='http://libs.baidu.com/jquery/1.8.3/jquery.min.js'></script>
+
+<script>jQuery(document).ready(
+	function(jQuery){
+	jQuery('.collapseButton').click(function(){
+		jQuery(this).parent().parent().find('.xContent').slideToggle('slow');
+	});
+});</script>
+<script type="text/javascript">
+/* IT粉丝网鼠标点击特效 */
+var a_idx = 0;
+jQuery(document).ready(function($) {
+    $("body").click(function(e) {
+var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善");
+var $i = $("<span/>").text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;
+var x = e.pageX,
+        y = e.pageY;
+        $i.css({
+"z-index": 999999999999999999999999999999999999999999999999999999999999999999999,
+"top": y - 20,
+"left": x,
+"position": "absolute",
+"font-weight": "bold",
+"color": "#ff6651"
+        });
+        $("body").append($i);
+        $i.animate({
+"top": y - 180,
+"opacity": 0
+        },
+        1500,
+function() {
+            $i.remove();
+        });
+    });
+});
+</script>		
+<script type="text/javascript" src="http://www.daxiaamu.com/wp-content/themes/inlou/js/custom.js"></script>
+
+</head>
+<body>
+<div style="width:200px; height:30px; background-color:#ff0; border:10px solid #f0f;">
+	<span style="color:#f0f">中华人民共和国万岁！</span>
+</div>
+	
+
+</body>
+</html>

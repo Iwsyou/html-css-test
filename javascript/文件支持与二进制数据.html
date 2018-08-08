@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文件支持与二进制数据</title>
+
+
+</head>
+<body>
+<!-- 浏览图片<input type="file" id="images" multiple="" accept="image/*">	
+<input type="button" value="显示文件" onclick="showDetails();">
+<script type="text/javascript">
+   	var showDetails = function (){
+   		var imageEle=document.getElementById('images');
+   		var filelist=imageEle.files;
+   		for(var i=0;i<filelist.length;i++){
+   			var file=filelist[i];
+   			div=document.createElement("div");
+   			div.innerHTML="第"+(i+1)+"个文件的文件名是："+file.name+
+   			"该文件的类型是："+file.type+
+   			"该文件的大小位："+file.size;
+   			document.body.appendChild(div);
+   		}
+	}
+</script> -->
+
+
+<!-- 浏览文件<input type="file" id="filel"><br>
+<div id="result"></div>
+	<input type="button" value="读取文本文件"onclick="readText();"><br>
+	<input type="button" value="读取二进制文件"onclick="readBinary();"><br>
+	<input type="button" value="以DataURL方式读取"onclick="readURL();"><br>
+
+	<script type="text/javascript">
+		var reader=null;
+		if(FileReader){
+			reader=new FileReader();
+		}
+		else{
+			alert("浏览器不支持");
+		}
+
+		var readText=function(){
+			if(/text\/\w+/.test(document.getElementById("filel").files[0].type)){
+				reader.readAsText(document.getElementById("filel").files[0],"gbk");
+				reader.onload=function(){
+					document.getElementById("result").innerHTML=reader.result;
+				}
+			}
+			else{
+				alert("你选择的不是文本文件");
+			}
+		}
+
+		var readBinary=function(){
+			reader.readAsBinaryString(document.getElementById("filel").files[0]);
+			reader.onload=function(){
+				document.getElementById("result").innerHTML=reader.result;
+			}
+		}
+
+		var readURL=function(){
+			reader.readAsDataURL(document.getElementById("filel").files[0]);
+			reader.onload=function(){
+				document.getElementById("result").innerHTML=reader.result;
+			}
+		}
+	</script> -->
+
+
+<!-- 浏览文件<input type="file" id="filel"><br>
+上传进度<progress id="pro" value="0"></progress>
+<div id="result"></div>
+<input type="button" value="读取二进制文件"onclick="readBinary();">
+
+	<script type="text/javascript">
+		var reader=null;
+		if(FileReader){
+			reader=new FileReader();
+		}
+		else{
+			alert("浏览器不支持");
+		}
+
+		
+
+		var readBinary=function(){
+			reader.readAsBinaryString(document.getElementById("filel").files[0]);
+			var pro=document.getElementById("pro");
+			pro.max=document.getElementById("filel").files[0].size;
+			reader.onprogress=function(evt){
+				pro.value=evt.loaded;
+			}
+		}
+	</script> -->
+
+
+<!-- <script type="text/javascript">
+	
+var buf=new ArrayBuffer(32);
+alert(buf.byteLength);	
+</script>
+
+<script type="text/javascript">
+// 创建长度为10的Uint8Array
+var arr = new Uint8Array(10);
+// 依次对元素赋值
+arr[0] = 97;
+arr[1] = 98;
+arr[2] = 99;
+// 读取第二个元素
+alert(arr[1]);
+</script> -->
+
+
+<!-- 浏览文件：<input id="file1" type="file"/><br/>
+<div id="result"></div>
+<input type="button" value="读取文本文件" onclick="read();"/><br/>
+<script type="text/javascript">
+var reader = null;
+// 如果浏览器支持FileReader对象
+if(FileReader)
+{
+	reader = new FileReader();
+}
+// 如果浏览器不支持FileReader对象，弹出提示信息
+else
+{
+	alert("浏览器暂不支持FileReader");
+}
+var read = function()
+{
+	// 通过正则表达式验证该文件是否为文本文件，
+	// 如果用户选择的第一个文件是文本文件
+	if(/text\/\w+/.test(document.getElementById("file1").files[0].type))
+	{
+		// 以文本文件的方式读取用户选择的第一个文件
+		reader.readAsArrayBuffer(document.getElementById("file1").files[0]);
+		// 当reader读取数据完成时将会激发该函数
+		reader.onload = function()
+		{
+			// 将ArrayBuffer包装成Uint8Array
+			var data = new Uint8Array(reader.result);
+			// 依次访问文件内容的每个字节
+			console.log(data[0]);
+			console.log(data[1]);
+			console.log(data[2]);
+			console.log(data[3]);
+		};
+	}
+	else
+	{
+		alert("你选择的文件不是文本文件！");
+	}
+}
+</script> -->
+
+
+<!-- 浏览文件：<input id="file1" type="file"/><br/>
+<div id="result"></div>
+<input type="button" value="读取文本文件" onclick="read();"/><br/>
+<script type="text/javascript">
+var reader = null;
+// 如果浏览器支持FileReader对象
+if(FileReader)
+{
+	reader = new FileReader();
+}
+// 如果浏览器不支持FileReader对象，弹出提示信息
+else
+{
+	alert("浏览器暂不支持FileReader");
+}
+var read = function()
+{
+	// 通过正则表达式验证该文件是否为文本文件，
+	// 如果用户选择的第一个文件是文本文件
+	if(/text\/\w+/.test(document.getElementById("file1").files[0].type))
+	{
+		// 以文本文件的方式读取用户选择的第一个文件
+		reader.readAsArrayBuffer(document.getElementById("file1").files[0]);
+		// 当reader读取数据完成时将会激发该函数
+		reader.onload = function()
+		{
+			var data = new DataView(reader.result);
+			var m = data.getInt8(1);
+			console.log(m);
+			// 使用big-endian方式读取
+			var m2 = data.getInt16(1);
+			console.log(m2);
+			// 使用little-endian方式读取
+			var m3 = data.getInt16(1, true);
+			console.log(m3);
+		};
+	}
+	else
+	{
+		alert("你选择的文件不是文本文件！");
+	}
+}
+</script> -->
+
+
+<!-- 新增的blob类 -->
+
+<!-- <script type="text/javascript">
+var blob1 = new Blob(["hello" , "fkjava"]);
+console.log(blob1.size); // blob1包含11个英文字符，因此此处输出11
+var blob2 = new Blob(["html5"]);
+var blob3 = new Blob([blob1, blob2], {type:"text/plain"});
+console.log(blob3.size); // 输出16
+console.log(blob3.type); // 输出text/plain
+</script>
+
+<script type="text/javascript">
+// 创建长度为32的Int16Array数组。
+var arr = new Int16Array(32);
+var b1 = new Blob([arr], {type:"text/plain"});
+console.log(b1.size); // 输出64
+console.log(b1.type); // 输出text/plain
+// 截取b1对象从2开始、直到结束的全部数据
+var b2 = b1.slice(2);
+console.log(b2.size); // 输出62
+</script> -->
+
+
+<!-- <h2>生成blob下载</h2>
+<textarea id="content"  row="3"cols="50"name="content"></textarea><p>
+<button onclick="generate();">创建下载</button><p></p>
+<div id="out"></div>
+
+<script type="text/javascript">
+	function generate(){
+		var str=document.querySelector("#content").value;
+		//var str=document.getElementById("content").value;
+		var blob=new Blob([str],{type:"text/plain"});
+		var out=document.querySelector("#out");
+		//var out=document.getElementById("out");
+		out.innerHTML="<a download='content.txt' href="+URL.createObjectURL(blob)+" target='_blank'>下载</a>"
+	}
+
+</script> -->
+
+<script tyoe="text/javascript">
+	function createDb(event){
+		idb=event.target.result;
+		var storename="pics";
+		if(idb.objectStoreName.contains(storename)){
+			idb.deleteObjectStore(storename);
+		}
+		var opt={
+			keyPath:"pic_id",
+			autoIncrement:true
+		}
+		var store=idb.createObjectStore(storename,opt);
+	}
+
+	var dbName="picDb";
+	var version="3";
+
+	function add(){
+		var request=indexedDB.open(dbName,version);
+		var idb;
+		request.onsuccess=function(event){
+			idb=request.result;
+			var tx=idb.transaction("pics","readwrite");
+			var picstore=tx.objectStore("pics");
+			var pic={
+				pic:document.querySelector("#pic").files[0]
+			};
+			var objectStoreRequest=picstore.put(pic);
+			objectStoreRequest.onsuccess=function(event){
+				alert("图片添加成功");
+			}
+			request.onerror=function(event){
+				alert("数据库打开失败");
+			}
+			request.ongradeneeded=createDb;
+		}
+	}
+
+	function get(key)
+		{
+			var iKey = parseInt(key);
+			if( isNaN(iKey) )
+			{
+				alert("请输入整数作为图片ID");
+				document.getElementById('id').value = "";
+				return;
+			}
+			// 打开数据库连接
+			var request = indexedDB.open(dbName , version);
+			var idb;
+			request.onsuccess = function(event)
+			{
+				idb = request.result;
+				// 打开针对pics对象存储的只读事务
+				var tx = idb.transaction("pics", "readonly");
+				var picsStore = tx.objectStore("pics");
+				// 读取图片
+				var objectGetRequest = picsStore.get(iKey);
+				// 为删除数据的请求绑定事件处理函数
+				objectGetRequest.onsuccess = function(event)
+				{
+					var obj = objectGetRequest.result;
+					// 取出图片内容
+					document.querySelector("#out").innerHTML = 
+						"<img src='" + URL.createObjectURL(obj.pic)+ "'/>";
+				};
+			}
+			request.onerror = function(event)
+			{
+				alert("数据库打开失败!" + event);
+			}
+			request.onupgradeneeded = createDb;
+		}
+
+
+
+
+</script>
+选择图片：<input type="file" id="pic" name="pic" accept="image/*"/><p>
+<button onclick="add();">保存</button><p>
+<input type="text" id="id" name="id" placeholder="请输入图片id"/>
+<button onclick="get(document.getElementById('id').value);">打开图片</button>
+<div id="out"></div>
+
+
+
+
+
+	
+</body>
+</html>
