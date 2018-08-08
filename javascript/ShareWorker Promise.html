@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ShareWorker Promise</title>
+
+
+</head>
+<body>
+
+	<!-- 起始值：<input type="text" id="start" name="start"/><br/>
+	结束值：<input type="text" id="end" name="end"/><br/>
+	<input type="button" value="计算" onclick="cal();"/>
+	<table id="show"></table>
+	<script type="text/javascript">
+		var cal = function()
+		{
+			// 得到用户输入的start、end两个值
+			var start = parseInt(document.getElementById("start").value);
+			var end = parseInt(document.getElementById("end").value);
+			// 如果start大于、等于end，直接结束该函数
+			if (start >= end)
+			{
+				return;
+			}
+			var worker = new SharedWorker("worker5.js");
+			// 定义需要提交给SharedWorker线程的数据
+			var data = {
+				start : start,
+				end : end
+			};
+			// 向SharedWorker子线程提交数据。
+			worker.port.postMessage(JSON.stringify(data));
+			// 监听来自SharedWorker子线程的数据。
+			worker.port.onmessage = function(event)
+			{
+				var table = document.getElementById("show");
+				// 清空该表格原有的内容
+				table.innerHTML = "";
+				// 获取SharedWorker线程返回的数据
+				var result = event.data;
+				var nums = result.split(",");
+				// 定义表格总共包含多少列
+				var COLS_NUM = 7;
+				for (var i = 0 ; i <= (nums.length - 1) / COLS_NUM ; i++)
+				{
+					// 添加表格行
+					var row = table.insertRow(i);
+					// 循环插入7个单元格
+					for(var j = 0 ; j < COLS_NUM &&
+						i * COLS_NUM + j < nums.length - 1 ; j++)
+					{
+						// 插入单元格、并为单元格设置innerHTML属性
+						row.insertCell(j).innerHTML = nums[i * COLS_NUM + j]
+					}
+				}
+			}
+		};
+	</script> -->
+
+
+<!-- 起始值：<input type="text" id="start" name="start"/><br/>
+	<input type="button" value="计算10个质数" onclick="cal();"/>
+	<table id="show"></table>
+	<script type="text/javascript">
+		var cal = function()
+		{
+			// 得到用户输入的start值
+			var start = parseInt(document.getElementById("start").value);
+			var worker = new SharedWorker("worker6.js");
+			// 定义需要提交给SharedWorker线程的数据
+			var data = {
+				start : start,
+			};
+			// 向SharedWorker线程提交数据。
+			worker.port.postMessage(JSON.stringify(data));
+			// 为worker.port的message事件添加监听函数
+			worker.port.addEventListener("message", function(event)
+			{
+				var table = document.getElementById("show");
+				// 获取SharedWorker线程返回的数据
+				var result = event.data;
+				var nums = result.split(",");
+				// 定义表格总共包含多少列
+				var COLS_NUM = 10;
+				for (var i = 0 ; i <= (nums.length - 1) / COLS_NUM ; i++)
+				{
+					// 添加表格行
+					var row = table.insertRow(i);
+					// 循环插入10个单元格
+					for(var j = 0 ; j < COLS_NUM &&
+						i * COLS_NUM + j < nums.length - 1 ; j++)
+					{
+						// 插入单元格、并为单元格设置innerHTML属性
+						row.insertCell(j).innerHTML = nums[i * COLS_NUM + j]
+					}
+				}
+			}, false);
+			// 开始监听
+			worker.port.start();
+		};
+	</script> -->
+
+
+<!-- promise基本用法 -->
+
+
+<!-- 选择文件<input type="file" id="target" name="target"><p></p>
+<button onclick="show();">读取</button><p>
+<div id="result"></div>
+<script type="text/javascript">
+	function readFile(){
+
+		var p=new Promise(function(resolve,reject){
+			var fr=new FileReader();
+			var file=document.querySelector("#target").files[0];
+			if(/text\/\w+/.test(file.type)){
+				fr.readAsText(file,"gbk");
+				/*fr.onload = event => {
+				// 调用resolve函数让Promise进入fulfilled状态
+				resolve(fr.result);}*/
+				fr.onload=function(event){
+					resolve(fr.result);
+				}
+			}
+			else{
+				reject("文件内容不符本例只接受文本文件");
+			}
+		})
+		return p;
+	}
+
+function show(){
+	readFile().then(function(data){
+		document.querySelector("#result").innerHTML=data;
+	},function(reason){
+		alert(reason);
+	})
+}
+
+</script> -->
+
+
+<!-- 选择文件：<input type="file" id="target" name="target"/><p>
+<button onclick="show();">读取</button><p>
+<div id="result"></div>
+<script type="text/javascript">
+function readFile(){
+	var p = new Promise(function(resolve, reject){
+		var fr = new FileReader();
+		var file = document.querySelector("#target").files[0];
+		alert(file.type);
+		// 如果文件内容不是文本文件
+		if (/text\/\w+/.test(file.type) || file.type == "")
+		{
+			fr.readAsText(file, "gbk");
+			fr.onload = event => {
+				// 调用resolve函数让Promise进入fulfilled状态
+				resolve(fr.result);
+			}
+		}
+		else
+		{
+			// 调用reject函数让Promise进入rejected状态
+			reject("文件内容不符合，本例只接受文本文件！");
+		}
+	});
+	return p;
+}
+function show()
+{
+	// 调用then方法，传入resolve和reject函数
+	readFile().then(function(data)
+	{
+		document.querySelector("#result").innerHTML = data;
+		return data;
+	}, function(reason){
+		alert(reason);
+	})
+	// 再次调用then方法，本次只传入一个resolve函数
+	.then(data => {
+		// 解析上次resolve函数返回的数据 
+		var book = JSON.parse(data);
+		document.querySelector("#result").innerHTML += 
+			"<br/>书名：" + book.name;
+		document.querySelector("#result").innerHTML +=
+			"<br/>价格：" + book.price;
+		document.querySelector("#result").innerHTML +=
+			"<br/>作者：" + book.author;
+	});
+}
+</script> -->
+
+
+<!-- <script type="text/javascript">
+function task(){
+	var p = new Promise(function(resolve, reject){
+		// 下面代码实现本任务的异步操作
+		setTimeout(function(){
+			console.log('耗时任务完成！');
+			resolve('fkjava.org');
+		}, 1000);
+	});
+	return p;			
+}
+task().then(function(data){
+	console.info(data);
+	// 再次返回task函数的执行结果：Promise对象
+	return task();
+}).then(function(data){
+	console.info(data);
+	// 再次返回task函数的执行结果：Promise对象
+	return task();
+}).then(function(data){
+	console.info(data);
+});
+</script> -->
+
+
+<!-- <script type="text/javascript">
+function task(){
+	var p = new Promise(function(resolve, reject){
+		// 下面代码实现本任务的异步操作
+		setTimeout(function(){
+			console.log('耗时任务完成！');
+			resolve('fkjava.org');
+		}, 1000);
+	});
+	return p;
+}
+task().then(function(data){
+	console.log(data);
+	console.log(myData); // myData不存在，程序会抛出异常
+},function(err)
+{
+	console.log("错误：" + err);
+});
+</script> -->
+
+<!-- 
+<script type="text/javascript">
+function task(){
+	var p = new Promise(function(resolve, reject){
+		// 下面代码实现本任务的异步操作
+		setTimeout(function(){
+			console.log('耗时任务完成！');
+			resolve('fkjava.org');
+		}, 1000);
+	});
+	return p;
+}
+task().then(function(data){
+	console.log(data);
+	console.log(myData); // myData不存在，程序会抛出异常
+}).catch(function(err)
+{
+	console.log("错误：" + err);
+});
+</script> -->
+
+
+<!-- 选择文件：<input type="file" id="target" name="target" multiple><p>
+<button onclick="show();">读取</button>
+<div id="result"></div>
+<script type="text/javascript">
+	function readFile(file){
+		var p=new Promise(function(resolve,reject){
+			var fr=new FileReader();
+			if(/text\/\w+/.test(file.type)){
+			fr.readAsText(file,"gbk");
+			fr.onload=event=>{
+				resolve(fr.result);
+			}
+		}
+		else{
+			reject("文件内容不符合");
+		}
+		});
+		return p;
+	}
+
+	function readAll(){
+		var all=[];
+		var files=document.querySelector("#target").files;
+		for(var i=0;i<files.length;i++){
+			all.push(readFile(files[i]));
+		}
+		return all;
+	}
+
+	function show(){
+		Promise.all(readAll()).then(function(dataArr){
+			dataArr.forEach(data=>{
+				document.querySelector("#result").innerHTML+=data+"<p>";
+			});
+		}).catch(function(err){
+			alert("错误:"+err);
+		});
+	}
+
+</script> -->
+
+
+选择文件：<input type="file" id="target" name="target" multiple><p>
+<button onclick="show();">读取</button>
+<div id="result"></div>
+<script type="text/javascript">
+	function readFile(file){
+		var p=new Promise(function(resolve,reject){
+			var fr=new FileReader();
+			if(/text\/\w+/.test(file.type)){
+			fr.readAsText(file,"gbk");
+			fr.onload=event=>{
+				resolve(fr.result);
+			}
+		}
+		else{
+			reject("文件内容不符合");
+		}
+		});
+		return p;
+	}
+
+	function readAll(){
+		var all=[];
+		var files=document.querySelector("#target").files;
+		for(var i=0;i<files.length;i++){
+			all.push(readFile(files[i]));
+		}
+		return all;
+	}
+
+	function show(){
+		Promise.race(readAll()).then(function(data){
+				document.querySelector("#result").innerHTML+=data+"<p>";
+			}).catch(function(err){
+			alert("错误:"+err);
+		});
+	}
+
+</script>
+
+
+
+
+
+
+</body>
+</html>
