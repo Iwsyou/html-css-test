@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>choosebook</title>
+</head>
+<body>
+<script type="text/javascript">
+	var srcWin,srcOrigin;
+	var chooseItem=function(td){
+		var cur=td.parentNode.parentNode;
+		srcWin.postMessage({
+			name:cur.cells[0].innerHTML,
+			price:cur.cells[1].innerHTML,
+			author:cur.cells[2].innerHTML
+		},srcOrigin);
+		window.close();
+	}	
+	window.onmessage=function(ev){
+		if(ev.origin!="http://localhost:8080"){
+			return;
+		}
+		srcWin=ev.source;
+		srcOrigin=ev.origin;
+		var books=ev.data;
+		var booktb=document.getElementById('booktb');
+		for(var i=0;i<books.length;i++){
+			var row=booktb.insertRow(i);
+			row.insertCell(0).innerHTML=books[i].name;
+			row.insertCell(1).innerHTML=books[i].price;
+			row.insertCell(2).innerHTML=books[i].author;
+			row.insertCell(3).innerHTML="<input type='radio' name='choose' "
+					+ " onclick='chooseItem(this);'>";
+		}
+	}
+</script>
+
+<!-- <script type="text/javascript">
+		var srcWin , srcOrigin;
+		var chooseItem = function(td)
+		{
+			var currentRow = td.parentNode.parentNode;
+			srcWin.postMessage(
+				{
+					name: currentRow.cells[0].innerHTML ,
+					author: currentRow.cells[1].innerHTML ,
+					price: currentRow.cells[2].innerHTML
+				} , srcOrigin);
+			window.close();
+		};
+		window.onmessage = function(ev) 
+		{
+			// 忽略来自其他域名的跨文档消息（只接受http://localhost:8888的消息）
+			if (ev.origin != "http://localhost:8080") 
+			{
+				return;
+			}
+			srcWin = ev.source;
+			srcOrigin = ev.origin;
+			// 接收到其他文档发送过来的消息
+			var books = ev.data;
+			var bookTb = document.getElementById("bookTb");
+			for(var i = 0 ; i < books.length ; i++)
+			{
+				var row = bookTb.insertRow(i);
+				row.insertCell(0).innerHTML = books[i].name;
+				row.insertCell(1).innerHTML = books[i].price;
+				row.insertCell(2).innerHTML = books[i].author;
+				row.insertCell(3).innerHTML = "<input name='choose' type='radio'"
+					+ " onclick='chooseItem(this);'/>";
+			}
+		};
+	</script> -->
+
+
+<table>
+	<tr>
+		<th>图书名</th>
+		<th>价格</th>
+		<th>作者</th>
+		<th>选择</th>
+	</tr>
+	<tbody id="booktb"></tbody>
+</table>
+
+
+</body>
+</html>
