@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>chooseBook2</title>
+	<style type="text/css">
+		body>table{
+			width:480px;
+			border-collapse: collapse;
+		}
+		td,th{
+			border:1px solid black;
+		}
+
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		var port;
+	var chooseItem=function(td){
+		var cur=td.parentNode.parentNode;
+		port.postMessage({
+			name:cur.cells[0].innerHTML,
+			price:cur.cells[1].innerHTML,
+			author:cur.cells[2].innerHTML
+		},[]);
+		window.close();
+	}	
+	window.onmessage=function(ev){
+		if(ev.origin!="http://localhost:8080"){
+			return;
+		}
+		port=ev.ports[0];
+		var books=ev.data;
+		var booktb=document.getElementById('booktb');
+		for(var i=0;i<books.length;i++){
+			var row=booktb.insertRow(i);
+			row.insertCell(0).innerHTML=books[i].name;
+			row.insertCell(1).innerHTML=books[i].price;
+			row.insertCell(2).innerHTML=books[i].author;
+				row.insertCell(3).innerHTML = "<input name='choose' type='radio'"
+					+ " onclick='chooseItem(this);'/>";
+		}
+	}
+</script>
+<table>
+	<tr>
+		<th>图书名</th>
+		<th>价格</th>
+		<th>作者</th>
+		<th>选择</th>
+	</tr>
+	<tbody id="booktb"></tbody>
+</table>
+</body>
+</html>

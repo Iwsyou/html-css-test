@@ -3,6 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>choosebook</title>
+	<style type="text/css">
+		body>table{
+			width:480px;
+			border-collapse: collapse;
+		}
+		td,th{
+			border:1px solid black;
+		}
+
+	</style>
 </head>
 <body>
 <script type="text/javascript">
@@ -29,8 +39,7 @@
 			row.insertCell(0).innerHTML=books[i].name;
 			row.insertCell(1).innerHTML=books[i].price;
 			row.insertCell(2).innerHTML=books[i].author;
-			row.insertCell(3).innerHTML="<input type='radio' name='choose' "
-					+ " onclick='chooseItem(this);'>";
+			row.insertCell(3).innerHTML="<input type='radio' name='choose' onclick='chooseItem(this);'>";
 		}
 	}
 </script>

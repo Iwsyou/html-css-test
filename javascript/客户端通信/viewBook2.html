@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>viewBook2</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+	var choosebook=function(){
+		
+		var targetWin=window.open("http://localhost:8080/sublime-workspace/javascript/客户端通信/chooseBook2.html",'_blank','width=510,height=300');
+		var mc=new MessageChannel();
+
+		targetWin.onload=function(){
+			var data=[
+				{
+					name:'疯狂Java讲义',
+					price:109,
+					author:'李刚'
+				},
+				{
+					name:'疯狂讲义',
+					price:10,
+					author:'李刚'
+				},
+				{
+					name:'Java讲义',
+					price:19,
+					author:'李刚'
+				}
+			];
+			targetWin.postMessage(data,"http://localhost:8080",[mc.port2]);
+		}
+	mc.port1.addEventListener("message",function(ev){
+		var show=document.getElementById('result');
+		alert(show);
+		show.innerHTML=("你选择的图书为：<br />"+
+			ev.data.name+"<br />"+
+			ev.data.price+"<br />"+
+			ev.data.author+"<br />");
+	},false);
+	mc.port1.start();
+}
+</script>
+
+<a href="#" onclick="choosebook()">选择图书</a>
+<div id="result"></div>
+</body>
+</html>
