@@ -38,8 +38,7 @@
 			row.insertCell(0).innerHTML=books[i].name;
 			row.insertCell(1).innerHTML=books[i].price;
 			row.insertCell(2).innerHTML=books[i].author;
-				row.insertCell(3).innerHTML = "<input name='choose' type='radio'"
-					+ " onclick='chooseItem(this);'/>";
+			row.insertCell(3).innerHTML="<input type='radio' name='choose' onclick='chooseItem(this);'>";
 		}
 	}
 </script>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>siniorChat</title>
+</head>
+<body>
+<script type="text/javascript">
+	var websocket=new WebSocket("ws:127.0.0.1:8080/");
+	websocket.onopen=function(){
+		var show=document.getElementById('show');
+		websocket.onmessage=function(ev){
+			if(ev.data instanceof Blob){
+				var img=document.createElement("img");
+				img.src=window.URL.creatObjectURL(ev.data);
+				show.appendChild(img);
+				show.innerHTML+="<br />";
+			}
+			else{
+				show.innerHTML+=ev.data+"<br />";
+			}
+		}
+	}
+	var sendmsg=function(){
+		var inputele=document.getElementById("msg");
+		websocket.send(inputele.value);
+		inputele.value="";
+	}
+
+	var reader=new FileReader();
+	var sendBinmsg=function(){
+		var fileele=document.querySelector("#fx");
+		var f=fileele.files[0];
+		websocket.send(f);
+		fileele="";
+	}
+
+
+</script>
+
+<div id="show" style="width：600px;height:240px;overflow-y:auto;border:1px solid #333;"></div>
+
+<input type="text" id="msg" size="80"name="msg">
+<input type="button" value="发送"onclick="sendmsg()">
+<input type="file" id="fx" size="80"name="fx"accept="image/*">
+<input type="button" value="发送二进制"onclick="sendBinmsg()">
+	
+</body>
+</html>
+
+
+<!-- 服务器端代码
+package org.fkjava.web;
+
+import java.io.*;
+import java.nio.*;
+import java.util.*;
+import javax.websocket.*;
+import javax.websocket.server.*;
+/**
+ * Description:
+ * <br/>ÍøÕ¾: <a href="http://www.crazyit.org">·è¿ñJavaÁªÃË</a>
+ * <br/>Copyright (C), 2001-2018, Yeeku.H.Lee
+ * <br/>This program is protected by copyright laws.
+ * <br/>Program Name:
+ * <br/>Date:
+ * @author Yeeku.H.Lee kongyeeku@163.com
+ * @version 1.0
+ */
+// @ServerEndpoint×¢½âÐÞÊÎµÄÀà½«×÷ÎªWebSocketµÄ·þÎñ¶Ë
+@ServerEndpoint(value="/seniorChat")
+public class SeniorChatEndpoint
+{
+	static List<Session> clients = Collections
+		.synchronizedList(new ArrayList<Session>());
+	@OnOpen // ¸Ã×¢½âÐÞÊÎµÄ·½·¨½«»á¿Í»§¶ËÁ¬½ÓÊ±±»¼¤·¢
+	public void start(Session session)
+	{
+		// Ã¿µ±ÓÐ¿Í»§Á¬½Ó½øÀ´Ê±£¬ÊÕ¼¯¸Ã¿Í»§¶ÔÓ¦µÄsession
+		clients.add(session);
+	}
+	@OnMessage // ¸Ã×¢½âÐÞÊÎµÄ·½·¨½«»á¿Í»§¶ËÏûÏ¢µ½´ïÊ±±»¼¤·¢
+	public void message(String message, Session session)
+		throws Exception
+	{
+		// ÊÕµ½ÏûÏ¢ºó£¬½«ÏûÏ¢ÏòËùÓÐ¿Í»§·¢ËÍÒ»´Î
+		for (Session s : clients)
+		{
+			RemoteEndpoint.Basic remote = s.getBasicRemote();
+			remote.sendText(message);
+		}
+	}
+
+	@OnMessage // ¸Ã×¢½âÐÞÊÎµÄ·½·¨½«»á¿Í»§¶ËÏûÏ¢µ½´ïÊ±±»¼¤·¢
+	public void message(ByteBuffer data, boolean last, Session session)
+		throws Exception
+	{
+		// ÊÕµ½ÏûÏ¢ºó£¬½«ÏûÏ¢ÏòËùÓÐ¿Í»§·¢ËÍÒ»´Î
+		for (Session s : clients)
+		{
+			RemoteEndpoint.Basic remote = s.getBasicRemote();
+			remote.sendBinary(data, last);
+		}
+	}
+
+	@OnClose // ¸Ã×¢½âÐÞÊÎµÄ·½·¨½«»á¿Í»§¶ËÁ¬½Ó¹Ø±ÕÊ±±»¼¤·¢
+	public void end(Session session, CloseReason closeReason)
+	{
+		// Ã¿µ±ÓÐ¿Í»§Á¬½Ó¹Ø±ÕÊ±£¬É¾³ý¸Ã¿Í»§¶ÔÓ¦µÄsession
+		clients.remove(session);
+	}
+
+	@OnError // ¸Ã×¢½âÐÞÊÎµÄ·½·¨½«»á¿Í»§¶Ë³ö´íÊ±±»¼¤·¢
+	public void error(Session session, Throwable throwable)
+	{
+		// Ã¿µ±ÓÐ¿Í»§Á¬½Ó³ö´íÊ±£¬É¾³ý¸Ã¿Í»§¶ÔÓ¦µÄsession
+		clients.remove(session);
+	}
+}
+ -->

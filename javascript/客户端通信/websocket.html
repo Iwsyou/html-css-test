@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>websocket</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var websocket=new WebSocket("ws://127.0.0.1:8080/");
+		websocket.onopen=function(){
+			alert("已打开链接");
+			websocket.send("我是你爸爸");
+		}
+		websocket.onmessage=function(ev){
+			alert("收到的消息时："+ev.data);
+		}
+
+
+	</script>
+
+</body>
+</html>
+
+<!-- 服务器端代码
+package org.fkjava.web;
+
+import javax.websocket.*;
+import javax.websocket.server.*;
+/**
+ * Description:
+ * <br/>ÍøÕ¾: <a href="http://www.crazyit.org">·è¿ñJavaÁªÃË</a>
+ * <br/>Copyright (C), 2001-2018, Yeeku.H.Lee
+ * <br/>This program is protected by copyright laws.
+ * <br/>Program Name:
+ * <br/>Date:
+ * @author Yeeku.H.Lee kongyeeku@163.com
+ * @version 1.0
+ */
+// @ServerEndpoint×¢½âÐÞÊÎµÄÀà½«×÷ÎªWebSocketµÄ·þÎñ¶Ë
+@ServerEndpoint(value="/simpleSocket")
+public class SimpleEndpoint
+{
+	@OnOpen // ¸Ã×¢½âÐÞÊÎµÄ·½·¨½«»á¿Í»§¶ËÁ¬½ÓÊ±±»¼¤·¢
+	public void start(Session session)
+	{
+		System.out.println("¿Í»§¶ËÁ¬½Ó½øÀ´ÁË£¬session id:"
+			+ session.getId());
+	}
+	@OnMessage // ¸Ã×¢½âÐÞÊÎµÄ·½·¨½«»á¿Í»§¶ËÏûÏ¢µ½´ïÊ±±»¼¤·¢
+	public void message(String message, Session session)
+		throws Exception
+	{
+		System.out.println("½ÓÊÕµ½ÏûÏ¢ÁË:" + message);
+		RemoteEndpoint.Basic remote = session.getBasicRemote();
+		remote.sendText("ÊÕµ½£¡ÊÕµ½£¡»¶Ó­¼ÓÈëWebSocketµÄÊÀ½ç£¡");
+	}
+
+	@OnClose // ¸Ã×¢½âÐÞÊÎµÄ·½·¨½«»á¿Í»§¶ËÁ¬½Ó¹Ø±ÕÊ±±»¼¤·¢
+	public void end(Session session, CloseReason closeReason)
+	{
+		System.out.println("¿Í»§¶ËÁ¬½Ó¹Ø±ÕÁË£¬session id:"
+			+ session.getId());
+	}
+
+	@OnError // ¸Ã×¢½âÐÞÊÎµÄ·½·¨½«»á¿Í»§¶Ë³ö´íÊ±±»¼¤·¢
+	public void error(Session session, Throwable throwable)
+	{
+		System.err.println("¿Í»§¶ËÁ¬½Ó³ö´íÁË£¬session id:"
+			+ session.getId());
+	}
+}
+ -->
