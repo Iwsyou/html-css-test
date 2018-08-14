@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>2048</title>
+    <link rel="stylesheet" href="style.css"/>
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="showanimation.js"></script>
+    <script type="text/javascript" src="support.js"></script>
+
+    <style type="text/css">
+       header {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
+
+header h1 {
+    font-family: Arial;
+    font-size: 60px;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+header #new_game_button {
+    display: block;
+    margin: 0px auto;
+    width: 100px;
+    padding: 10px 10px;
+    background-color: #8f7a66;
+    font-family: Arial;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+header #new_game_button:hover {
+    background-color: #9f8b77;
+}
+
+header p {
+    font-family: Arial;
+    font-size: 25px;
+    margin: 5px auto;
+}
+
+#grid_container {
+    width: 460px;
+    height: 460px;
+    padding: 20px;
+    margin: 0px auto;
+    background-color: #bbada0;
+    border-radius: 10px;
+    position: relative;
+}
+
+.grid_cell {
+    width: 100px;
+    height: 100px;
+    border-radius: 6px;
+    background-color: #ccc0b3;
+    position: absolute;
+}
+
+.number_cell {
+    border-radius: 6px;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 100px;
+    text-align: center;
+    position: absolute;
+} 
+    </style>
+</head>
+<body>
+    <header>
+        <h1>2048</h1>
+        <a href="javascript:new_game();" id="new_game_button">New Game</a>
+        <p>score: <span id="score">0</span></p>
+    </header>
+    <div id="grid_container">
+        <div class="grid_cell" id="grid_cell_0_0"></div>
+        <div class="grid_cell" id="grid_cell_0_1"></div>
+        <div class="grid_cell" id="grid_cell_0_2"></div>
+        <div class="grid_cell" id="grid_cell_0_3"></div>
+
+        <div class="grid_cell" id="grid_cell_1_0"></div>
+        <div class="grid_cell" id="grid_cell_1_1"></div>
+        <div class="grid_cell" id="grid_cell_1_2"></div>
+        <div class="grid_cell" id="grid_cell_1_3"></div>
+
+        <div class="grid_cell" id="grid_cell_2_0"></div>
+        <div class="grid_cell" id="grid_cell_2_1"></div>
+        <div class="grid_cell" id="grid_cell_2_2"></div>
+        <div class="grid_cell" id="grid_cell_2_3"></div>
+
+        <div class="grid_cell" id="grid_cell_3_0"></div>
+        <div class="grid_cell" id="grid_cell_3_1"></div>
+        <div class="grid_cell" id="grid_cell_3_2"></div>
+        <div class="grid_cell" id="grid_cell_3_3"></div>
+    </div>
+
+    <script type="text/javascript">
+        //在main.js中
+var board = new Array();    //每个格子的数字
+var score = 0;  //分数
+var has_conflicted = new Array();   //解决连续消除的标记
+var startx = 0; //移动端触摸屏幕时开始点的x坐标
+var starty = 0; //移动端触摸屏幕时开始点的y坐标
+var endx = 0;   //移动端触摸屏幕时结束点的x坐标
+var endy = 0;   //移动端触摸屏幕时结束点的y坐标
+var success_string = 'Success';
+var gameover_string = 'GameOver';
+
+//HTML文档加载完成后，初始化棋局
+$(document).ready(function() {
+    //做自适应处理
+    prepare_for_mobile();
+    new_game();
+});
+
+//开始新游戏
+function new_game() {
+    //初始化棋盘
+    init();
+    //在随机两个格子生成数字
+    generate_one_number();
+    generate_one_number();
+}
+
+//初始化
+function init() {
+    for (var i = 0; i < 4; i++) {
+        for (var j = 0; j < 4; j++) {
+            var grid_cell = $('#grid_cell_' + i + '_' + j);
+            grid_cell.css('top', get_pos_top(i, j));
+            grid_cell.css('left', get_pos_left(i, j));
+        }
+    }
+    for (var i = 0; i < 4; i++) {
+        board[i] = new Array();
+        has_conflicted[i] = new Array();
+        for (var j =0; j < 4; j++) {
+            board[i][j] = 0;
+            has_conflicted[i][j] = false;
+        }
+    }
+    update_board_view();
+    score = 0;
+    update_score(score);
+}
+
+//更新棋局
+function update_board_view() {
+    $('.number_cell').remove();
+    for (var i = 0; i < 4; i++) {
+        for (var j = 0; j < 4; j++) {
+            $('#grid_container').append('<div class="number_cell" id="number_cell_' + i + '_' + j + '"></div>');
+            var number_cell = $('#number_cell_' + i + '_' + j);
+            if (board[i][j] == 0) {
+                number_cell.css('width', '0px');
+                number_cell.css('height', '0px');
+                number_cell.css('top', get_pos_top(i, j) + cell_side_length / 2);
+                number_cell.css('left', get_pos_left(i, j) + cell_side_length / 2);
+            } else {
+                number_cell.css('width', cell_side_length);
+                number_cell.css('height', cell_side_length);
+                number_cell.css('top', get_pos_top(i, j));
+                number_cell.css('left', get_pos_left(i, j));
+                number_cell.css('background-color', get_number_background_color(board[i][j]));
+                number_cell.css('color', get_number_color(board[i][j]));
+                number_cell.text(board[i][j]);
+            }
+            has_conflicted[i][j] = false;
+        }
+    }
+    $('.number_cell').css('line-height', cell_side_length + 'px');
+    $('.number_cell').css('font-size', 0.6 * cell_side_length + 'px');
+}
+
+//随机在一个格子生成数字
+function generate_one_number() {
+    if (nospace(board)) {
+        return false;
+    }
+    //随机一个位置
+    var randx = parseInt(Math.floor(Math.random() * 4));
+    var randy = parseInt(Math.floor(Math.random() * 4));
+    var time = 0;
+    while (time < 50) {
+        if (board[randx][randy] == 0) {
+            break;
+        }
+        randx = parseInt(Math.floor(Math.random() * 4));
+        randy = parseInt(Math.floor(Math.random() * 4));
+        time++;
+    }
+    if (time == 50) {
+        for (var i = 0; i < 4; i++) {
+            for (var j = 0; j < 4; j++) {
+                if (board[i][j] == 0) {
+                    randx = i;
+                    randy = j;
+                }
+            }
+        }
+    }
+    //随机一个数字
+    var rand_number = Math.random() < 0.5 ? 2 : 4;
+    //在随机位置显示随机数字
+    board[randx][randy] = rand_number;
+    show_number_with_animation(randx, randy, rand_number);
+    return true;
+}
+
+//自适应处理
+function prepare_for_mobile() {
+    if (document_width > 500) {
+        grid_container_width = 500;
+        cell_side_length = 100;
+        cell_space = 20;
+    }
+    $('#grid_container').css('width', grid_container_width - 2 * cell_space);
+    $('#grid_container').css('height', grid_container_width - 2 * cell_space);
+    $('#grid_container').css('padding', cell_space);
+    $('#grid_container').css('border-radius', 0.02 * grid_container_width);
+    $('.grid_cell').css('width', cell_side_length);
+    $('.grid_cell').css('height', cell_side_length);
+    $('.grid_cell').css('border-radius', 0.02 * grid_container_width);
+}
+//在support.js中
+document_width = window.screen.availWidth;  //屏幕宽度
+grid_container_width = 0.92 * document_width;   //期盘宽度
+cell_side_length = 0.18 * document_width;   //格子的大小
+cell_space = 0.04 * document_width; //格子之间的间隔
+
+//获得相应格子距离期盘顶部的距离
+function get_pos_top(i, j) {
+    return cell_space + i * (cell_space + cell_side_length);
+}
+
+//获得相应格子距离棋盘左边的距离
+function get_pos_left(i, j) {
+    return cell_space + j * (cell_space + cell_side_length);
+}
+
+//获得相应数字的背景色
+function get_number_background_color(number) {
+    switch (number) {
+        case 2: return '#eee4da'; break;
+        case 4: return '#ede0c8'; break;
+        case 8: return '#f2b179'; break;
+        case 16: return '#f59563'; break;
+        case 32: return '#f67c5f'; break;
+        case 64: return '#f65e3b'; break;
+        case 128: return '#edcf72'; break;
+        case 256: return '#edcc61'; break;
+        case 512: return '#9c0'; break;
+        case 1024: return '#33b5e5'; break;
+        case 2048: return '#09c'; break;
+        case 4096: return '#a6c'; break;
+        case 8192: return '#93c'; break;
+    }
+    return 'black';
+}
+
+//获得相应数字的颜色
+function get_number_color(number) {
+    if (number <= 4)
+        return '#776e65';
+    return 'white';
+}
+
+//判断棋盘上是否还有空格子
+function nospace(board) {
+    for (var i = 0; i < 4; i++) {
+        for (var j = 0; j < 4; j++) {
+            if (board[i][j] == 0) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+//在showanimation.js中
+//动画显示数字格子
+function show_number_with_animation(i, j, rand_number) {
+    var number_cell = $('#number_cell_' + i + '_' + j);
+    number_cell.css('background-color', get_number_background_color(rand_number));
+    number_cell.css('color', get_number_color(rand_number));
+    number_cell.text(rand_number);
+    number_cell.animate({
+        width: cell_side_length,
+        height: cell_side_length,
+        top: get_pos_top(i, j),
+        left: get_pos_left(i, j)
+    }, 50);
+}
+
+//更新分数
+function update_score(score) {
+    $('#score').text(score);
+}
+
+
+
+    </script>
+</body>
+</html>
+
+
